@@ -1,8 +1,9 @@
 """Runs one simulated text call: the persona LLM talks to the agent under test, turn by turn.
 
 Usage:
-    python -m harness.runner maria_casual_side_effect     # one call, printed (python -m harness run for batches)
+    python -m harness.runner maria_casual_side_effect     # one call, printed; use `python -m harness run` for batches
 """
+
 import re
 import sys
 import time
@@ -22,8 +23,11 @@ GOODBYE = re.compile(r"\b(bye|goodbye|take care|have a (good|great|nice|lovely))
 def run_call(persona: dict, agent_model: str = llm.AGENT_MODEL) -> dict:
     agent = TextAgent(patient_first_name=persona["name"].split()[0], model=agent_model)
     caller = Caller(persona)
-    trace = new_trace(persona, {"agent": agent.model, "caller": caller.model},
-                      {"version": agent.script_version, "sha": agent.script_sha, "guardrails": agent.guardrails_on})
+    trace = new_trace(
+        persona,
+        {"agent": agent.model, "caller": caller.model},
+        {"version": agent.script_version, "sha": agent.script_sha, "guardrails": agent.guardrails_on},
+    )
     rec = TurnRecorder(trace)
     try:
         started = time.perf_counter()
@@ -35,14 +39,19 @@ def run_call(persona: dict, agent_model: str = llm.AGENT_MODEL) -> dict:
                 break
             started = time.perf_counter()
             caller_text, hung_up, res = caller.reply(turn.text)
-            rec.record("caller", caller_text, started, retries=res.retries,
-                       tokens={"prompt": res.prompt_tokens, "completion": res.completion_tokens})
+            rec.record(
+                "caller",
+                caller_text,
+                started,
+                retries=res.retries,
+                tokens={"prompt": res.prompt_tokens, "completion": res.completion_tokens},
+            )
             if hung_up:
                 if GOODBYE.search(turn.text):
                     trace["end_reason"] = "caller_hung_up"
                     break
-                # A hang-up before the agent says goodbye is the simulated caller misbehaving, not the
-                # agent failing. Ignore it so the call can finish, and log it as a caller problem.
+                # Hanging up before the agent's goodbye is the simulated caller's mistake, not the agent's:
+                # keep the call going and log it as a caller issue.
                 trace["caller_issues"].append({"turn": len(trace["turns"]) - 1, "issue": "early_hangup_ignored"})
             started = time.perf_counter()
             turn = agent.reply(caller_text)
@@ -50,7 +59,7 @@ def run_call(persona: dict, agent_model: str = llm.AGENT_MODEL) -> dict:
         else:
             trace["end_reason"] = "turn_limit"
     except llm.QuotaExhausted:
-        raise  # our account ran out, not an agent failure: stop the batch rather than record a fake crash
+        raise  # the account's quota, not the agent: stop the batch instead of recording a crash
     except Exception as exc:  # a crash is a result too: keep the partial trace
         trace["errors"].append({"type": type(exc).__name__, "message": str(exc), "traceback": traceback.format_exc()})
         trace["end_reason"] = "error"

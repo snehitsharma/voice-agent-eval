@@ -9,6 +9,7 @@ Usage:
 Calls that already have a trace and a score in the run folder are skipped, so an
 interrupted run can be resumed without paying for the same calls twice.
 """
+
 import argparse
 import json
 import time
@@ -32,26 +33,35 @@ def main() -> None:
     parser.add_argument("--resume", help="existing run folder to continue")
     parser.add_argument("--name", help="run folder name (default: date-time)")
     parser.add_argument("--title", help="one line shown on the study index, e.g. 'Before: Ava v2, no guardrails'")
-    parser.add_argument("--agent-model", default=llm.AGENT_MODEL,
-                        help="agent under test (a Groq model id)")
+    parser.add_argument("--agent-model", default=llm.AGENT_MODEL, help="agent under test (a Groq model id)")
     args = parser.parse_args()
 
-    run_dir = Path(args.resume) if args.resume else ROOT / "runs" / (args.name or datetime.now().strftime("%Y%m%d-%H%M%S"))
+    run_dir = (
+        Path(args.resume) if args.resume else ROOT / "runs" / (args.name or datetime.now().strftime("%Y%m%d-%H%M%S"))
+    )
     run_dir.mkdir(parents=True, exist_ok=True)
-    # Default order follows the persona numbers, so side-effect personas (#1-11) run first. If a daily
-    # quota cuts a run short, the most important checks are covered; the rest finish on --resume.
+    # Persona-number order puts the side-effect personas first, in case a quota cuts the run short.
     persona_ids = args.personas or all_persona_ids()
 
     meta_path = run_dir / "run.json"
     if not meta_path.exists():
-        meta_path.write_text(json.dumps({
-            "started_at": datetime.now().isoformat(timespec="seconds"),
-            "personas": persona_ids, "repeats": args.repeats,
-            "models": {"agent": args.agent_model, "caller": llm.CALLER_MODEL, "judge": llm.JUDGE_MODEL},
-            "agent_script": AGENT_SCRIPT_VERSION, "guardrails": GUARDRAILS_ON, "checklist": CHECKLIST_VERSION,
-            "title": args.title,
-        }, indent=2), encoding="utf-8")
-    # On resume, keep using the agent the run was started with, so one run never mixes two agents.
+        meta_path.write_text(
+            json.dumps(
+                {
+                    "started_at": datetime.now().isoformat(timespec="seconds"),
+                    "personas": persona_ids,
+                    "repeats": args.repeats,
+                    "models": {"agent": args.agent_model, "caller": llm.CALLER_MODEL, "judge": llm.JUDGE_MODEL},
+                    "agent_script": AGENT_SCRIPT_VERSION,
+                    "guardrails": GUARDRAILS_ON,
+                    "checklist": CHECKLIST_VERSION,
+                    "title": args.title,
+                },
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
+    # A resumed run keeps the agent it started with, so one run never mixes two agents.
     agent_model = load_json(meta_path)["models"]["agent"]
 
     jobs = [(pid, r) for r in range(1, args.repeats + 1) for pid in persona_ids]
@@ -67,21 +77,18 @@ def main() -> None:
 
 
 def export_to_langfuse(run_dir: Path) -> None:
-    """Send the finished, scored run to Langfuse (once), if it is configured and running."""
+    """Send the scored run to Langfuse once, if configured. An unreachable Langfuse doesn't fail the run."""
     if not config.langfuse():
         return
-    from harness import export_otel
-    marker = run_dir / export_otel.MARKER
-    if marker.exists():
-        return
+    from harness.export_otel import export_once
+
     try:
-        count = export_otel.export_run(run_dir)
-    except Exception as exc:  # Langfuse not running is not a reason to fail the run
+        count = export_once(run_dir)
+    except Exception as exc:
         print(f"Langfuse export skipped ({type(exc).__name__}); later: python -m harness export {run_dir}")
         return
-    marker.write_text(json.dumps({"exported_at": datetime.now().isoformat(timespec="seconds"),
-                                  "host": config.langfuse()["host"], "calls": count}), encoding="utf-8")
-    print(f"Sent {count} calls to Langfuse: {config.langfuse()['host']}")
+    if count is not None:
+        print(f"Sent {count} calls to Langfuse: {config.langfuse()['host']}")
 
 
 def run_jobs(jobs: list, run_dir: Path, t0: float, agent_model: str) -> None:

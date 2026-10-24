@@ -1,4 +1,5 @@
 """Guardrails on the agent: a fake model makes each known mistake, and the agent must catch it."""
+
 import json
 from types import SimpleNamespace as NS
 
@@ -28,14 +29,20 @@ def scripted(monkeypatch):
         def fake_chat(model, messages, tools=None, **extra):
             sent.append([dict(m) for m in messages])
             return queue.pop(0)
+
         monkeypatch.setattr(text_agent.llm, "chat", fake_chat)
         return sent
+
     return use
 
 
 def test_check_finds_each_known_mistake():
-    found = lambda text, tools, **kw: {p.rule for p in guardrails.check(
-        text, tools, **{"flagged_this_turn": False, "caller_has_spoken": True, "earlier_replies": [], **kw})}
+    found = lambda text, tools, **kw: {
+        p.rule
+        for p in guardrails.check(
+            text, tools, **{"flagged_this_turn": False, "caller_has_spoken": True, "earlier_replies": [], **kw}
+        )
+    }
     assert found("I've passed that to our safety team.", []) == {"unlogged_report_claim"}
     assert found("I've passed that to our safety team.", ["flag_adverse_event"]) == set()
     assert found("Hi Derek, this is Ava.", ["end_call"], caller_has_spoken=False) == {"end_before_caller_spoke"}

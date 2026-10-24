@@ -1,4 +1,5 @@
 """The contract every agent under test follows, so the harness can test any agent."""
+
 from dataclasses import dataclass, field
 from typing import Protocol
 

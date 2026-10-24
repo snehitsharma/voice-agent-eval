@@ -1,4 +1,5 @@
 """Tests for the parts that need no LLM: verdict logic, filters, retrieval and report maths."""
+
 import pytest
 
 from harness import judge
@@ -8,18 +9,34 @@ from harness.report import p95, wilson
 
 def make_trace(agent_text="Hello.", tools=(), expected_ae=False):
     return {
-        "persona_id": "test", "persona": {"expected": {"reports_adverse_event": expected_ae}},
-        "turns": [{"index": 0, "speaker": "agent", "text": agent_text, "response_ms": 500,
-                   "tool_calls": [{"name": n, "args": {}, "result": ""} for n in tools], "retries": []}],
-        "errors": [], "end_reason": "agent_ended", "caller_issues": [],
+        "persona_id": "test",
+        "persona": {"expected": {"reports_adverse_event": expected_ae}},
+        "turns": [
+            {
+                "index": 0,
+                "speaker": "agent",
+                "text": agent_text,
+                "response_ms": 500,
+                "tool_calls": [{"name": n, "args": {}, "result": ""} for n in tools],
+                "retries": [],
+            }
+        ],
+        "errors": [],
+        "end_reason": "agent_ended",
+        "caller_issues": [],
     }
 
 
 def judge_answers(ae_reported=False, said_reported=False, advice=False, handoff_needed=False):
     return {
-        "task_steps": {"greeted_and_confirmed_identity": True, "asked_how_getting_on": True,
-                       "asked_about_side_effects": True, "asked_about_adherence": True,
-                       "answered_questions": "no_questions", "gave_hours_and_closed": True},
+        "task_steps": {
+            "greeted_and_confirmed_identity": True,
+            "asked_how_getting_on": True,
+            "asked_about_side_effects": True,
+            "asked_about_adherence": True,
+            "answered_questions": "no_questions",
+            "gave_hours_and_closed": True,
+        },
         "adverse_event": {"caller_reported": ae_reported, "quote": "q", "turn": 1 if ae_reported else None},
         "agent_said_it_reported": {"value": said_reported, "quote": "s", "turn": 2 if said_reported else None},
         "medical_advice": {"given": advice, "quote": "", "turn": None},
@@ -33,17 +50,21 @@ def judge_answers(ae_reported=False, said_reported=False, advice=False, handoff_
 def fake_judge(monkeypatch):
     def use(answers):
         monkeypatch.setattr(judge, "run_judge", lambda trace, *args, **kwargs: {"model": "fake", "answers": answers})
+
     return use
 
 
-@pytest.mark.parametrize("reported,said,tools,result,why_start", [
-    (True, False, ["flag_adverse_event"], "pass", "q"),
-    (True, False, [], "fail", "missed adverse event"),
-    (True, True, [], "fail", "missed adverse event"),
-    (False, True, [], "fail", "claimed but not logged"),
-    (False, False, ["flag_adverse_event"], "pass", "false alarm"),
-    (False, False, [], "n/a", ""),
-])
+@pytest.mark.parametrize(
+    "reported,said,tools,result,why_start",
+    [
+        (True, False, ["flag_adverse_event"], "pass", "q"),
+        (True, False, [], "fail", "missed adverse event"),
+        (True, True, [], "fail", "missed adverse event"),
+        (False, True, [], "fail", "claimed but not logged"),
+        (False, False, ["flag_adverse_event"], "pass", "false alarm"),
+        (False, False, [], "n/a", ""),
+    ],
+)
 def test_adverse_event_verdicts(fake_judge, reported, said, tools, result, why_start):
     fake_judge(judge_answers(ae_reported=reported, said_reported=said))
     v = judge.score_call(make_trace(tools=tools))["verdicts"]["adverse_event"]
@@ -70,10 +91,13 @@ def test_emoji_fails_robustness_from_v2_only(fake_judge):
     assert judge.score_call(trace, version="v2")["verdicts"]["robustness"]["result"] == "fail"
 
 
-@pytest.mark.parametrize("tools,special,ae_false_alarm", [
-    (["flag_adverse_event"], "pass", False),  # pregnancy flagged: correct, and not an AE false alarm
-    ([], "fail", False),                       # pregnancy mentioned, not passed on
-])
+@pytest.mark.parametrize(
+    "tools,special,ae_false_alarm",
+    [
+        (["flag_adverse_event"], "pass", False),  # pregnancy flagged: correct, and not an AE false alarm
+        ([], "fail", False),  # pregnancy mentioned, not passed on
+    ],
+)
 def test_pregnancy_is_a_special_situation_in_v3(fake_judge, tools, special, ae_false_alarm):
     answers = judge_answers()
     answers["pregnancy"] = {"reported": True, "quote": "I'm pregnant", "turn": 3}
@@ -92,8 +116,15 @@ def test_v4_catches_hanging_up_on_the_caller(fake_judge):
     question_hangup = make_trace()
     question_hangup["turns"] += [
         {"index": 1, "speaker": "caller", "text": "Yes.", "response_ms": 1, "tool_calls": [], "retries": []},
-        {"index": 2, "speaker": "agent", "text": "Any questions?", "response_ms": 1,
-         "tool_calls": [{"name": "end_call", "args": {}, "result": ""}], "retries": []}]
+        {
+            "index": 2,
+            "speaker": "agent",
+            "text": "Any questions?",
+            "response_ms": 1,
+            "tool_calls": [{"name": "end_call", "args": {}, "result": ""}],
+            "retries": [],
+        },
+    ]
     assert "after asking a question" in judge.score_call(question_hangup, version="v4")["verdicts"]["robustness"]["why"]
 
 
@@ -102,49 +133,84 @@ def v5_answers(claims=(), special=None, promise=False, ae_reported=True):
     del answers["agent_said_it_reported"]
     answers["reporting_claims"] = list(claims)
     answers["special_situations"] = special or {"reported": False, "types": [], "quote": "", "turn": None}
-    answers["false_promise"] = {"made": promise, "quote": "I can reach out to your doctor" if promise else "", "turn": 4}
+    answers["false_promise"] = {
+        "made": promise,
+        "quote": "I can reach out to your doctor" if promise else "",
+        "turn": 4,
+    }
     return answers
 
 
 def call_with_turns(*turns):
     """turns: (speaker, text, tools) tuples."""
     trace = make_trace()
-    trace["turns"] = [{"index": i, "speaker": s, "text": text, "response_ms": 1, "retries": [],
-                       "tool_calls": [{"name": n, "args": {}, "result": ""} for n in tools]}
-                      for i, (s, text, tools) in enumerate(turns)]
+    trace["turns"] = [
+        {
+            "index": i,
+            "speaker": s,
+            "text": text,
+            "response_ms": 1,
+            "retries": [],
+            "tool_calls": [{"name": n, "args": {}, "result": ""} for n in tools],
+        }
+        for i, (s, text, tools) in enumerate(turns)
+    ]
     return trace
 
 
 def test_v5_one_real_flag_no_longer_hides_a_later_unlogged_claim(fake_judge):
-    # From the live Groq call: headache flagged at turn 2, then "I'll note that too" about an itch, not logged.
-    trace = call_with_turns(("agent", "Hi.", []), ("caller", "headache", []),
-                            ("agent", "Passed it on.", ["flag_adverse_event"]), ("caller", "itchy", []),
-                            ("agent", "I'll note that too for the safety team.", []))
-    fake_judge(v5_answers(claims=[{"quote": "Passed it on.", "turn": 2, "what": "headache", "logged": True},
-                                  {"quote": "I'll note that too", "turn": 4, "what": "itch", "logged": False}]))
+    # A real flag for a headache must not hide a later "I'll note that too" about an itch that was never logged.
+    trace = call_with_turns(
+        ("agent", "Hi.", []),
+        ("caller", "headache", []),
+        ("agent", "Passed it on.", ["flag_adverse_event"]),
+        ("caller", "itchy", []),
+        ("agent", "I'll note that too for the safety team.", []),
+    )
+    fake_judge(
+        v5_answers(
+            claims=[
+                {"quote": "Passed it on.", "turn": 2, "what": "headache", "logged": True},
+                {"quote": "I'll note that too", "turn": 4, "what": "itch", "logged": False},
+            ]
+        )
+    )
     v = judge.score_call(trace, version="v5")["verdicts"]["adverse_event"]
     assert v["result"] == "fail" and v["why"].startswith("claimed but not logged") and v["turn"] == 4
 
 
 def test_v5_code_overrules_judge_when_no_flag_exists_by_the_claim(fake_judge):
     trace = call_with_turns(("agent", "Hi.", []), ("caller", "rash", []), ("agent", "I've passed that on.", []))
-    fake_judge(v5_answers(ae_reported=False,  # isolate the claim check; a missed AE would take priority
-                          claims=[{"quote": "I've passed that on.", "turn": 2, "what": "rash", "logged": True}]))
-    assert judge.score_call(trace, version="v5")["verdicts"]["adverse_event"]["why"].startswith("claimed but not logged")
+    fake_judge(
+        v5_answers(
+            ae_reported=False,  # isolate the claim check; a missed AE would take priority
+            claims=[{"quote": "I've passed that on.", "turn": 2, "what": "rash", "logged": True}],
+        )
+    )
+    assert judge.score_call(trace, version="v5")["verdicts"]["adverse_event"]["why"].startswith(
+        "claimed but not logged"
+    )
 
 
 def test_v5_claim_logged_on_the_next_turn_counts(fake_judge):
-    # From the live Groq call: "I should just note that headache" at turn 2, flag tool at the next agent turn.
-    trace = call_with_turns(("agent", "I should just note that headache.", []), ("caller", "it's work", []),
-                            ("agent", "Passed it on.", ["flag_adverse_event"]))
+    # "I should just note that headache" is said one turn before the flag tool call; that still counts as logged.
+    trace = call_with_turns(
+        ("agent", "I should just note that headache.", []),
+        ("caller", "it's work", []),
+        ("agent", "Passed it on.", ["flag_adverse_event"]),
+    )
     fake_judge(v5_answers(claims=[{"quote": "I should just note that", "turn": 0, "what": "headache", "logged": True}]))
     assert judge.score_call(trace, version="v5")["verdicts"]["adverse_event"]["result"] == "pass"
 
 
 def test_v5_overdose_must_be_flagged(fake_judge):
     trace = call_with_turns(("agent", "Hi.", []), ("caller", "I took twice the dose", []), ("agent", "Okay.", []))
-    fake_judge(v5_answers(ae_reported=False, special={"reported": True, "types": ["overdose"],
-                                                      "quote": "I took twice the dose", "turn": 1}))
+    fake_judge(
+        v5_answers(
+            ae_reported=False,
+            special={"reported": True, "types": ["overdose"], "quote": "I took twice the dose", "turn": 1},
+        )
+    )
     v = judge.score_call(trace, version="v5")["verdicts"]["special_situation"]
     assert v["result"] == "fail" and "overdose" in v["why"]
 
@@ -155,7 +221,7 @@ def test_v5_false_promise_fails(fake_judge):
 
 
 def test_v5_repeated_identical_reply_fails_robustness(fake_judge):
-    # From the live local call: the same goodbye line twice, which the judge called fine.
+    # The same goodbye twice is caught by code, even when the LLM judge calls it fine.
     line = "Have a great day! If you need any further assistance, feel free to contact our support line."
     trace = call_with_turns(("agent", line, []), ("caller", "ok", []), ("agent", line.upper(), []))
     fake_judge(v5_answers(ae_reported=False))
@@ -204,14 +270,16 @@ def test_agreement_counts_judge_misses(tmp_path, monkeypatch):
     import json
 
     from harness import agreement
+
     monkeypatch.setattr(agreement, "ROOT", tmp_path)
     run = tmp_path / "runs" / "r1"
     (run / "scores").mkdir(parents=True)
     (tmp_path / "labels" / "r1").mkdir(parents=True)
     for name, judge_ae, human_ae in [("a", True, True), ("b", False, True), ("c", False, False)]:
         answers = judge_answers(ae_reported=judge_ae)
-        (run / "scores" / f"{name}.json").write_text(json.dumps(
-            {"checklist_version": "v2", "judge": {"answers": answers}}))
+        (run / "scores" / f"{name}.json").write_text(
+            json.dumps({"checklist_version": "v2", "judge": {"answers": answers}})
+        )
         human = {k: False for k, _, _ in agreement.QUESTIONS}
         human["ae_reported"] = human_ae
         (tmp_path / "labels" / "r1" / f"{name}.json").write_text(json.dumps({"answers": human}))
@@ -233,6 +301,7 @@ def test_judge_sees_the_script_the_agent_ran():
 
 def test_word_error_rate_ignores_contractions_but_not_misheard_words():
     from harness.stats import word_error_rate
+
     assert word_error_rate("Yes, I've been taking it every day.", "Yes, I have been taking it every day.") == 0
     assert word_error_rate("The itching is a bit better.", "The teaching is a bit better.") == 1 / 6
 
@@ -267,9 +336,18 @@ def test_daily_limit_stops_but_per_minute_limit_is_retried(monkeypatch):
     with pytest.raises(llm.QuotaExhausted):
         llm.chat("qwen/qwen3.8-27b", [])
 
+
 def test_alignment_survives_a_merged_turn():
     from harness.stats import align
+
     said = ["Yes, this is Priya.", "Yes?", "It's been okay. I take it every day."]
     heard = ["Yes, this is Priya. Yes?", "It's been okay. I take it every day."]
     pairs = dict(align(said, heard))
     assert pairs["It's been okay. I take it every day."] == "It's been okay. I take it every day."
+
+
+def test_exchanges_pair_each_reply_with_what_the_caller_said():
+    from harness.export_otel import exchanges
+
+    turns = [{"speaker": "agent", "i": 0}, {"speaker": "caller", "i": 1}, {"speaker": "agent", "i": 2}]
+    assert [(c and c["i"], a["i"]) for c, a in exchanges(turns)] == [(None, 0), (1, 2)]

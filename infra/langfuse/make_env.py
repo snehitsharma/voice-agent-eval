@@ -6,6 +6,7 @@ Usage (once, before `docker compose up -d`):
 Also adds LANGFUSE_* connection settings to the project's main .env so the harness can send traces.
 Refuses to overwrite an existing infra/langfuse/.env, because the databases keep the old secrets.
 """
+
 import secrets
 from pathlib import Path
 
@@ -51,8 +52,10 @@ main_env = ROOT / ".env"
 existing = main_env.read_text(encoding="utf-8") if main_env.exists() else ""
 if "LANGFUSE_PUBLIC_KEY" not in existing:
     with main_env.open("a", encoding="utf-8") as f:
-        f.write(f"\nLANGFUSE_HOST=http://localhost:3000\nLANGFUSE_PUBLIC_KEY={public_key}\n"
-                f"LANGFUSE_SECRET_KEY={secret_key}\n")
+        f.write(
+            f"\nLANGFUSE_HOST=http://localhost:3000\nLANGFUSE_PUBLIC_KEY={public_key}\n"
+            f"LANGFUSE_SECRET_KEY={secret_key}\n"
+        )
 
 print(f"Wrote {env_path}")
 print("Langfuse login: http://localhost:3000  user admin@voice-eval.local")

@@ -1,4 +1,5 @@
 """Loads the simulated callers in data/personas/ (made-up people; see data/personas/*.yaml)."""
+
 import yaml
 
 from harness.trace import ROOT
@@ -13,9 +14,16 @@ def load_persona(persona_id: str) -> dict:
 def live_persona(first_name: str, how: str) -> dict:
     """Stand-in persona for a real person playing a made-up patient (typed chat or phone call). It has no answer
     key, so nothing is marked for review against expectations."""
-    return {"id": "live" if how == "typed" else f"live_{how}", "number": 0, "category": "live",
-            "name": f"{first_name} (live, {how})", "summary": f"A real person ({how}) playing a made-up patient.",
-            "tests": f"live conversation ({how})", "character": "", "expected": {}}
+    return {
+        "id": "live" if how == "typed" else f"live_{how}",
+        "number": 0,
+        "category": "live",
+        "name": f"{first_name} (live, {how})",
+        "summary": f"A real person ({how}) playing a made-up patient.",
+        "tests": f"live conversation ({how})",
+        "character": "",
+        "expected": {},
+    }
 
 
 def all_persona_ids() -> list[str]:

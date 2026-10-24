@@ -13,7 +13,8 @@ jobs:
         with:
           python-version: "3.13"
       - run: pip install -r requirements.txt
-      - run: python -m ruff check --select F,E9 harness voice tests
+      - run: python -m ruff check harness voice tests infra
+      - run: python -m ruff format --check harness voice tests infra
       - run: python -m pytest -q
       # The saved results must still reproduce from the committed runs (no API keys needed).
       - run: python -m harness compare runs/study-before-ava-v2 runs/study-after-ava-v3

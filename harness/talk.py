@@ -5,6 +5,7 @@ Usage:
 
 Play a made-up patient. Do not type real health information. Type /bye to end the call.
 """
+
 import argparse
 import time
 from datetime import datetime
@@ -25,8 +26,11 @@ def main() -> None:
 
     agent = TextAgent(patient_first_name=args.name, model=args.agent_model)
     persona = live_persona(args.name, "typed")
-    trace = new_trace(persona, {"agent": agent.model, "caller": "human"},
-                      {"version": agent.script_version, "sha": agent.script_sha, "guardrails": agent.guardrails_on})
+    trace = new_trace(
+        persona,
+        {"agent": agent.model, "caller": "human"},
+        {"version": agent.script_version, "sha": agent.script_sha, "guardrails": agent.guardrails_on},
+    )
     rec = TurnRecorder(trace)
 
     def agent_turn(fn, *a):

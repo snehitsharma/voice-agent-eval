@@ -1,4 +1,5 @@
 """The one place that talks to the LLM provider (Groq, OpenAI-compatible API)."""
+
 import time
 from dataclasses import dataclass
 
@@ -16,7 +17,7 @@ from harness import config
 AGENT_MODEL, CALLER_MODEL, JUDGE_MODEL = config.AGENT_MODEL, config.CALLER_MODEL, config.JUDGE_MODEL
 
 MAX_ATTEMPTS = 8  # per-minute rate limits can need several waits in a row
-MAX_WAIT_S = 30   # cap on one wait, so a single bad request cannot stall a run
+MAX_WAIT_S = 30  # cap on one wait, so a single bad request cannot stall a run
 
 _client = None
 
@@ -57,7 +58,7 @@ def chat(model: str, messages: list, tools: list | None = None, **extra) -> LLMR
         except (RateLimitError, APIConnectionError, APITimeoutError, InternalServerError) as exc:
             if isinstance(exc, RateLimitError) and "per day" in str(exc):
                 raise QuotaExhausted(str(exc)) from exc
-            wait_s = min(_retry_after(exc) or 2 ** attempt, MAX_WAIT_S)
+            wait_s = min(_retry_after(exc) or 2**attempt, MAX_WAIT_S)
             retries.append({"attempt": attempt, "error": type(exc).__name__, "waited_s": wait_s})
             if attempt == MAX_ATTEMPTS:
                 raise

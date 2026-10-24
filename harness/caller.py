@@ -1,4 +1,5 @@
 """The simulated caller: an LLM playing a made-up patient from a persona file."""
+
 from harness import llm
 
 HANGUP = "[HANGUP]"
@@ -20,7 +21,9 @@ Rules:
 class Caller:
     def __init__(self, persona: dict, model: str = llm.CALLER_MODEL):
         self.model = model
-        self.messages = [{"role": "system", "content": CALLER_RULES.format(character=persona["character"].strip(), hangup=HANGUP)}]
+        self.messages = [
+            {"role": "system", "content": CALLER_RULES.format(character=persona["character"].strip(), hangup=HANGUP)}
+        ]
 
     def reply(self, agent_text: str) -> tuple[str, bool, llm.LLMResult]:
         """Returns (spoken text, hung_up, raw result)."""

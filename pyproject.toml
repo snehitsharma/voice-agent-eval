@@ -1,0 +1,28 @@
+[project]
+name = "voice-agent-eval"
+version = "0.1.0"
+description = "Test harness for a pharma voice agent: simulated patients, an LLM judge checked against hand labels, traces."
+requires-python = ">=3.13"
+
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+extend-exclude = ["runs", "labels", "infra/langfuse/docker-compose.yml"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = [
+    "E731",  # small named lambdas in tables read better than defs here
+    "B008",  # default argument values come from config on purpose
+]
+
+[tool.ruff.lint.per-file-ignores]
+"voice/*.py" = ["E402"]  # these add the repo root to sys.path before importing the harness
+"tests/*.py" = ["E402"]
+# Long lines here are prompt text (its line breaks are part of the prompt) or HTML templates.
+"harness/caller.py" = ["E501"]
+"harness/{report,compare,index,label_server}.py" = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

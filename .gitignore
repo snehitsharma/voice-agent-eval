@@ -11,7 +11,3 @@ __pycache__/
 logs/
 *.log
 runs/archive/
-
-# local working notes, not part of the project
-CLAUDE.md
-synthio-jd.md

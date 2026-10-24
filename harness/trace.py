@@ -3,6 +3,7 @@
 Shared by the text runner, the talk mode and (in its own way) the voice server, so the judge, report, labelling
 page and Langfuse export can read any of them.
 """
+
 import argparse
 import json
 import time
@@ -39,21 +40,30 @@ class TurnRecorder:
 
     def record(self, speaker: str, text: str, started: float, **fields) -> None:
         now = time.perf_counter()
-        self.trace["turns"].append({
-            "index": len(self.trace["turns"]),
-            "speaker": speaker,
-            "text": text,
-            "t_start_s": round(started - self.t0, 3),
-            "t_end_s": round(now - self.t0, 3),
-            "response_ms": round((now - started) * 1000),
-            **fields,
-        })
+        self.trace["turns"].append(
+            {
+                "index": len(self.trace["turns"]),
+                "speaker": speaker,
+                "text": text,
+                "t_start_s": round(started - self.t0, 3),
+                "t_end_s": round(now - self.t0, 3),
+                "response_ms": round((now - started) * 1000),
+                **fields,
+            }
+        )
 
     def record_agent(self, turn, started: float) -> None:
         """`turn` is an AgentTurn (see agent_interface)."""
-        self.record("agent", turn.text, started, tool_calls=[asdict(t) for t in turn.tool_calls],
-                    tokens=turn.tokens, llm_ms=turn.llm_ms, retries=turn.retries,
-                    guardrails=getattr(turn, "guardrails", []))
+        self.record(
+            "agent",
+            turn.text,
+            started,
+            tool_calls=[asdict(t) for t in turn.tool_calls],
+            tokens=turn.tokens,
+            llm_ms=turn.llm_ms,
+            retries=turn.retries,
+            guardrails=getattr(turn, "guardrails", []),
+        )
 
     def finish(self, end_reason: str | None = None) -> dict:
         if end_reason:

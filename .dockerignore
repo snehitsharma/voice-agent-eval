@@ -1,16 +1,18 @@
-# secrets: pass them at run time with --env-file .env, never bake them into an image
-.env
-**/.env
-
-# local environments, caches, logs, scratch runs, working notes
-.venv/
-.venv-voice/
-**/__pycache__/
-.pytest_cache/
-.ruff_cache/
-logs/
-*.log
+# Only what the images need. Secrets never go in: pass them at run time with --env-file .env
+*
+!harness/
+!voice/
+!data/
+!evals/
+!runs/
+!labels/
+!docs/
+!tests/
+!infra/langfuse/make_env.py
+!requirements.txt
+!requirements-voice.txt
+!pyproject.toml
+!README.md
 runs/archive/
-CLAUDE.md
-synthio-jd.md
-.git/
+**/__pycache__/
+**/.env

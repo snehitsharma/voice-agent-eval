@@ -3,6 +3,7 @@
 Usage:
     python -m harness.report runs/<folder>
 """
+
 import argparse
 import json
 import math
@@ -13,14 +14,26 @@ from pathlib import Path
 
 from harness.trace import existing_run
 
-CHECKS = ["adverse_event", "special_situation", "medical_advice", "off_label", "false_promise", "handoff",
-          "task_completion", "robustness"]
+CHECKS = [
+    "adverse_event",
+    "special_situation",
+    "medical_advice",
+    "off_label",
+    "false_promise",
+    "handoff",
+    "task_completion",
+    "robustness",
+]
 NA = {"result": "n/a", "why": "", "turn": None}  # for checks an older checklist version did not have
 CHECK_NAMES = {
-    "adverse_event": "Adverse event handling", "special_situation": "Special situations reported (v3+)",
+    "adverse_event": "Adverse event handling",
+    "special_situation": "Special situations reported (v3+)",
     "false_promise": "No false promises (v5+)",
-    "medical_advice": "No medical advice", "off_label": "No off-label claims",
-    "handoff": "Right handoff", "task_completion": "Task completion", "robustness": "Robustness",
+    "medical_advice": "No medical advice",
+    "off_label": "No off-label claims",
+    "handoff": "Right handoff",
+    "task_completion": "Task completion",
+    "robustness": "Robustness",
 }
 
 CSS = """
@@ -61,9 +74,11 @@ def p95(values: list[int]) -> int:
 
 
 def page(title: str, body: str) -> str:
-    return (f"<!doctype html><html lang='en'><head><meta charset='utf-8'>"
-            f"<meta name='viewport' content='width=device-width, initial-scale=1'><title>{escape(title)}</title>"
-            f"<style>{CSS}</style></head><body><main>{body}</main></body></html>")
+    return (
+        f"<!doctype html><html lang='en'><head><meta charset='utf-8'>"
+        f"<meta name='viewport' content='width=device-width, initial-scale=1'><title>{escape(title)}</title>"
+        f"<style>{CSS}</style></head><body><main>{body}</main></body></html>"
+    )
 
 
 def load_run(run_dir: Path) -> list[dict]:
@@ -71,9 +86,13 @@ def load_run(run_dir: Path) -> list[dict]:
     for score_path in sorted((run_dir / "scores").glob("*.json")):
         trace_path = run_dir / "traces" / score_path.name
         if trace_path.exists():
-            calls.append({"name": score_path.stem,
-                          "score": json.loads(score_path.read_text(encoding="utf-8")),
-                          "trace": json.loads(trace_path.read_text(encoding="utf-8"))})
+            calls.append(
+                {
+                    "name": score_path.stem,
+                    "score": json.loads(score_path.read_text(encoding="utf-8")),
+                    "trace": json.loads(trace_path.read_text(encoding="utf-8")),
+                }
+            )
     return calls
 
 
@@ -84,27 +103,37 @@ def call_page(call: dict) -> str:
     rows = "".join(
         f"<tr><td>{CHECK_NAMES[c]}</td><td class='{_cls(v['result'])}'>{v['result'].upper()}</td>"
         f"<td>{escape(v['why'])}{' (turn ' + str(v['turn']) + ')' if v.get('turn') is not None else ''}</td></tr>"
-        for c in CHECKS if (v := score["verdicts"].get(c)))
+        for c in CHECKS
+        if (v := score["verdicts"].get(c))
+    )
     turns = []
     for t in trace["turns"]:
-        tools = "".join(f"<div class='tool'>→ tool {escape(tc['name'])} {escape(json.dumps(tc['args'], ensure_ascii=False))}</div>"
-                        for tc in t.get("tool_calls", []))
-        retries = "".join(f"<div class='tool'>API retry: {escape(r['error'])}, waited {r['waited_s']} s</div>"
-                          for r in t.get("retries", []))
+        tools = "".join(
+            f"<div class='tool'>→ tool {escape(tc['name'])} {escape(json.dumps(tc['args'], ensure_ascii=False))}</div>"
+            for tc in t.get("tool_calls", [])
+        )
+        retries = "".join(
+            f"<div class='tool'>API retry: {escape(r['error'])}, waited {r['waited_s']} s</div>"
+            for r in t.get("retries", [])
+        )
         timing = f" · reply took {t['response_ms']} ms" if t["speaker"] == "agent" else ""
-        turns.append(f"<div class='turn {t['speaker']}{' flagged' if t['index'] in bad_turns else ''}'>"
-                     f"<div class='muted'>turn {t['index']} · {t['speaker'].upper()} · {t['t_start_s']} s{timing}</div>"
-                     f"{escape(t['text'])}{tools}{retries}</div>")
+        turns.append(
+            f"<div class='turn {t['speaker']}{' flagged' if t['index'] in bad_turns else ''}'>"
+            f"<div class='muted'>turn {t['index']} · {t['speaker'].upper()} · {t['t_start_s']} s{timing}</div>"
+            f"{escape(t['text'])}{tools}{retries}</div>"
+        )
     review = "".join(f"<li>{escape(n)}</li>" for n in score.get("needs_review", []))
-    body = (f"<p><a href='../report.html'>← back to report</a></p>"
-            f"<h1>{escape(p['name'])}: {escape(call['name'])}</h1>"
-            f"<p class='muted'>Persona #{p.get('number', '?')} ({escape(p.get('category', ''))}): {escape(p['summary'])}<br>"
-            f"Tests: {escape(p.get('tests', ''))}<br>Call ended: {escape(str(trace['end_reason']))}, "
-            f"{len(trace['turns'])} turns, {trace['duration_s']} s</p>"
-            f"<p class='note'>Simulated caller, not a real person. Fictional drug.</p>"
-            f"<h2>Verdicts</h2><div class='scroll'><table><tr><th>Check</th><th>Result</th><th>Why</th></tr>{rows}</table></div>"
-            + (f"<h2>Marked for human review</h2><ul>{review}</ul>" if review else "")
-            + f"<h2>Transcript</h2><p class='muted'>Turns behind a failed verdict are highlighted.</p>{''.join(turns)}")
+    body = (
+        f"<p><a href='../report.html'>← back to report</a></p>"
+        f"<h1>{escape(p['name'])}: {escape(call['name'])}</h1>"
+        f"<p class='muted'>Persona #{p.get('number', '?')} ({escape(p.get('category', ''))}): {escape(p['summary'])}<br>"
+        f"Tests: {escape(p.get('tests', ''))}<br>Call ended: {escape(str(trace['end_reason']))}, "
+        f"{len(trace['turns'])} turns, {trace['duration_s']} s</p>"
+        f"<p class='note'>Simulated caller, not a real person. Fictional drug.</p>"
+        f"<h2>Verdicts</h2><div class='scroll'><table><tr><th>Check</th><th>Result</th><th>Why</th></tr>{rows}</table></div>"
+        + (f"<h2>Marked for human review</h2><ul>{review}</ul>" if review else "")
+        + f"<h2>Transcript</h2><p class='muted'>Turns behind a failed verdict are highlighted.</p>{''.join(turns)}"
+    )
     return page(f"{p['name']} call", body)
 
 
@@ -131,24 +160,31 @@ def build_report(run_dir: Path) -> Path:
     claimed = [c for c in judged if c["score"]["verdicts"]["adverse_event"]["why"].startswith("claimed but not logged")]
     false_alarms = [c for c in judged if c["score"]["verdicts"]["adverse_event"].get("false_alarm")]
     lo, hi = wilson(len(caught), len(reported))
-    persona_ae_not_said = [c for c in judged if c["trace"]["persona"]["expected"].get("reports_adverse_event")
-                           and not c["score"]["judge"]["answers"]["adverse_event"]["caller_reported"]]
+    persona_ae_not_said = [
+        c
+        for c in judged
+        if c["trace"]["persona"]["expected"].get("reports_adverse_event")
+        and not c["score"]["judge"]["answers"]["adverse_event"]["caller_reported"]
+    ]
 
     check_rows = ""
     for check in CHECKS:
         counts = Counter(c["score"]["verdicts"].get(check, NA)["result"] for c in judged)
         applicable = counts["pass"] + counts["fail"]
-        check_rows += (f"<tr><td>{CHECK_NAMES[check]}</td><td class='pass'>{counts['pass']}</td>"
-                       f"<td class='fail'>{counts['fail']}</td><td class='na'>{counts['n/a']}</td>"
-                       f"<td>{f'{counts['pass'] / applicable:.0%}' if applicable else '-'}</td></tr>")
+        check_rows += (
+            f"<tr><td>{CHECK_NAMES[check]}</td><td class='pass'>{counts['pass']}</td>"
+            f"<td class='fail'>{counts['fail']}</td><td class='na'>{counts['n/a']}</td>"
+            f"<td>{f'{counts["pass"] / applicable:.0%}' if applicable else '-'}</td></tr>"
+        )
 
     groups = defaultdict(lambda: [0, 0])
     for c in judged:
         g = groups[c["trace"]["persona"].get("category", "?")]
         g[0] += 1
         g[1] += any(v["result"] == "fail" for v in c["score"]["verdicts"].values())
-    group_rows = "".join(f"<tr><td>{escape(k)}</td><td>{n}</td><td class='fail'>{f}</td></tr>"
-                         for k, (n, f) in sorted(groups.items()))
+    group_rows = "".join(
+        f"<tr><td>{escape(k)}</td><td>{n}</td><td class='fail'>{f}</td></tr>" for k, (n, f) in sorted(groups.items())
+    )
 
     delays = [d for c in calls for d in c["score"]["code"]["agent_delays_ms"]]
     tokens = Counter()
@@ -162,23 +198,34 @@ def build_report(run_dir: Path) -> Path:
         for check in CHECKS:
             v = c["score"]["verdicts"].get(check, NA)
             if v["result"] == "fail":
-                failures += (f"<tr><td><a href='calls/{c['name']}.html'>{escape(c['name'])}</a></td>"
-                             f"<td>{CHECK_NAMES[check]}</td><td>{escape(v['why'][:200])}</td>"
-                             f"<td>{'' if v.get('turn') is None else v['turn']}</td></tr>")
-    reviews = "".join(f"<li><a href='calls/{c['name']}.html'>{escape(c['name'])}</a>: {escape(n)}</li>"
-                      for c in calls for n in c["score"].get("needs_review", []))
+                failures += (
+                    f"<tr><td><a href='calls/{c['name']}.html'>{escape(c['name'])}</a></td>"
+                    f"<td>{CHECK_NAMES[check]}</td><td>{escape(v['why'][:200])}</td>"
+                    f"<td>{'' if v.get('turn') is None else v['turn']}</td></tr>"
+                )
+    reviews = "".join(
+        f"<li><a href='calls/{c['name']}.html'>{escape(c['name'])}</a>: {escape(n)}</li>"
+        for c in calls
+        for n in c["score"].get("needs_review", [])
+    )
 
     models = meta.get("models", {})
     graders = Counter((c["score"]["judge"].get("model", "?"), c["score"]["checklist_version"]) for c in judged)
-    mixed = "" if len(graders) <= 1 else (
-        "<p class='note'><b>Mixed grading.</b> Calls in this run were scored by different judges or rule versions, so "
-        "totals are not comparable until it is rescored: "
-        + ", ".join(f"{n} by {escape(m)} / {escape(v)}" for (m, v), n in graders.most_common()) + ".</p>")
+    mixed = (
+        ""
+        if len(graders) <= 1
+        else (
+            "<p class='note'><b>Mixed grading.</b> Calls in this run were scored by different judges or rule versions, so "
+            "totals are not comparable until it is rescored: "
+            + ", ".join(f"{n} by {escape(m)} / {escape(v)}" for (m, v), n in graders.most_common())
+            + ".</p>"
+        )
+    )
     body = f"""
 <h1>Voice agent eval: run {escape(run_dir.name)}</h1>
-<p class='muted'>{len(calls)} calls from {len({c['trace']['persona_id'] for c in calls})} personas ·
-agent {escape(models.get('agent', '?'))} · caller {escape(models.get('caller', '?'))} · judge {escape(models.get('judge', '?'))} ·
-checklist {escape(judged[0]['score']['checklist_version'] if judged else '?')}</p>
+<p class='muted'>{len(calls)} calls from {len({c["trace"]["persona_id"] for c in calls})} personas ·
+agent {escape(models.get("agent", "?"))} · caller {escape(models.get("caller", "?"))} · judge {escape(models.get("judge", "?"))} ·
+checklist {escape(judged[0]["score"]["checklist_version"] if judged else "?")}</p>
 <p class='note'><b>Read with care.</b> Simulated callers (an LLM playing invented patients), not real people. Fictional drug.
 The judge is an LLM and has not yet been checked against hand labels for this run, so its verdicts may be wrong.
 Small samples: the ranges shown are 95% intervals.</p>
@@ -205,7 +252,7 @@ report a side effect but the judge says the caller never did (a caller or judge 
 <span class='muted'>Text only: model time with rate-limit waits removed. Real voice delay (speech in and out) is not measured yet.</span></p>
 
 <h2>Tokens used</h2>
-<p>Agent {tokens['agent']:,} · caller {tokens['caller']:,} · judge {tokens['judge']:,}</p>
+<p>Agent {tokens["agent"]:,} · caller {tokens["caller"]:,} · judge {tokens["judge"]:,}</p>
 
 <h2>Failures</h2>
 <div class='scroll'><table><tr><th>Call</th><th>Check</th><th>Why</th><th>Turn</th></tr>{failures or "<tr><td colspan=4>None</td></tr>"}</table></div>

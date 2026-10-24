@@ -6,6 +6,7 @@ Usage:
 Both runs should use the same personas, caller and judge, so a difference comes from the agent. The page says
 so when they do not.
 """
+
 import argparse
 from collections import Counter
 from html import escape
@@ -25,13 +26,17 @@ def summarise(run_dir: Path) -> dict:
     reported = [c for c in calls if answers(c)["adverse_event"]["caller_reported"]]
     special = [c for c in calls if v(c, "special_situation")["result"] != "n/a"]
     return {
-        "dir": run_dir, "meta": meta, "calls": calls,
+        "dir": run_dir,
+        "meta": meta,
+        "calls": calls,
         "by_persona": {c["trace"]["persona_id"]: c for c in calls},
         "checks": {k: Counter(v(c, k)["result"] for c in calls) for k in CHECKS},
         "ae_reported": len(reported),
         "ae_caught": sum(1 for c in reported if c["score"]["code"]["flag_tool_turns"]),
         "ae_missed": sum(1 for c in calls if v(c, "adverse_event")["why"].startswith("missed")),
-        "claimed_not_logged": sum(1 for c in calls if v(c, "adverse_event")["why"].startswith("claimed but not logged")),
+        "claimed_not_logged": sum(
+            1 for c in calls if v(c, "adverse_event")["why"].startswith("claimed but not logged")
+        ),
         "false_alarms": sum(1 for c in calls if v(c, "adverse_event").get("false_alarm")),
         "special_total": len(special),
         "special_caught": sum(1 for c in special if v(c, "special_situation")["result"] == "pass"),
@@ -39,8 +44,12 @@ def summarise(run_dir: Path) -> dict:
         "false_promises": sum(1 for c in calls if v(c, "false_promise")["result"] == "fail"),
         "advice": sum(1 for c in calls if v(c, "medical_advice")["result"] == "fail"),
         "off_label": sum(1 for c in calls if v(c, "off_label")["result"] == "fail"),
-        "guardrails": Counter(g["action"] + ": " + ", ".join(g["rules"]) for c in calls
-                              for t in c["trace"]["turns"] for g in t.get("guardrails", [])),
+        "guardrails": Counter(
+            g["action"] + ": " + ", ".join(g["rules"])
+            for c in calls
+            for t in c["trace"]["turns"]
+            for g in t.get("guardrails", [])
+        ),
         "graders": Counter((c["score"]["judge"].get("model"), c["score"]["checklist_version"]) for c in calls),
     }
 
@@ -48,9 +57,11 @@ def summarise(run_dir: Path) -> dict:
 def setup(s: dict) -> str:
     m = s["meta"]
     models = m.get("models", {})
-    return (f"agent {escape(models.get('agent', '?'))}, script {escape(str(m.get('agent_script', '?')))}, "
-            f"guardrails {'on' if m.get('guardrails') else 'off'} · caller {escape(models.get('caller', '?'))} · "
-            f"judge {escape(models.get('judge', '?'))}, rules {escape(str(m.get('checklist', '?')))} · {len(s['calls'])} calls")
+    return (
+        f"agent {escape(models.get('agent', '?'))}, script {escape(str(m.get('agent_script', '?')))}, "
+        f"guardrails {'on' if m.get('guardrails') else 'off'} · caller {escape(models.get('caller', '?'))} · "
+        f"judge {escape(models.get('judge', '?'))}, rules {escape(str(m.get('checklist', '?')))} · {len(s['calls'])} calls"
+    )
 
 
 def fails(c: dict | None, run_name: str) -> str:
@@ -65,8 +76,10 @@ def fails(c: dict | None, run_name: str) -> str:
 
 
 def card(label: str, before: str, after: str, better: str = "") -> str:
-    return (f"<div class='card'><div class='muted'>{label}</div><div class='ba'><span>{before}</span>"
-            f"<span class='arrow'>→</span><b class='{better}'>{after}</b></div></div>")
+    return (
+        f"<div class='card'><div class='muted'>{label}</div><div class='ba'><span>{before}</span>"
+        f"<span class='arrow'>→</span><b class='{better}'>{after}</b></div></div>"
+    )
 
 
 def build(before_dir: Path, after_dir: Path) -> Path:
@@ -87,38 +100,64 @@ def build(before_dir: Path, after_dir: Path) -> Path:
         return f"{k} of {n}" + (f" <span class='muted'>({lo:.0%}–{hi:.0%})</span>" if n else "")
 
     lower_is_better = lambda x, y: "pass" if y < x else ("fail" if y > x else "")
-    cards = "".join([
-        card("Reported side effects flagged", rate(b["ae_caught"], b["ae_reported"]), rate(a["ae_caught"], a["ae_reported"])),
-        card("Side effects missed", b["ae_missed"], a["ae_missed"], lower_is_better(b["ae_missed"], a["ae_missed"])),
-        card("Said it reported, but did not", b["claimed_not_logged"], a["claimed_not_logged"],
-             lower_is_better(b["claimed_not_logged"], a["claimed_not_logged"])),
-        card("Special situations passed on", rate(b["special_caught"], b["special_total"]),
-             rate(a["special_caught"], a["special_total"])),
-        card("Hung up on the caller", b["hangups"], a["hangups"], lower_is_better(b["hangups"], a["hangups"])),
-        card("False promises", b["false_promises"], a["false_promises"],
-             lower_is_better(b["false_promises"], a["false_promises"])),
-        card("Medical advice given", b["advice"], a["advice"], lower_is_better(b["advice"], a["advice"])),
-        card("Off-label claims", b["off_label"], a["off_label"], lower_is_better(b["off_label"], a["off_label"])),
-    ])
+    cards = "".join(
+        [
+            card(
+                "Reported side effects flagged",
+                rate(b["ae_caught"], b["ae_reported"]),
+                rate(a["ae_caught"], a["ae_reported"]),
+            ),
+            card(
+                "Side effects missed", b["ae_missed"], a["ae_missed"], lower_is_better(b["ae_missed"], a["ae_missed"])
+            ),
+            card(
+                "Said it reported, but did not",
+                b["claimed_not_logged"],
+                a["claimed_not_logged"],
+                lower_is_better(b["claimed_not_logged"], a["claimed_not_logged"]),
+            ),
+            card(
+                "Special situations passed on",
+                rate(b["special_caught"], b["special_total"]),
+                rate(a["special_caught"], a["special_total"]),
+            ),
+            card("Hung up on the caller", b["hangups"], a["hangups"], lower_is_better(b["hangups"], a["hangups"])),
+            card(
+                "False promises",
+                b["false_promises"],
+                a["false_promises"],
+                lower_is_better(b["false_promises"], a["false_promises"]),
+            ),
+            card("Medical advice given", b["advice"], a["advice"], lower_is_better(b["advice"], a["advice"])),
+            card("Off-label claims", b["off_label"], a["off_label"], lower_is_better(b["off_label"], a["off_label"])),
+        ]
+    )
 
     def check_row(k):
         cells = ""
         for s in (b, a):
             n = s["checks"][k]
             applicable = n["pass"] + n["fail"]
-            cells += f"<td>{n['pass']}/{applicable}" + (f" ({n['pass'] / applicable:.0%})" if applicable else "") + "</td>"
+            cells += (
+                f"<td>{n['pass']}/{applicable}" + (f" ({n['pass'] / applicable:.0%})" if applicable else "") + "</td>"
+            )
         return f"<tr><td>{CHECK_NAMES[k]}</td>{cells}</tr>"
+
     checks = "".join(check_row(k) for k in CHECKS)
 
-    personas = sorted(set(b["by_persona"]) | set(a["by_persona"]),
-                      key=lambda p: (b["by_persona"].get(p) or a["by_persona"].get(p))["trace"]["persona"]["number"])
+    personas = sorted(
+        set(b["by_persona"]) | set(a["by_persona"]),
+        key=lambda p: (b["by_persona"].get(p) or a["by_persona"].get(p))["trace"]["persona"]["number"],
+    )
     rows = ""
     for pid in personas:
         any_call = b["by_persona"].get(pid) or a["by_persona"].get(pid)
         p = any_call["trace"]["persona"]
-        rows += (f"<tr><td>#{p['number']}</td><td><b>{escape(p['name'])}</b><div class='muted'>{escape(p.get('tests', ''))}"
-                 f"</div></td><td>{fails(b['by_persona'].get(pid), b['dir'].name)}</td>"
-                 f"<td>{fails(a['by_persona'].get(pid), a['dir'].name)}</td></tr>")
+        rows += (
+            f"<tr><td>#{p['number']}</td><td><b>{escape(p['name'])}</b><div class='muted'>{escape(p.get('tests', ''))}"
+            f"</div></td><td>{fails(b['by_persona'].get(pid), b['dir'].name)}</td>"
+            f"<td>{fails(a['by_persona'].get(pid), a['dir'].name)}</td></tr>"
+        )
 
     guards = "".join(f"<li>{escape(k)}: {n}</li>" for k, n in a["guardrails"].most_common()) or "<li>none</li>"
     warn = "".join(f"<p class='note'><b>Check:</b> {escape(w)}</p>" for w in warnings)

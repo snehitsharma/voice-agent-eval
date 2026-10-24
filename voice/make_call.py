@@ -1,4 +1,4 @@
-"""Phone a real number and connect the call to Ava over Twilio webhooks (ported from voice-v1's make_call.py).
+"""Phone a real number and connect the call to Ava over Twilio webhooks.
 
 Twilio rings TARGET_PHONE_NUMBER from TWILIO_PHONE_NUMBER; when it is answered, Twilio asks voice/gather.py what to
 do, turn by turn (Twilio listens and transcribes, Ava replies, Sarvam speaks). When the call ends it is saved,
@@ -11,6 +11,7 @@ Steps (voice environment):
 
 Play a made-up patient on the call. Do not share real health information.
 """
+
 import argparse
 import os
 import sys
@@ -30,8 +31,11 @@ REQUIRED = ("TWILIO_ACCOUNT_SID", "TWILIO_AUTH_TOKEN", "TWILIO_PHONE_NUMBER", "T
 
 def main() -> None:
     parser = argparse.ArgumentParser(prog="python -m voice.make_call")
-    parser.add_argument("--public-url", default=os.getenv("PUBLIC_BASE_URL"),
-                        help="public https URL that reaches the voice server (from cloudflared or ngrok)")
+    parser.add_argument(
+        "--public-url",
+        default=os.getenv("PUBLIC_BASE_URL"),
+        help="public https URL that reaches the voice server (from cloudflared or ngrok)",
+    )
     parser.add_argument("--name", default="there", help="first name Ava will greet (use a made-up one)")
     args = parser.parse_args()
 
@@ -45,10 +49,13 @@ def main() -> None:
 
     client = Client(env["TWILIO_ACCOUNT_SID"], env["TWILIO_AUTH_TOKEN"])
     try:
-        call = client.calls.create(to=env["TARGET_PHONE_NUMBER"], from_=env["TWILIO_PHONE_NUMBER"],
-                                   url=f"{base}/gather/start?name={quote(args.name)}&k={call_key()}",
-                                   status_callback=f"{base}/gather/status?k={call_key()}",
-                                   status_callback_event=["completed"])
+        call = client.calls.create(
+            to=env["TARGET_PHONE_NUMBER"],
+            from_=env["TWILIO_PHONE_NUMBER"],
+            url=f"{base}/gather/start?name={quote(args.name)}&k={call_key()}",
+            status_callback=f"{base}/gather/status?k={call_key()}",
+            status_callback_event=["completed"],
+        )
     except TwilioRestException as exc:
         sys.exit(f"Twilio refused the call: {exc.msg}")
     print(f"Calling {env['TARGET_PHONE_NUMBER'][:-4]}****  (call {call.sid}). Answer it and talk to Ava.")
