@@ -19,6 +19,7 @@ import threading
 import time
 import uuid
 from datetime import datetime
+from functools import lru_cache
 from pathlib import Path
 from xml.sax.saxutils import escape, quoteattr
 
@@ -37,8 +38,16 @@ from harness.trace import TurnRecorder, new_trace, save_trace  # noqa: E402
 from voice.gather_key import call_key  # noqa: E402
 
 app = FastAPI()
-sarvam = SarvamAI(api_subscription_key=os.environ["SARVAM_API_KEY"])
-validator = RequestValidator(os.environ["TWILIO_AUTH_TOKEN"])
+
+
+@lru_cache(maxsize=1)
+def sarvam() -> SarvamAI:
+    return SarvamAI(api_subscription_key=os.environ["SARVAM_API_KEY"])
+
+
+@lru_cache(maxsize=1)
+def validator() -> RequestValidator:
+    return RequestValidator(os.environ["TWILIO_AUTH_TOKEN"])
 
 calls: dict[str, dict] = {}    # CallSid -> {agent, rec, trace}
 audio: dict[str, bytes] = {}   # audio id -> WAV bytes, fetched once by Twilio
@@ -60,7 +69,7 @@ async def twilio_form(request: Request) -> dict | None:
     if not hmac.compare_digest(request.query_params.get("k", ""), call_key()):
         logger.warning("rejected a webhook request without the call key")
         return None
-    if not validator.validate(public_url(request), form, request.headers.get("x-twilio-signature", "")):
+    if not validator().validate(public_url(request), form, request.headers.get("x-twilio-signature", "")):
         logger.info(f"Twilio signature did not match for {request.url.path} (request accepted by call key)")
     return form
 
@@ -69,7 +78,7 @@ def speak(request: Request, text: str) -> str:
     """TwiML that plays `text` in Ava's Sarvam voice (Twilio fetches the clip from /gather/audio/...)."""
     if not text:
         return ""
-    result = sarvam.text_to_speech.convert(text=text, target_language_code=config.LANGUAGE,
+    result = sarvam().text_to_speech.convert(text=text, target_language_code=config.LANGUAGE,
                                            speaker=config.AGENT_VOICE, speech_sample_rate=8000)
     audio_id = uuid.uuid4().hex
     with audio_lock:

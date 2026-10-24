@@ -1,0 +1,27 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install -r requirements.txt
+      - run: python -m ruff check --select F,E9 harness voice tests
+      - run: python -m pytest -q
+      # The saved results must still reproduce from the committed runs (no API keys needed).
+      - run: python -m harness compare runs/study-before-ava-v2 runs/study-after-ava-v3
+      - run: python -m harness agreement runs/study-after-ava-v3
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t voice-eval .
+      - run: docker run --rm --entrypoint python voice-eval -m pytest -q

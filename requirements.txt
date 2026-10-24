@@ -1,4 +1,4 @@
-openai==3.35.1
+openai==3.36.1
 python-dotenv==1.2.4
 PyYAML==6.0.3
 pytest==9.1.1

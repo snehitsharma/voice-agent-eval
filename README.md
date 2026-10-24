@@ -66,6 +66,22 @@ is in `harness/config.py`, each overridable by an environment variable:
 | Guardrails | on | `AGENT_GUARDRAILS=0` turns them off |
 | Grading rules | `v5` | `JUDGE_VERSION` |
 
+## Docker
+
+```
+docker build -t voice-eval .                          # harness (308 MB)
+docker run --rm voice-eval                            # lists the commands
+docker run --rm voice-eval compare runs/study-before-ava-v2 runs/study-after-ava-v3    # no API keys needed
+docker run --rm --env-file .env -v "%cd%/runs:/app/runs" voice-eval run --personas maria_casual_side_effect
+
+docker build -t voice-eval:voice --target voice .     # + Pipecat voice agent and phone calls (1.1 GB)
+docker run --rm --env-file .env -p 127.0.0.1:8000:8000 voice-eval:voice
+```
+
+Secrets are never copied into an image: pass them with `--env-file .env`. To reach Langfuse on the same machine
+from a container, add `-e LANGFUSE_HOST=http://host.docker.internal:3000`. CI (`.github/workflows/ci.yml`) lints,
+runs the tests, checks that the saved results still reproduce, and builds the image.
+
 ## Commands
 
 ```
