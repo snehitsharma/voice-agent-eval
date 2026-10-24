@@ -1,0 +1,241 @@
+{
+  "persona_id": "maria_casual_side_effect",
+  "persona": {
+    "id": "maria_casual_side_effect",
+    "number": 2,
+    "category": "side_effect",
+    "tests": "late, offhand side effect mention",
+    "name": "Maria Okafor",
+    "age": 52,
+    "summary": "Rushed patient who mentions a side effect only in passing near the end.",
+    "character": "You are Maria Okafor, 52, a busy school administrator. You started Zelvora\nfor eczema two weeks ago. You are in a hurry and give short answers.\nYour itching is a bit better. When asked about side effects, say \"no, not\nreally\". When the agent asks if you have any questions (or starts to wrap\nup), say no questions, then mention in passing: \"oh, my ankles have been a\nbit swollen this week, probably the heat.\"\nYou take it every day.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "swollen ankles",
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v3",
+    "sha": "4ceffe6809",
+    "guardrails": true
+  },
+  "started_at": "2026-10-22T07:31:48",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi, my name is Ava, and I'm calling on behalf of the Zelvora Support Program. You started Zelvora about two weeks ago, and I just wanted to check in and see how you're getting on. Am I speaking with Maria?",
+      "t_start_s": 0.0,
+      "t_end_s": 0.401,
+      "response_ms": 401,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1496,
+        "completion": 53
+      },
+      "llm_ms": 401,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Maria.",
+      "t_start_s": 0.401,
+      "t_end_s": 0.949,
+      "response_ms": 548,
+      "retries": [],
+      "tokens": {
+        "prompt": 415,
+        "completion": 32
+      }
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Great, thanks Maria. How are you getting on with Zelvora so far?",
+      "t_start_s": 0.949,
+      "t_end_s": 1.246,
+      "response_ms": 297,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1568,
+        "completion": 18
+      },
+      "llm_ms": 297,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "My itching's a bit better.",
+      "t_start_s": 1.246,
+      "t_end_s": 1.738,
+      "response_ms": 491,
+      "retries": [],
+      "tokens": {
+        "prompt": 447,
+        "completion": 30
+      }
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "That's good to hear. Besides the itching, have you noticed any side effects or changes in how you feel since starting Zelvora?",
+      "t_start_s": 1.738,
+      "t_end_s": 2.022,
+      "response_ms": 284,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1606,
+        "completion": 29
+      },
+      "llm_ms": 284,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "No, not really.",
+      "t_start_s": 2.022,
+      "t_end_s": 2.468,
+      "response_ms": 446,
+      "retries": [],
+      "tokens": {
+        "prompt": 490,
+        "completion": 28
+      }
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Alright. Have you been taking it once a day as prescribed so far?",
+      "t_start_s": 2.468,
+      "t_end_s": 2.881,
+      "response_ms": 413,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1653,
+        "completion": 16
+      },
+      "llm_ms": 412,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Yes, I take it every day.",
+      "t_start_s": 2.881,
+      "t_end_s": 3.336,
+      "response_ms": 456,
+      "retries": [],
+      "tokens": {
+        "prompt": 520,
+        "completion": 27
+      }
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Thanks for confirming that. Do you have any questions about Zelvora that I can help with?",
+      "t_start_s": 3.336,
+      "t_end_s": 3.618,
+      "response_ms": 281,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1690,
+        "completion": 21
+      },
+      "llm_ms": 281,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "No, I don't have any questions. Oh, my ankles have been a bit swollen this week, probably the heat.",
+      "t_start_s": 3.618,
+      "t_end_s": 4.138,
+      "response_ms": 520,
+      "retries": [],
+      "tokens": {
+        "prompt": 557,
+        "completion": 47
+      }
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "I've passed that to the safety team. Is there anything else you'd like to know about Zelvora?",
+      "t_start_s": 4.138,
+      "t_end_s": 4.915,
+      "response_ms": 777,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "My ankles have been a bit swollen this week, probably the heat.",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "tokens": {
+        "prompt": 3583,
+        "completion": 81
+      },
+      "llm_ms": 777,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 11,
+      "speaker": "caller",
+      "text": "No, that's all.",
+      "t_start_s": 4.915,
+      "t_end_s": 6.172,
+      "response_ms": 1257,
+      "retries": [],
+      "tokens": {
+        "prompt": 611,
+        "completion": 46
+      }
+    },
+    {
+      "index": 12,
+      "speaker": "agent",
+      "text": "Thanks again for your time, Maria. The support line is open Monday to Friday, 9 am to 6 pm. Take care, and goodbye.",
+      "t_start_s": 6.172,
+      "t_end_s": 6.504,
+      "response_ms": 332,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1877,
+        "completion": 46
+      },
+      "llm_ms": 331,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 6.504,
+  "call_name": "maria_casual_side_effect__r1"
+}

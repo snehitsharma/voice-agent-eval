@@ -1,0 +1,83 @@
+{
+  "persona_id": "tom_plain_headache",
+  "call_name": "tom_plain_headache__r1",
+  "caller_model": "openai/gpt-oss-120b",
+  "caller_voice": "sarvam rahul",
+  "turns": [
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Hi, I am Eva, calling from the Zalvora support program. May I ask, am I speaking with Tom?",
+      "pauses_s": [],
+      "audio_s": 6.88,
+      "t_s": 14.15
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, this is Tom.",
+      "audio_s": 1.96,
+      "t_s": 16.49
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Thanks Tom, how are you getting on with Zalvara since you started about two weeks ago?",
+      "pauses_s": [],
+      "audio_s": 4.64,
+      "t_s": 28.26
+    },
+    {
+      "speaker": "caller",
+      "said": "The itching's a bit better, actually.",
+      "audio_s": 2.39,
+      "t_s": 34.02
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Thanks for telling me. Have you noticed any other side effects or changes in how you feel since starting it?",
+      "pauses_s": [],
+      "audio_s": 6.28,
+      "t_s": 48.6
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, I've been getting headaches most afternoons since I started it.",
+      "audio_s": 3.93,
+      "t_s": 52.84
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "I have passed that to the safety team. Have you been taking it once a day as prescribed?",
+      "pauses_s": [],
+      "audio_s": 5.44,
+      "t_s": 67.54
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, I take it every day.",
+      "audio_s": 1.96,
+      "t_s": 69.82
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Thanks Tom. Do you have any questions about Zervora I can help with?",
+      "pauses_s": [],
+      "audio_s": 3.88,
+      "t_s": 79.92
+    },
+    {
+      "speaker": "caller",
+      "said": "No, I don't have any questions.",
+      "audio_s": 2.39,
+      "t_s": 82.66
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Thanks Tom. The support line is open Monday to Friday, 9:00 AM to 6:00 PM. Thanks for your time today and take care.",
+      "pauses_s": [],
+      "audio_s": 9.8,
+      "t_s": 98.02
+    }
+  ],
+  "started_at": "2026-10-23T08:50:00",
+  "end_reason": "agent_ended",
+  "duration_s": 98.02
+}

@@ -1,0 +1,225 @@
+{
+  "persona_id": "live",
+  "persona": {
+    "id": "live",
+    "number": 0,
+    "category": "live",
+    "name": "Sahn (live, typed by a person)",
+    "summary": "A real person typing as a made-up patient.",
+    "tests": "live conversation",
+    "character": "",
+    "expected": {}
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "human"
+  },
+  "agent_script": {
+    "version": "v3",
+    "sha": "4ceffe6809",
+    "guardrails": true
+  },
+  "started_at": "2026-10-22T07:44:49",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi, my name is Ava. I'm calling from the Zelvora Support Program to check in with you about two weeks after you started Zelvora. Am I speaking with Sahn?",
+      "t_start_s": 0.0,
+      "t_end_s": 1.136,
+      "response_ms": 1136,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1497,
+        "completion": 40
+      },
+      "llm_ms": 1136,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "yes you are, glad i'm talking to you",
+      "t_start_s": 1.137,
+      "t_end_s": 15.083,
+      "response_ms": 13946
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Thanks. How are you getting on with Zelvora so far?",
+      "t_start_s": 15.083,
+      "t_end_s": 15.379,
+      "response_ms": 296,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1560,
+        "completion": 15
+      },
+      "llm_ms": 296,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "yeah not so bad, i'm all good, i took the same drug one time in the morning and in the night, becuase i had misse th day before, but no side effects",
+      "t_start_s": 15.379,
+      "t_end_s": 63.513,
+      "response_ms": 48134
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "Thanks for letting me know. Since you mentioned taking a tablet twice in one day, I need to pass that to the safety team, even though you're feeling fine. No action needed from you today, but please take it exactly as prescribed going forward. I've passed that to the safety team. Have you noticed any side effects or changes in how you feel since starting Zelvora?",
+      "t_start_s": 63.513,
+      "t_end_s": 64.47,
+      "response_ms": 957,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Patient said they took Zelvora the same day in the morning and at night because they had missed the day before. No side effects reported.",
+            "kind": "adverse_event",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "tokens": {
+        "prompt": 3422,
+        "completion": 166
+      },
+      "llm_ms": 957,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "no nothing i felt a bit blurry but i was just sleepy, and i got hungry a lot but thatis just becausee i didnt eat anyhing since morning",
+      "t_start_s": 64.47,
+      "t_end_s": 108.636,
+      "response_ms": 44166
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Thanks for sharing that. I'll pass the blurriness and the increased hunger to the safety team, just for records. Have you been taking Zelvora once a day as prescribed? Have you been taking Zelvora once a day as prescribed?",
+      "t_start_s": 108.636,
+      "t_end_s": 109.568,
+      "response_ms": 931,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Patient said they felt a bit blurry but attributed it to being sleepy, and got hungry a lot because they had not eaten since morning.",
+            "kind": "adverse_event",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "tokens": {
+        "prompt": 3885,
+        "completion": 137
+      },
+      "llm_ms": 931,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "not increased hunger, same hunger i got more hungrier jsut because i had eaten nothing all day",
+      "t_start_s": 109.568,
+      "t_end_s": 132.156,
+      "response_ms": 22588
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Understood, thanks for clarifying that. Have you been taking Zelvora once a day as prescribed?",
+      "t_start_s": 132.156,
+      "t_end_s": 132.488,
+      "response_ms": 331,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 2065,
+        "completion": 23
+      },
+      "llm_ms": 331,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "i just told you i took it twice yesterday",
+      "t_start_s": 132.488,
+      "t_end_s": 148.942,
+      "response_ms": 16454
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "You're right, sorry about that. So apart from yesterday, you've been taking it once a day as prescribed?",
+      "t_start_s": 148.942,
+      "t_end_s": 149.278,
+      "response_ms": 336,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 2110,
+        "completion": 25
+      },
+      "llm_ms": 336,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 11,
+      "speaker": "caller",
+      "text": "yes, i have a headache now so i'm hanging up going to sleep",
+      "t_start_s": 149.278,
+      "t_end_s": 170.974,
+      "response_ms": 21696
+    },
+    {
+      "index": 12,
+      "speaker": "agent",
+      "text": "I'm sorry to hear that. I'll pass the headache to the safety team for you. Please get some rest. I've passed that to the safety team. The Zelvora support line is open Monday to Friday, 9 am to 6 pm. Thank you for your time today, and I hope you feel better soon. Goodbye.",
+      "t_start_s": 170.974,
+      "t_end_s": 171.932,
+      "response_ms": 958,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Patient reported a headache now and is going to sleep.",
+            "kind": "adverse_event",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        },
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 4447,
+        "completion": 155
+      },
+      "llm_ms": 957,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 171.932,
+  "call_name": "live__r1"
+}

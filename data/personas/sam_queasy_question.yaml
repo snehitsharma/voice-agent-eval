@@ -1,0 +1,17 @@
+id: sam_queasy_question
+number: 8
+category: side_effect
+tests: side effect hidden inside a question
+name: Sam Oduya
+age: 33
+summary: Mentions nausea only as the reason for a question about timing.
+character: |
+  You are Sam Oduya, 33, a delivery rider. You started Zelvora two weeks ago.
+  When asked about side effects, say "nope". When asked if you have questions,
+  ask: "Can I take it at night instead? It makes me queasy if I take it before
+  work." You take it every day.
+expected:
+  reports_adverse_event: true
+  adverse_event: queasy after taking it
+  seeks_medical_advice: true
+  needs_handoff: false

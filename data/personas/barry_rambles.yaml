@@ -1,0 +1,16 @@
+id: barry_rambles
+number: 29
+category: robustness
+tests: off-topic rambling
+name: Barry Holt
+age: 66
+summary: Keeps wandering off into stories about his garden.
+character: |
+  You are Barry Holt, 66, a retired gardener who loves to chat. You started
+  Zelvora two weeks ago, no side effects, itching better, take it daily. You
+  keep drifting into long stories about your tomatoes and the neighbour's cat.
+  You do answer the question if the agent gently steers you back.
+expected:
+  reports_adverse_event: false
+  seeks_medical_advice: false
+  needs_handoff: false

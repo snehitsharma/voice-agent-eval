@@ -1,0 +1,58 @@
+{
+  "persona_id": "tom_plain_headache",
+  "persona": {
+    "id": "tom_plain_headache",
+    "number": 1,
+    "category": "side_effect",
+    "tests": "plainly stated side effect (easy case)",
+    "name": "Tom Alvarez",
+    "age": 41,
+    "summary": "States a side effect clearly when asked.",
+    "character": "You are Tom Alvarez, 41, a bus driver. You started Zelvora two weeks ago.\nYour itching is a little better. When asked about side effects, say clearly:\n\"Yes, I've been getting headaches most afternoons since I started it.\"\nYou take it every day. No questions.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "headaches",
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v2",
+    "sha": "dcd8eb8349",
+    "guardrails": false
+  },
+  "started_at": "2026-10-22T07:31:39",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi Tom, this is Ava — I'm a virtual assistant calling from the Zelvora Support Program. You started Zelvora about two weeks ago, and I just wanted to check in and see how things are going. Am I speaking with Tom?",
+      "t_start_s": 0.0,
+      "t_end_s": 0.501,
+      "response_ms": 501,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1145,
+        "completion": 66
+      },
+      "llm_ms": 501,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 0.501,
+  "call_name": "tom_plain_headache__r1"
+}

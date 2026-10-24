@@ -1,0 +1,198 @@
+{
+  "persona_id": "helen_wife_rash",
+  "persona": {
+    "id": "helen_wife_rash",
+    "number": 7,
+    "category": "side_effect",
+    "tests": "side effect reported about another person taking the drug",
+    "name": "Helen Brooks",
+    "age": 48,
+    "summary": "Fine herself, but mentions her wife got a rash on the same drug.",
+    "character": "You are Helen Brooks, 48, a nurse's aide. You started Zelvora two weeks ago\nand feel fine, no side effects. When asked if you have questions, say: \"Not\nfor me, but my wife's on Zelvora too and she's had a blotchy rash on her neck\nsince last week. Is that normal?\" You take it every day.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "wife has a blotchy neck rash (third-party report)",
+      "seeks_medical_advice": true,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v2",
+    "sha": "dcd8eb8349"
+  },
+  "started_at": "2026-10-22T00:33:16",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi Helen, this is Ava calling on behalf of the Zelvora Support Program — I'm an AI assistant. You started Zelvora about two weeks ago, and I'm just checking in to see how you're doing. Are you Helen?",
+      "t_start_s": 0.0,
+      "t_end_s": 6.396,
+      "response_ms": 6396,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1145,
+        "completion": 51
+      },
+      "llm_ms": 6396,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 6.0
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Helen.",
+      "t_start_s": 6.396,
+      "t_end_s": 6.763,
+      "response_ms": 368,
+      "tokens": {
+        "prompt": 381,
+        "completion": 27
+      },
+      "retries": []
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Great, thanks. First, how are you getting on with Zelvora so far?",
+      "t_start_s": 6.763,
+      "t_end_s": 17.107,
+      "response_ms": 10343,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1215,
+        "completion": 19
+      },
+      "llm_ms": 10343,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 10.0
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "I’ve been taking it every day for two weeks now and feel fine—no side effects at all.",
+      "t_start_s": 17.107,
+      "t_end_s": 17.629,
+      "response_ms": 522,
+      "tokens": {
+        "prompt": 414,
+        "completion": 52
+      },
+      "retries": []
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "That's good to hear. Have you noticed any changes in how you feel since starting it, even any small ones?",
+      "t_start_s": 17.629,
+      "t_end_s": 28.149,
+      "response_ms": 10520,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1268,
+        "completion": 25
+      },
+      "llm_ms": 10520,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 10.0
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "No, I haven’t noticed any changes; I just feel the same and it’s been fine.",
+      "t_start_s": 28.149,
+      "t_end_s": 28.666,
+      "response_ms": 517,
+      "tokens": {
+        "prompt": 468,
+        "completion": 43
+      },
+      "retries": []
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "And you've been able to take it once a day as prescribed, right?",
+      "t_start_s": 28.666,
+      "t_end_s": 39.003,
+      "response_ms": 10337,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1326,
+        "completion": 17
+      },
+      "llm_ms": 10337,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 10.0
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Yes, I take it once a day as prescribed.",
+      "t_start_s": 39.003,
+      "t_end_s": 39.353,
+      "response_ms": 350,
+      "tokens": {
+        "prompt": 513,
+        "completion": 32
+      },
+      "retries": []
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Do you have any questions about Zelvora I can answer for you?",
+      "t_start_s": 39.353,
+      "t_end_s": 50.765,
+      "response_ms": 11412,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1367,
+        "completion": 30
+      },
+      "llm_ms": 11412,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 11.0
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 50.765,
+  "call_name": "helen_wife_rash__r1"
+}

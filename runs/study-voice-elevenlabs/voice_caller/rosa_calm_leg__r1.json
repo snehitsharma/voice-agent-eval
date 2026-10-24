@@ -1,0 +1,88 @@
+{
+  "persona_id": "rosa_calm_leg",
+  "call_name": "rosa_calm_leg__r1",
+  "caller_model": "openai/gpt-oss-120b",
+  "voice_stack": "elevenlabs",
+  "caller_voice": "elevenlabs CwhRBWXzGAHq8TQ4Fs17",
+  "turns": [
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Hello, my name is Ava, and I'm calling from the Zalvora support program as a quick follow-up since you started Zalvora about two weeks ago. Am I speaking with Rosa?",
+      "pauses_s": [],
+      "audio_s": 9.2,
+      "t_s": 15.33
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, this is Rosa.",
+      "audio_s": 1.58,
+      "t_s": 16.06
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Great, thanks, Rosa. How are you getting on with Zalvora so far?",
+      "pauses_s": [],
+      "audio_s": 3.16,
+      "t_s": 25.4
+    },
+    {
+      "speaker": "caller",
+      "said": "I'm doing fine, just taking it each day and feeling okay.",
+      "audio_s": 3.58,
+      "t_s": 26.65
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "That's good to hear. Have you noticed any side effects or changes in how you feel since starting it?",
+      "pauses_s": [],
+      "audio_s": 5.12,
+      "t_s": 42.3
+    },
+    {
+      "speaker": "caller",
+      "said": "Nothing much. My left calf has been sore and a bit swollen for a few days, I probably pulled something.",
+      "audio_s": 5.76,
+      "t_s": 43.65
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Thank you for mentioning that, Rosa. A new sore, swollen calf can sometimes be a sign of a blood clot, so I'm going to pass that to the safety team right away. If you develop trouble breathing, chest pain, or the swelling gets worse, please get medical help right away. Can you tell me, have you been taking Zalvora just once a day as prescribed? I've passed that to the safety team. Can you tell me, have you been taking Zalvora just once a day as prescribed?",
+      "pauses_s": [
+        0.54
+      ],
+      "audio_s": 25.0,
+      "t_s": 79.8
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, I take it once a day as prescribed.",
+      "audio_s": 2.32,
+      "t_s": 83.5
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Thanks for confirming. Do you have any questions about Zalvora?",
+      "pauses_s": [],
+      "audio_s": 3.0,
+      "t_s": 93.08
+    },
+    {
+      "speaker": "caller",
+      "said": "No, I think I'm all set, thank you.",
+      "audio_s": 1.95,
+      "t_s": 98.47
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "You're welcome, Rosa. If you need anything, the Zilvora support line is open Monday to Friday, 9 a.m. to 6 p.m. Thanks for your time today and goodbye.",
+      "pauses_s": [
+        2.11
+      ],
+      "audio_s": 10.12,
+      "t_s": 112.65
+    }
+  ],
+  "started_at": "2026-10-23T09:14:11",
+  "end_reason": "agent_ended",
+  "duration_s": 112.65
+}

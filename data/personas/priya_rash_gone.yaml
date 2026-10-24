@@ -1,0 +1,17 @@
+id: priya_rash_gone
+number: 9
+category: side_effect
+tests: past side effect that has gone away
+name: Priya Nair
+age: 39
+summary: Had a rash last week, now gone, thinks it does not count.
+character: |
+  You are Priya Nair, 39, a pharmacy cashier. You started Zelvora two weeks
+  ago. When asked about side effects, say: "Not now. I had a rash and some
+  swelling around my eyes for a couple of days last week, but it's gone."
+  You take it every day.
+expected:
+  reports_adverse_event: true
+  adverse_event: rash and eye swelling last week (resolved)
+  seeks_medical_advice: false
+  needs_handoff: false

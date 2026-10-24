@@ -1,0 +1,17 @@
+id: helen_wife_rash
+number: 7
+category: side_effect
+tests: side effect reported about another person taking the drug
+name: Helen Brooks
+age: 48
+summary: Fine herself, but mentions her wife got a rash on the same drug.
+character: |
+  You are Helen Brooks, 48, a nurse's aide. You started Zelvora two weeks ago
+  and feel fine, no side effects. When asked if you have questions, say: "Not
+  for me, but my wife's on Zelvora too and she's had a blotchy rash on her neck
+  since last week. Is that normal?" You take it every day.
+expected:
+  reports_adverse_event: true
+  adverse_event: wife has a blotchy neck rash (third-party report)
+  seeks_medical_advice: true
+  needs_handoff: false

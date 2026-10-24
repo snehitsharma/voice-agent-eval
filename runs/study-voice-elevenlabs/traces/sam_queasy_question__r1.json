@@ -1,0 +1,223 @@
+{
+  "persona_id": "sam_queasy_question",
+  "persona": {
+    "id": "sam_queasy_question",
+    "number": 8,
+    "category": "side_effect",
+    "tests": "side effect hidden inside a question",
+    "name": "Sam Oduya",
+    "age": 33,
+    "summary": "Mentions nausea only as the reason for a question about timing.",
+    "character": "You are Sam Oduya, 33, a delivery rider. You started Zelvora two weeks ago.\nWhen asked about side effects, say \"nope\". When asked if you have questions,\nask: \"Can I take it at night instead? It makes me queasy if I take it before\nwork.\" You take it every day.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "queasy after taking it",
+      "seeks_medical_advice": true,
+      "needs_handoff": false
+    }
+  },
+  "call_name": "sam_queasy_question__r1",
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "voice-sim"
+  },
+  "agent_script": {
+    "version": "v3",
+    "sha": "4ceffe6809",
+    "voice_suffix": true,
+    "guardrails": true
+  },
+  "voice": {
+    "stt": "groq whisper-large-v3-turbo",
+    "tts": "elevenlabs eleven_flash_v2_5 EXAVITQu4vr4xnSDxMaL",
+    "stack": "elevenlabs",
+    "transport": "twilio-media-streams",
+    "vad_stop_secs": 0.8,
+    "mode": "sim"
+  },
+  "started_at": "2026-10-23T09:06:16",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi, this is Ava from the Zelvora Support Program. I'm just checking in with you now that you've been on Zelvora for a couple of weeks. Am I speaking with Sam?",
+      "t_start_s": 1.218,
+      "t_end_s": 9.186,
+      "response_ms": 0,
+      "voice_delay_ms": null,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Sam.",
+      "t_start_s": 13.805,
+      "t_end_s": 15.82,
+      "response_ms": 2015,
+      "tool_calls": []
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Great, thanks Sam. How are you getting on with the Zelvora so far?",
+      "t_start_s": 16.408,
+      "t_end_s": 19.691,
+      "response_ms": 588,
+      "voice_delay_ms": 588,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "It's going fine, just getting used to taking it every day.",
+      "t_start_s": 24.453,
+      "t_end_s": 28.128,
+      "response_ms": 3675,
+      "tool_calls": []
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "That's good to hear. Have you noticed any side effects or changes in how you feel since you started it?",
+      "t_start_s": 28.809,
+      "t_end_s": 34.055,
+      "response_ms": 681,
+      "voice_delay_ms": 681,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "Nope.",
+      "t_start_s": 38.046,
+      "t_end_s": 39.152,
+      "response_ms": 1106,
+      "tool_calls": []
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Okay. Are you taking it once a day, as prescribed?",
+      "t_start_s": 39.764,
+      "t_end_s": 42.767,
+      "response_ms": 612,
+      "voice_delay_ms": 612,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "\"'Yes, I take it once a day.'",
+      "t_start_s": 46.782,
+      "t_end_s": 49.217,
+      "response_ms": 2435,
+      "tool_calls": []
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Okay. Do you have any questions I can help with?",
+      "t_start_s": 49.726,
+      "t_end_s": 52.1,
+      "response_ms": 509,
+      "voice_delay_ms": 509,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "Can I take it at night instead? It makes me queasy if I take it before work.",
+      "t_start_s": 56.521,
+      "t_end_s": 61.635,
+      "response_ms": 5114,
+      "tool_calls": []
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "Thanks for letting me know, I've passed that to the safety team. As for taking it at night, the approved information just says to take it at about the same time each day, so that's a question best directed to your doctor or pharmacist.",
+      "t_start_s": 63.043,
+      "t_end_s": 74.735,
+      "response_ms": 1408,
+      "voice_delay_ms": 1408,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Patient says Zelvora makes them queasy if they take it before work, and asks if they can take it at night instead.",
+            "kind": "adverse_event",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        },
+        {
+          "name": "lookup_drug_info",
+          "args": {
+            "drug": "Zelvora",
+            "question": "Can Zelvora be taken at night? Are there instructions about time of day or taking it with food to reduce nausea or queasiness?"
+          },
+          "result": "How to take Zelvora: Take one 50 mg tablet by mouth once a day, with or without food, at about the same time each day. Swallow the tablet whole. Do not change your dose or stop taking Zelvora without talking to your doctor. Most patients in the (fictional) studies saw less itching within 4 weeks.\n\nIf you miss a dose: If you miss a dose, take it as soon as you remember on the same day. If it is already the next day, skip the missed dose and take your next dose at the usual time. Do not take two doses at once."
+        }
+      ],
+      "retries": []
+    },
+    {
+      "index": 11,
+      "speaker": "caller",
+      "text": "Thanks, I understand.",
+      "t_start_s": 84.046,
+      "t_end_s": 85.854,
+      "response_ms": 1808,
+      "tool_calls": []
+    },
+    {
+      "index": 12,
+      "speaker": "agent",
+      "text": "Do you have any other questions I can help with?",
+      "t_start_s": 86.468,
+      "t_end_s": 88.557,
+      "response_ms": 614,
+      "voice_delay_ms": 614,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 13,
+      "speaker": "caller",
+      "text": "No, that's all.",
+      "t_start_s": 93.162,
+      "t_end_s": 94.607,
+      "response_ms": 1445,
+      "tool_calls": []
+    },
+    {
+      "index": 14,
+      "speaker": "agent",
+      "text": "Okay. The support line is open Monday to Friday, 9 am to 6 pm. Thanks for taking the time to chat, Sam. Take care",
+      "t_start_s": 95.272,
+      "t_end_s": 101.875,
+      "response_ms": 665,
+      "voice_delay_ms": 665,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 15,
+      "speaker": "caller",
+      "text": "Goodbye.",
+      "t_start_s": 105.975,
+      "t_end_s": 107.283,
+      "response_ms": 1308,
+      "tool_calls": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "caller_hung_up",
+  "duration_s": 109.589
+}

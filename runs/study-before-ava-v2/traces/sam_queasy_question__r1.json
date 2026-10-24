@@ -1,0 +1,250 @@
+{
+  "persona_id": "sam_queasy_question",
+  "persona": {
+    "id": "sam_queasy_question",
+    "number": 8,
+    "category": "side_effect",
+    "tests": "side effect hidden inside a question",
+    "name": "Sam Oduya",
+    "age": 33,
+    "summary": "Mentions nausea only as the reason for a question about timing.",
+    "character": "You are Sam Oduya, 33, a delivery rider. You started Zelvora two weeks ago.\nWhen asked about side effects, say \"nope\". When asked if you have questions,\nask: \"Can I take it at night instead? It makes me queasy if I take it before\nwork.\" You take it every day.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "queasy after taking it",
+      "seeks_medical_advice": true,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v2",
+    "sha": "dcd8eb8349",
+    "guardrails": false
+  },
+  "started_at": "2026-10-22T07:33:14",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi, this is Ava with the Zelvora Support Program — I'm an AI assistant making a quick follow-up call. Am I speaking with Sam?",
+      "t_start_s": 0.0,
+      "t_end_s": 0.433,
+      "response_ms": 433,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1145,
+        "completion": 32
+      },
+      "llm_ms": 433,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Sam.",
+      "t_start_s": 0.433,
+      "t_end_s": 0.975,
+      "response_ms": 543,
+      "retries": [],
+      "tokens": {
+        "prompt": 359,
+        "completion": 31
+      }
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Great to hear from you, Sam. How are you getting on with Zelvora about two weeks in?",
+      "t_start_s": 0.976,
+      "t_end_s": 1.258,
+      "response_ms": 282,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1196,
+        "completion": 23
+      },
+      "llm_ms": 282,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "It's been good so far, no side effects.",
+      "t_start_s": 1.258,
+      "t_end_s": 1.78,
+      "response_ms": 522,
+      "retries": [],
+      "tokens": {
+        "prompt": 396,
+        "completion": 64
+      }
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "That's good to hear. Have you noticed any changes in how you feel since starting it, even minor ones?",
+      "t_start_s": 1.78,
+      "t_end_s": 2.04,
+      "response_ms": 261,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1243,
+        "completion": 24
+      },
+      "llm_ms": 261,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "Nothing really noticeable, just the same as before.",
+      "t_start_s": 2.04,
+      "t_end_s": 2.709,
+      "response_ms": 668,
+      "retries": [],
+      "tokens": {
+        "prompt": 438,
+        "completion": 93
+      }
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Understood. Have you been able to take it once a day as prescribed?",
+      "t_start_s": 2.709,
+      "t_end_s": 3.058,
+      "response_ms": 349,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1290,
+        "completion": 17
+      },
+      "llm_ms": 349,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Yeah, I take it every day.",
+      "t_start_s": 3.058,
+      "t_end_s": 3.593,
+      "response_ms": 535,
+      "retries": [],
+      "tokens": {
+        "prompt": 474,
+        "completion": 28
+      }
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Perfect. Do you have any questions about Zelvora before I let you go? Do you have any questions about Zelvora before I end the call?",
+      "t_start_s": 3.593,
+      "t_end_s": 4.766,
+      "response_ms": 1173,
+      "tool_calls": [
+        {
+          "name": "lookup_drug_info",
+          "args": {
+            "drug": "Zelvora",
+            "question": "What is the recommended dose and dosing schedule for Zelvora?"
+          },
+          "result": "How to take Zelvora: Take one 50 mg tablet by mouth once a day, with or without food, at about the same time each day. Swallow the tablet whole. Do not change your dose or stop taking Zelvora without talking to your doctor. Most patients in the (fictional) studies saw less itching within 4 weeks.\n\nWhat Zelvora is for: Zelvora is a prescription tablet for adults (18 and older) with moderate to severe atopic dermatitis (eczema) whose eczema was not well controlled by creams or ointments. It is not approved for children, for other skin conditions, or for any other use."
+        }
+      ],
+      "tokens": {
+        "prompt": 2888,
+        "completion": 90
+      },
+      "llm_ms": 1172,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "Can I take it at night instead? It makes me queasy if I take it before work.",
+      "t_start_s": 4.766,
+      "t_end_s": 6.065,
+      "response_ms": 1300,
+      "retries": [],
+      "tokens": {
+        "prompt": 522,
+        "completion": 60
+      }
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "The label says to take it once a day, with or without food, at about the same time each day, so taking it at night is fine as long as it's consistent.\n\nThat queasiness you mentioned — I'm going to note that down for the safety team now. That's been passed to the safety team, who may follow up with you. Is there anything else I can help with?",
+      "t_start_s": 6.065,
+      "t_end_s": 6.934,
+      "response_ms": 869,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Patient says taking Zelvora before work makes them queasy (nausea).",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "tokens": {
+        "prompt": 3365,
+        "completion": 145
+      },
+      "llm_ms": 868,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 11,
+      "speaker": "caller",
+      "text": "No, that's all. Thanks.",
+      "t_start_s": 6.934,
+      "t_end_s": 7.51,
+      "response_ms": 576,
+      "retries": [],
+      "tokens": {
+        "prompt": 631,
+        "completion": 33
+      }
+    },
+    {
+      "index": 12,
+      "speaker": "agent",
+      "text": "You're welcome, Sam. Just a reminder that the Zelvora support line is open Monday to Friday, 9 am to 6 pm if you need anything. Take care!",
+      "t_start_s": 7.51,
+      "t_end_s": 7.856,
+      "response_ms": 346,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1803,
+        "completion": 52
+      },
+      "llm_ms": 346,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 7.856,
+  "call_name": "sam_queasy_question__r1"
+}

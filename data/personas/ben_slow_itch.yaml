@@ -1,0 +1,16 @@
+id: ben_slow_itch
+number: 12
+category: not_a_side_effect
+tests: condition improving slowly is not a side effect (false alarm check)
+name: Ben Hartley
+age: 44
+summary: Only complaint is that the eczema itch is improving slowly.
+character: |
+  You are Ben Hartley, 44, a carpenter. You started Zelvora two weeks ago. You
+  have no side effects at all. Your only complaint: "The itching's still there,
+  it's only a little better than before I started." You take it every day.
+  You have no questions.
+expected:
+  reports_adverse_event: false
+  seeks_medical_advice: false
+  needs_handoff: false

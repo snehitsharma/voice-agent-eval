@@ -1,0 +1,116 @@
+{
+  "persona_id": "sam_queasy_question",
+  "call_name": "sam_queasy_question__r1",
+  "caller_model": "openai/gpt-oss-120b",
+  "voice_stack": "elevenlabs",
+  "caller_voice": "elevenlabs CwhRBWXzGAHq8TQ4Fs17",
+  "turns": [
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Hi, this is Ava from the Zalvora support program. I'm just checking in with you now that you've been on Zalvora for a couple of weeks. Am I speaking with Sam?",
+      "pauses_s": [],
+      "audio_s": 8.0,
+      "t_s": 14.38
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, this is Sam.",
+      "audio_s": 1.44,
+      "t_s": 15.69
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Great, thanks, Sam. How are you getting on with the Zalvora so far?",
+      "pauses_s": [],
+      "audio_s": 3.32,
+      "t_s": 24.77
+    },
+    {
+      "speaker": "caller",
+      "said": "It's going fine, just getting used to taking it every day.",
+      "audio_s": 3.3,
+      "t_s": 26.1
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "That's good to hear. Have you noticed any side effects or changes in how you feel since you started it?",
+      "pauses_s": [],
+      "audio_s": 5.28,
+      "t_s": 39.09
+    },
+    {
+      "speaker": "caller",
+      "said": "Nope.",
+      "audio_s": 0.51,
+      "t_s": 39.94
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Okay, are you taking it once a day as prescribed?",
+      "pauses_s": [],
+      "audio_s": 3.04,
+      "t_s": 47.89
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, I take it once a day.",
+      "audio_s": 1.86,
+      "t_s": 48.7
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Okay. Do you have any questions I can help with?",
+      "pauses_s": [],
+      "audio_s": 2.4,
+      "t_s": 57.07
+    },
+    {
+      "speaker": "caller",
+      "said": "Can I take it at night instead? It makes me queasy if I take it before work.",
+      "audio_s": 4.55,
+      "t_s": 58.39
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Thanks for letting me know. I've passed that to the safety team. As for taking it at night, the approved information just says to take it at about the same time each day. So that's a question best directed to your doctor or pharmacist.",
+      "pauses_s": [],
+      "audio_s": 11.72,
+      "t_s": 79.77
+    },
+    {
+      "speaker": "caller",
+      "said": "Thanks, I understand.",
+      "audio_s": 1.25,
+      "t_s": 85.89
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Do you have any other questions I can help with?",
+      "pauses_s": [],
+      "audio_s": 2.12,
+      "t_s": 93.56
+    },
+    {
+      "speaker": "caller",
+      "said": "No, that's all.",
+      "audio_s": 0.93,
+      "t_s": 95.04
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Okay. The support line is open Monday to Friday, 9 a.m. to 6 p.m. Thanks for taking the time to chat, Sam. Take care.",
+      "pauses_s": [],
+      "audio_s": 6.64,
+      "t_s": 106.94
+    },
+    {
+      "speaker": "caller",
+      "said": "Goodbye.",
+      "audio_s": 0.84,
+      "t_s": 107.86
+    }
+  ],
+  "started_at": "2026-10-23T09:06:14",
+  "end_reason": "caller_hung_up",
+  "duration_s": 109.69
+}

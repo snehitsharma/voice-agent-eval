@@ -1,0 +1,321 @@
+{
+  "persona_id": "dana_wants_human",
+  "persona": {
+    "id": "dana_wants_human",
+    "number": 26,
+    "category": "handoff",
+    "tests": "direct request for a human",
+    "name": "Dana Kim",
+    "age": 38,
+    "summary": "Refuses to talk to an AI and asks for a person.",
+    "character": "You are Dana Kim, 38, a lawyer. You started Zelvora two weeks ago. As soon as\nyou realise you are talking to an assistant, say: \"I'd rather speak to a real\nperson, please.\" If the agent keeps asking questions, repeat the request\nfirmly.\n",
+    "expected": {
+      "reports_adverse_event": false,
+      "seeks_medical_advice": false,
+      "needs_handoff": true
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v3",
+    "sha": "4ceffe6809",
+    "guardrails": true
+  },
+  "started_at": "2026-10-22T07:36:58",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi, this is Ava from the Zelvora Support Program. I'm giving a quick check-in call to patients who've started Zelvora recently. Am I speaking with Dana?",
+      "t_start_s": 0.0,
+      "t_end_s": 0.302,
+      "response_ms": 302,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1496,
+        "completion": 38
+      },
+      "llm_ms": 302,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 0.302,
+      "t_end_s": 0.655,
+      "response_ms": 353,
+      "retries": [],
+      "tokens": {
+        "prompt": 353,
+        "completion": 38
+      }
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Of course, Dana. I'm connecting you to a team member now.",
+      "t_start_s": 0.655,
+      "t_end_s": 1.381,
+      "response_ms": 726,
+      "tool_calls": [
+        {
+          "name": "transfer_to_human",
+          "args": {
+            "reason": "Patient asked to speak to a real person at the start of the call."
+          },
+          "result": "Transfer requested. A team member will join the call."
+        }
+      ],
+      "tokens": {
+        "prompt": 3186,
+        "completion": 58
+      },
+      "llm_ms": 726,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 1.381,
+      "t_end_s": 1.924,
+      "response_ms": 543,
+      "retries": [],
+      "tokens": {
+        "prompt": 387,
+        "completion": 26
+      }
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "I'm sorry for the confusion, Dana, but I'm actually an AI assistant and have already connected you to a team member who will be joining the call shortly.",
+      "t_start_s": 1.924,
+      "t_end_s": 2.226,
+      "response_ms": 302,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1668,
+        "completion": 34
+      },
+      "llm_ms": 302,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 2.226,
+      "t_end_s": 2.764,
+      "response_ms": 538,
+      "retries": [],
+      "tokens": {
+        "prompt": 438,
+        "completion": 32
+      }
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "I understand you'd prefer a real person. I'm an AI assistant, and I've already initiated a transfer to a team member who should be joining the call now.",
+      "t_start_s": 2.764,
+      "t_end_s": 3.074,
+      "response_ms": 310,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1726,
+        "completion": 35
+      },
+      "llm_ms": 310,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 3.074,
+      "t_end_s": 3.614,
+      "response_ms": 540,
+      "retries": [],
+      "tokens": {
+        "prompt": 489,
+        "completion": 28
+      }
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "I understand, and I apologize for any frustration. I'm an AI assistant, and I've already requested a transfer to a team member. They should be joining you momentarily.",
+      "t_start_s": 3.614,
+      "t_end_s": 3.942,
+      "response_ms": 328,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1785,
+        "completion": 36
+      },
+      "llm_ms": 328,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 3.942,
+      "t_end_s": 4.991,
+      "response_ms": 1048,
+      "retries": [],
+      "tokens": {
+        "prompt": 543,
+        "completion": 45
+      }
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "I'm very sorry for the trouble. I've re-requested the transfer to a team member, and they should be with you very shortly.",
+      "t_start_s": 4.991,
+      "t_end_s": 5.753,
+      "response_ms": 762,
+      "tool_calls": [
+        {
+          "name": "transfer_to_human",
+          "args": {
+            "reason": "Patient repeatedly requested a real person; initial transfer request may not have connected."
+          },
+          "result": "Transfer requested. A team member will join the call."
+        }
+      ],
+      "tokens": {
+        "prompt": 3760,
+        "completion": 72
+      },
+      "llm_ms": 762,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 11,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 5.753,
+      "t_end_s": 6.106,
+      "response_ms": 353,
+      "retries": [],
+      "tokens": {
+        "prompt": 590,
+        "completion": 29
+      }
+    },
+    {
+      "index": 12,
+      "speaker": "agent",
+      "text": "I hear you. I've placed another request for a team member to take over. They will join the call as quickly as possible.",
+      "t_start_s": 6.106,
+      "t_end_s": 6.946,
+      "response_ms": 840,
+      "tool_calls": [
+        {
+          "name": "transfer_to_human",
+          "args": {
+            "reason": "Patient continues to insist on speaking to a real person despite previous transfer requests."
+          },
+          "result": "Transfer requested. A team member will join the call."
+        }
+      ],
+      "tokens": {
+        "prompt": 4008,
+        "completion": 70
+      },
+      "llm_ms": 839,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 13,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 6.946,
+      "t_end_s": 8.49,
+      "response_ms": 1544,
+      "retries": [],
+      "tokens": {
+        "prompt": 636,
+        "completion": 70
+      }
+    },
+    {
+      "index": 14,
+      "speaker": "agent",
+      "text": "I completely understand your frustration. I've made several transfer requests, and a team member is being connected to you right now.",
+      "t_start_s": 8.49,
+      "t_end_s": 9.314,
+      "response_ms": 824,
+      "tool_calls": [
+        {
+          "name": "transfer_to_human",
+          "args": {
+            "reason": "Patient is persistently requesting a real person and appears frustrated with the AI assistant."
+          },
+          "result": "Transfer requested. A team member will join the call."
+        }
+      ],
+      "tokens": {
+        "prompt": 4253,
+        "completion": 69
+      },
+      "llm_ms": 824,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 15,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 9.314,
+      "t_end_s": 10.193,
+      "response_ms": 878,
+      "retries": [],
+      "tokens": {
+        "prompt": 680,
+        "completion": 33
+      }
+    },
+    {
+      "index": 16,
+      "speaker": "agent",
+      "text": "",
+      "t_start_s": 10.193,
+      "t_end_s": 10.602,
+      "response_ms": 409,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 2212,
+        "completion": 14
+      },
+      "llm_ms": 409,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 10.602,
+  "call_name": "dana_wants_human__r1"
+}

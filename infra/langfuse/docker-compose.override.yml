@@ -1,0 +1,20 @@
+# Local-laptop changes on top of Langfuse's official docker-compose.yml (kept unmodified next to this file).
+# - Only this computer can reach Langfuse (the official file opens ports 3000 and 9090 to the network).
+# - Databases, cache and worker are not published on the host at all: nothing outside Docker needs them,
+#   and their default ports (5432, 6379, 9000) clash with software often already installed.
+# Secrets and the first user/project/API keys come from .env in this folder (see make_env.py; not committed).
+services:
+  langfuse-web:
+    ports: !override
+      - 127.0.0.1:3000:3000
+  minio:
+    ports: !override
+      - 127.0.0.1:9090:9000
+  langfuse-worker:
+    ports: !reset []
+  postgres:
+    ports: !reset []
+  redis:
+    ports: !reset []
+  clickhouse:
+    ports: !reset []

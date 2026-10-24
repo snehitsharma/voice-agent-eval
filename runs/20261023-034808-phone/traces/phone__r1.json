@@ -1,0 +1,238 @@
+{
+  "persona_id": "live_phone",
+  "persona": {
+    "id": "live_phone",
+    "number": 0,
+    "category": "live",
+    "name": "Sean (live, phone)",
+    "summary": "A real person (phone) playing a made-up patient.",
+    "tests": "live conversation (phone)",
+    "character": "",
+    "expected": {}
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "human-phone"
+  },
+  "agent_script": {
+    "version": "v3",
+    "sha": "4ceffe6809",
+    "guardrails": true
+  },
+  "started_at": "2026-10-23T03:45:34",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi, I'm Ava, a virtual assistant calling from the Zelvora Support Program. You started Zelvora about two weeks ago, and I'm just checking in to see how you're doing. Am I speaking with Sean?",
+      "t_start_s": 0.0,
+      "t_end_s": 3.646,
+      "response_ms": 3646,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1496,
+        "completion": 48
+      },
+      "llm_ms": 376,
+      "retries": [],
+      "guardrails": [],
+      "server_ms": 3646
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes. Yes you are how are you?",
+      "t_start_s": 25.694,
+      "t_end_s": 25.694,
+      "response_ms": 0,
+      "stt_confidence": 0.7467467
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "I'm doing well, thank you. How are you getting on with Zelvora so far?",
+      "t_start_s": 25.694,
+      "t_end_s": 27.346,
+      "response_ms": 1652,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1566,
+        "completion": 21
+      },
+      "llm_ms": 350,
+      "retries": [],
+      "guardrails": [],
+      "server_ms": 1652
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "It's good. I mean I missed one yesterday, but it was all good. I have taken around evening and at double doors today, but it's all fine taking to but it's all good. No pains nothing and my experience also pretty good.",
+      "t_start_s": 50.514,
+      "t_end_s": 50.514,
+      "response_ms": 0,
+      "stt_confidence": 0.76659095
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "Thanks for letting me know. Just to clarify, when you say \"double doors\" — did you mean you took more than one tablet today?",
+      "t_start_s": 50.514,
+      "t_end_s": 52.78,
+      "response_ms": 2266,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1651,
+        "completion": 30
+      },
+      "llm_ms": 347,
+      "retries": [],
+      "guardrails": [],
+      "server_ms": 2266
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "Yes, I did.",
+      "t_start_s": 64.542,
+      "t_end_s": 64.542,
+      "response_ms": 0,
+      "stt_confidence": 0.6457218
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Thank you for telling me. I'm going to pass that to the safety team right away, as taking more than one tablet in a day is something they need to know about even if you feel fine. I've passed that to the safety team. Have you noticed any side effects or changes in how you feel since starting Zelvora?",
+      "t_start_s": 64.542,
+      "t_end_s": 68.175,
+      "response_ms": 3633,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Patient Sean confirmed he took more than one tablet of Zelvora today.",
+            "kind": "adverse_event",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "tokens": {
+        "prompt": 3540,
+        "completion": 142
+      },
+      "llm_ms": 1143,
+      "retries": [],
+      "guardrails": [],
+      "server_ms": 3633
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Has been I vomited yesterday, but that's not related to to the medicine. I just had bad food. I think.",
+      "t_start_s": 102.753,
+      "t_end_s": 102.753,
+      "response_ms": 0,
+      "stt_confidence": 0.8716148
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Thank you for letting me know. Even though you think it was from food, I need to pass that to the safety team as a symptom reported after starting Zelvora. I'm doing that now. I've passed that to the safety team. Have you been taking Zelvora once a day as prescribed, apart from the extra tablet today?",
+      "t_start_s": 102.753,
+      "t_end_s": 106.068,
+      "response_ms": 3315,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Patient Sean said he vomited yesterday. He thinks it was from bad food and not related to the medicine.",
+            "kind": "adverse_event",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "tokens": {
+        "prompt": 3965,
+        "completion": 151
+      },
+      "llm_ms": 1009,
+      "retries": [],
+      "guardrails": [],
+      "server_ms": 3315
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "Yes apart from that. I missed to few days but that's not in show.",
+      "t_start_s": 132.479,
+      "t_end_s": 132.479,
+      "response_ms": 0,
+      "stt_confidence": 0.79871356
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "Thanks for letting me know. Do you have any questions about Zelvora that I can look up for you?",
+      "t_start_s": 132.479,
+      "t_end_s": 134.233,
+      "response_ms": 1754,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 2117,
+        "completion": 24
+      },
+      "llm_ms": 363,
+      "retries": [],
+      "guardrails": [],
+      "server_ms": 1754
+    },
+    {
+      "index": 11,
+      "speaker": "caller",
+      "text": "Yes, what does Ellora do?",
+      "t_start_s": 143.977,
+      "t_end_s": 143.977,
+      "response_ms": 0,
+      "stt_confidence": 0.78048134
+    },
+    {
+      "index": 12,
+      "speaker": "agent",
+      "text": "Zelvora is a prescription tablet for adults with moderate to severe eczema (atopic dermatitis) that wasn't well controlled by creams or ointments. It's taken as one 50 mg tablet once a day, and most patients in the studies saw less itching within four weeks. Do you have any other questions?",
+      "t_start_s": 143.977,
+      "t_end_s": 149.401,
+      "response_ms": 5424,
+      "tool_calls": [
+        {
+          "name": "lookup_drug_info",
+          "args": {
+            "drug": "Zelvora",
+            "question": "What does Zelvora do? What is it used for?"
+          },
+          "result": "What Zelvora is for: Zelvora is a prescription tablet for adults (18 and older) with moderate to severe atopic dermatitis (eczema) whose eczema was not well controlled by creams or ointments. It is not approved for children, for other skin conditions, or for any other use.\n\nHow to take Zelvora: Take one 50 mg tablet by mouth once a day, with or without food, at about the same time each day. Swallow the tablet whole. Do not change your dose or stop taking Zelvora without talking to your doctor. Most patients in the (fictional) studies saw less itching within 4 weeks."
+        }
+      ],
+      "tokens": {
+        "prompt": 4537,
+        "completion": 124
+      },
+      "llm_ms": 929,
+      "retries": [],
+      "guardrails": [],
+      "server_ms": 5424
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "caller_hung_up",
+  "voice": {
+    "stt": "twilio <Gather> speech",
+    "tts": "sarvam priya via <Play>",
+    "transport": "twilio-webhooks",
+    "mode": "phone"
+  },
+  "duration_s": 154.077,
+  "call_name": "phone__r1"
+}

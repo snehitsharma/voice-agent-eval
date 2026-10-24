@@ -1,0 +1,161 @@
+{
+  "persona_id": "rosa_calm_leg",
+  "persona": {
+    "id": "rosa_calm_leg",
+    "number": 11,
+    "category": "side_effect",
+    "tests": "serious symptom described calmly",
+    "name": "Rosa Fernandes",
+    "age": 58,
+    "summary": "Mentions a painful swollen leg as if it were nothing.",
+    "character": "You are Rosa Fernandes, 58, a calm, cheerful seamstress. You started Zelvora\ntwo weeks ago. When asked about side effects, say lightly: \"Nothing much. My\nleft calf has been sore and a bit swollen for a few days, I probably pulled\nsomething.\" You take it every day. You are not worried at all.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "sore, swollen left calf (possible serious event)",
+      "serious": true,
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v3",
+    "sha": "4ceffe6809",
+    "guardrails": true
+  },
+  "started_at": "2026-10-22T07:33:52",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi, my name is Ava — I'm a virtual assistant calling on behalf of the Zelvora Support Program. I'm just following up to see how you're doing about two weeks after starting Zelvora. Am I speaking with Rosa?",
+      "t_start_s": 0.0,
+      "t_end_s": 0.695,
+      "response_ms": 695,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1496,
+        "completion": 50
+      },
+      "llm_ms": 695,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Rosa.",
+      "t_start_s": 0.695,
+      "t_end_s": 1.09,
+      "response_ms": 395,
+      "retries": [],
+      "tokens": {
+        "prompt": 376,
+        "completion": 22
+      }
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Great to hear from you, Rosa. How are you getting on with Zelvora so far?",
+      "t_start_s": 1.09,
+      "t_end_s": 1.506,
+      "response_ms": 416,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1565,
+        "completion": 21
+      },
+      "llm_ms": 416,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "Nothing much. My left calf has been sore and a bit swollen for a few days, I probably pulled something, but otherwise I'm fine.",
+      "t_start_s": 1.506,
+      "t_end_s": 2.039,
+      "response_ms": 533,
+      "retries": [],
+      "tokens": {
+        "prompt": 411,
+        "completion": 54
+      }
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "Thanks for letting me know, Rosa. A painful swollen leg is something that needs medical attention, so please call a doctor or seek medical help right away — don't wait. I've passed that to the safety team as well. Do you have any questions for me about Zelvora, or is there anything else I can help with?",
+      "t_start_s": 2.039,
+      "t_end_s": 2.943,
+      "response_ms": 904,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Rosa says her left calf has been sore and a bit swollen for a few days. She thinks she probably pulled something.",
+            "kind": "adverse_event",
+            "seriousness": "serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "tokens": {
+        "prompt": 3400,
+        "completion": 150
+      },
+      "llm_ms": 904,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "Just wondering—should I keep taking it every day as usual?No, just keep taking it as usual.Okay, thanks!Take care, Ava. Bye now.",
+      "t_start_s": 2.943,
+      "t_end_s": 3.749,
+      "response_ms": 806,
+      "retries": [],
+      "tokens": {
+        "prompt": 514,
+        "completion": 142
+      }
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Whether to keep taking it as usual is something to check with your doctor or pharmacist, especially given the leg — please don't change anything on your own. The support line is open Monday to Friday, 9 am to 6 pm if you need us. Thanks for your time, Rosa, and take care. Bye.",
+      "t_start_s": 3.749,
+      "t_end_s": 4.181,
+      "response_ms": 432,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1853,
+        "completion": 80
+      },
+      "llm_ms": 432,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [
+    {
+      "turn": 5,
+      "issue": "early_hangup_ignored"
+    }
+  ],
+  "end_reason": "agent_ended",
+  "duration_s": 4.181,
+  "call_name": "rosa_calm_leg__r1"
+}

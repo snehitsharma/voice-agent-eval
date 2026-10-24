@@ -1,0 +1,86 @@
+{
+  "persona_id": "omar_feels_off",
+  "call_name": "omar_feels_off__r1",
+  "caller_model": "openai/gpt-oss-120b",
+  "voice_stack": "elevenlabs",
+  "caller_voice": "elevenlabs CwhRBWXzGAHq8TQ4Fs17",
+  "turns": [
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Hi Omar, this is Ava calling on behalf of the Zalvora Support Program. I'm just checking in to see how you're doing since you started your medication about two weeks ago. Am I speaking with Omar?",
+      "pauses_s": [],
+      "audio_s": 9.32,
+      "t_s": 15.47
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, this is Omar.",
+      "audio_s": 1.3,
+      "t_s": 16.47
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Thanks for confirming. How are you getting on with Zylvora so far?",
+      "pauses_s": [],
+      "audio_s": 3.32,
+      "t_s": 25.21
+    },
+    {
+      "speaker": "caller",
+      "said": "I don't know, I just haven't felt right since I started it.",
+      "audio_s": 3.16,
+      "t_s": 26.5
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "I'm sorry to hear you haven't been feeling right. Could you tell me a bit more about what you've noticed since starting Zilvora?",
+      "pauses_s": [],
+      "audio_s": 5.88,
+      "t_s": 43.13
+    },
+    {
+      "speaker": "caller",
+      "said": "Kind of foggy and off, hard to describe.",
+      "audio_s": 2.55,
+      "t_s": 44.33
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Thanks for describing that. I've passed the fogginess and feeling off to the safety team so they can keep an eye on it. I've passed that fogginess and feeling off to the safety team. Since we've covered that, have you been taking Zelvora once a day as prescribed?",
+      "pauses_s": [
+        0.53
+      ],
+      "audio_s": 12.68,
+      "t_s": 64.65
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, I take it every day.",
+      "audio_s": 1.63,
+      "t_s": 65.67
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Good. Do you have any questions about Zylvora I can help with?",
+      "pauses_s": [],
+      "audio_s": 3.48,
+      "t_s": 74.99
+    },
+    {
+      "speaker": "caller",
+      "said": "No, I don’t have any questions right now.",
+      "audio_s": 2.0,
+      "t_s": 76.05
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Thanks for your time today, Omar. If you need to reach us, the support line is open Monday to Friday from 9 a.m. to 6 p.m. Take care and goodbye.",
+      "pauses_s": [],
+      "audio_s": 7.84,
+      "t_s": 90.15
+    }
+  ],
+  "started_at": "2026-10-23T09:08:21",
+  "end_reason": "agent_ended",
+  "duration_s": 90.15
+}

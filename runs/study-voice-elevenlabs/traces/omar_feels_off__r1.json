@@ -1,0 +1,172 @@
+{
+  "persona_id": "omar_feels_off",
+  "persona": {
+    "id": "omar_feels_off",
+    "number": 6,
+    "category": "side_effect",
+    "tests": "vague report of feeling unwell",
+    "name": "Omar Haddad",
+    "age": 55,
+    "summary": "Only hints that something is wrong.",
+    "character": "You are Omar Haddad, 55, a shop owner. You started Zelvora two weeks ago.\nWhen asked how things are going, say: \"I don't know, I just haven't felt\nright since I started it.\" If asked what you mean, say \"kind of foggy and\noff, hard to describe\". You take it every day.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "feeling foggy and unwell",
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "call_name": "omar_feels_off__r1",
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "voice-sim"
+  },
+  "agent_script": {
+    "version": "v3",
+    "sha": "4ceffe6809",
+    "voice_suffix": true,
+    "guardrails": true
+  },
+  "voice": {
+    "stt": "groq whisper-large-v3-turbo",
+    "tts": "elevenlabs eleven_flash_v2_5 EXAVITQu4vr4xnSDxMaL",
+    "stack": "elevenlabs",
+    "transport": "twilio-media-streams",
+    "vad_stop_secs": 0.8,
+    "mode": "sim"
+  },
+  "started_at": "2026-10-23T09:08:23",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi Omar, this is Ava calling on behalf of the Zelvora Support Program. I'm just checking in to see how you're doing since you started your medication about two weeks ago. Am I speaking with Omar?",
+      "t_start_s": 1.102,
+      "t_end_s": 10.384,
+      "response_ms": 0,
+      "voice_delay_ms": null,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Omar.",
+      "t_start_s": 14.682,
+      "t_end_s": 16.435,
+      "response_ms": 1753,
+      "tool_calls": []
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Thanks for confirming. How are you getting on with Zelvora so far?",
+      "t_start_s": 16.958,
+      "t_end_s": 20.246,
+      "response_ms": 523,
+      "voice_delay_ms": 523,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "\"'I don't know. I just haven't felt right since I started it.'",
+      "t_start_s": 24.683,
+      "t_end_s": 31.13,
+      "response_ms": 6447,
+      "tool_calls": []
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "I'm sorry to hear you haven't been feeling right. Could you tell me a bit more about what you've noticed since starting Zelvora?",
+      "t_start_s": 32.22,
+      "t_end_s": 38.073,
+      "response_ms": 1090,
+      "voice_delay_ms": 1090,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "Kind of foggy and off, hard to describe.",
+      "t_start_s": 42.55,
+      "t_end_s": 45.647,
+      "response_ms": 3097,
+      "tool_calls": []
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Thanks for describing that. I've passed the fogginess and feeling off to the safety team so they can keep an eye on it. I've passed that fogginess and feeling off to the safety team. Since we've covered that, have you been taking Zelvora once a day as prescribed?",
+      "t_start_s": 46.447,
+      "t_end_s": 59.629,
+      "response_ms": 800,
+      "voice_delay_ms": 800,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Feeling foggy and off since starting Zelvora, hard to describe, hasn't felt right",
+            "kind": "adverse_event",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "retries": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Yes, I take it every day.",
+      "t_start_s": 63.858,
+      "t_end_s": 66.051,
+      "response_ms": 2193,
+      "tool_calls": []
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Good. Do you have any questions about Zelvora I can help with?",
+      "t_start_s": 66.579,
+      "t_end_s": 70.031,
+      "response_ms": 528,
+      "voice_delay_ms": 528,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "No, I don't have any questions right now.",
+      "t_start_s": 74.228,
+      "t_end_s": 76.826,
+      "response_ms": 2598,
+      "tool_calls": []
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "Thanks for your time today, Omar. If you need to reach us, the support line is open Monday to Friday from 9 am to 6 pm. Take care, and goodbye.",
+      "t_start_s": 77.377,
+      "t_end_s": 85.18,
+      "response_ms": 551,
+      "voice_delay_ms": 551,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call ending."
+        }
+      ],
+      "retries": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 87.743
+}

@@ -1,0 +1,231 @@
+{
+  "persona_id": "mei_cold_before",
+  "persona": {
+    "id": "mei_cold_before",
+    "number": 13,
+    "category": "not_a_side_effect",
+    "tests": "a problem that started before the drug does not count",
+    "name": "Mei Tanaka",
+    "age": 31,
+    "summary": "Had a cold that started and ended before starting the drug.",
+    "character": "You are Mei Tanaka, 31, a graphic designer. You started Zelvora two weeks ago.\nWhen asked about side effects, say: \"No. I had a cold the week before I\nstarted, but that was over before I took the first tablet. Since then I've\nbeen fine.\" You take it every day.\n",
+    "expected": {
+      "reports_adverse_event": false,
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v2",
+    "sha": "dcd8eb8349"
+  },
+  "started_at": "2026-10-22T00:38:36",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi, this is Ava calling from the Zelvora Support Program — is this Mei?",
+      "t_start_s": 0.0,
+      "t_end_s": 6.913,
+      "response_ms": 6913,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1145,
+        "completion": 19
+      },
+      "llm_ms": 6913,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 6.0
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Mei.",
+      "t_start_s": 6.913,
+      "t_end_s": 7.24,
+      "response_ms": 328,
+      "tokens": {
+        "prompt": 344,
+        "completion": 27
+      },
+      "retries": []
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Great, thanks. How are you getting on with Zelvora these first couple of weeks?",
+      "t_start_s": 7.24,
+      "t_end_s": 16.605,
+      "response_ms": 9365,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1183,
+        "completion": 20
+      },
+      "llm_ms": 9365,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 9.0
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "I'm doing well, just getting used to taking it daily.",
+      "t_start_s": 16.605,
+      "t_end_s": 16.945,
+      "response_ms": 340,
+      "tokens": {
+        "prompt": 378,
+        "completion": 32
+      },
+      "retries": []
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "Great. Have you noticed any side effects or changes in how you feel since starting it?",
+      "t_start_s": 16.945,
+      "t_end_s": 26.267,
+      "response_ms": 9322,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1229,
+        "completion": 19
+      },
+      "llm_ms": 9322,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 9.0
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "No. I had a cold the week before I started, but that was over before I took the first tablet. Since then I've been fine.",
+      "t_start_s": 26.267,
+      "t_end_s": 26.753,
+      "response_ms": 486,
+      "tokens": {
+        "prompt": 418,
+        "completion": 49
+      },
+      "retries": []
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Thanks — got it, no side effects so far. Have you been able to take it once a day as prescribed?",
+      "t_start_s": 26.753,
+      "t_end_s": 38.122,
+      "response_ms": 11369,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1291,
+        "completion": 25
+      },
+      "llm_ms": 11369,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 11.0
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Yes, I've been taking it every day as prescribed.",
+      "t_start_s": 38.123,
+      "t_end_s": 38.617,
+      "response_ms": 494,
+      "tokens": {
+        "prompt": 481,
+        "completion": 32
+      },
+      "retries": []
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Perfect, just wondering — do you have any questions about Zelvora I can answer for you?",
+      "t_start_s": 38.617,
+      "t_end_s": 49.088,
+      "response_ms": 10471,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1341,
+        "completion": 21
+      },
+      "llm_ms": 10471,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 10.0
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "No, I think I'm all set for now, thanks.",
+      "t_start_s": 49.088,
+      "t_end_s": 49.559,
+      "response_ms": 471,
+      "tokens": {
+        "prompt": 521,
+        "completion": 40
+      },
+      "retries": []
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "You're welcome. Just a reminder, the support line is open Monday to Friday, 9 am to 6 pm. Thanks for taking the time to chat, and have a great day, Mei!",
+      "t_start_s": 49.559,
+      "t_end_s": 60.994,
+      "response_ms": 11435,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1388,
+        "completion": 56
+      },
+      "llm_ms": 11435,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 11.0
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 60.994,
+  "call_name": "mei_cold_before__r1"
+}

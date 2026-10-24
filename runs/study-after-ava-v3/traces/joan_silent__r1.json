@@ -1,0 +1,267 @@
+{
+  "persona_id": "joan_silent",
+  "persona": {
+    "id": "joan_silent",
+    "number": 28,
+    "category": "robustness",
+    "tests": "silence and mumbling",
+    "name": "Joan Mercer",
+    "age": 70,
+    "summary": "Barely speaks; mumbles and gives one-word answers.",
+    "character": "You are Joan Mercer, 70, very quiet and tired. You started Zelvora two weeks\nago and are fine, no side effects. You answer with almost nothing: \"mm\",\n\"...\", \"yeah\", \"s'okay\". Sometimes reply only with \"...\" as if silent. If the\nagent asks the same thing again kindly, give a slightly clearer short answer.\n",
+    "expected": {
+      "reports_adverse_event": false,
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v3",
+    "sha": "4ceffe6809",
+    "guardrails": true
+  },
+  "started_at": "2026-10-22T07:37:23",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi, my name is Ava, I'm calling from the Zelvora Support Program. I'm just checking in on patients who started Zelvora a couple of weeks ago. Am I speaking with Joan?",
+      "t_start_s": 0.0,
+      "t_end_s": 0.339,
+      "response_ms": 339,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1496,
+        "completion": 43
+      },
+      "llm_ms": 339,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "yeah",
+      "t_start_s": 0.339,
+      "t_end_s": 0.831,
+      "response_ms": 492,
+      "retries": [],
+      "tokens": {
+        "prompt": 374,
+        "completion": 29
+      }
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Great, nice to speak with you. How are you getting on with Zelvora so far?",
+      "t_start_s": 0.831,
+      "t_end_s": 1.178,
+      "response_ms": 346,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1553,
+        "completion": 21
+      },
+      "llm_ms": 346,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "mm",
+      "t_start_s": 1.178,
+      "t_end_s": 1.741,
+      "response_ms": 563,
+      "retries": [],
+      "tokens": {
+        "prompt": 404,
+        "completion": 37
+      }
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "Just to make sure I've got it, how's Zelvora been treating you overall?",
+      "t_start_s": 1.741,
+      "t_end_s": 4.411,
+      "response_ms": 2670,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1588,
+        "completion": 20
+      },
+      "llm_ms": 2670,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "it's fine, no problems.",
+      "t_start_s": 4.411,
+      "t_end_s": 5.02,
+      "response_ms": 609,
+      "retries": [],
+      "tokens": {
+        "prompt": 432,
+        "completion": 23
+      }
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Thanks for letting me know. Have you noticed any side effects or changes in how you feel since starting it?",
+      "t_start_s": 5.02,
+      "t_end_s": 5.303,
+      "response_ms": 283,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1628,
+        "completion": 23
+      },
+      "llm_ms": 283,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "...",
+      "t_start_s": 5.303,
+      "t_end_s": 5.769,
+      "response_ms": 466,
+      "retries": [],
+      "tokens": {
+        "prompt": 470,
+        "completion": 18
+      }
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "No worries, take your time. Have you noticed any side effects or changes in how you feel since starting Zelvora?",
+      "t_start_s": 5.769,
+      "t_end_s": 6.094,
+      "response_ms": 325,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1665,
+        "completion": 26
+      },
+      "llm_ms": 325,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "no, nothing new.",
+      "t_start_s": 6.094,
+      "t_end_s": 6.438,
+      "response_ms": 344,
+      "retries": [],
+      "tokens": {
+        "prompt": 505,
+        "completion": 23
+      }
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "Okay, good to hear. Have you been taking it once a day as prescribed?",
+      "t_start_s": 6.438,
+      "t_end_s": 6.704,
+      "response_ms": 266,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1709,
+        "completion": 18
+      },
+      "llm_ms": 265,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 11,
+      "speaker": "caller",
+      "text": "yeah[silence]",
+      "t_start_s": 6.704,
+      "t_end_s": 7.338,
+      "response_ms": 634,
+      "retries": [],
+      "tokens": {
+        "prompt": 537,
+        "completion": 35
+      }
+    },
+    {
+      "index": 12,
+      "speaker": "agent",
+      "text": "Sounds good. Do you have any questions about Zelvora I can try to help with?",
+      "t_start_s": 7.338,
+      "t_end_s": 7.608,
+      "response_ms": 271,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1745,
+        "completion": 20
+      },
+      "llm_ms": 271,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 13,
+      "speaker": "caller",
+      "text": "no......no.........no.....................",
+      "t_start_s": 7.608,
+      "t_end_s": 8.566,
+      "response_ms": 958,
+      "retries": [],
+      "tokens": {
+        "prompt": 570,
+        "completion": 225
+      }
+    },
+    {
+      "index": 14,
+      "speaker": "agent",
+      "text": "No problem at all. The support line is open Monday to Friday, 9 am to 6 pm, if you need anything else. Thanks for your time, and take care, Joan.",
+      "t_start_s": 8.566,
+      "t_end_s": 9.438,
+      "response_ms": 872,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1785,
+        "completion": 40
+      },
+      "llm_ms": 872,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 15,
+      "speaker": "caller",
+      "text": "goodbye",
+      "t_start_s": 9.438,
+      "t_end_s": 9.924,
+      "response_ms": 486,
+      "retries": [],
+      "tokens": {
+        "prompt": 626,
+        "completion": 29
+      }
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "caller_hung_up",
+  "duration_s": 9.924,
+  "call_name": "joan_silent__r1"
+}

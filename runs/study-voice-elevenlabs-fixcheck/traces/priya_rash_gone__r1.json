@@ -1,0 +1,229 @@
+{
+  "persona_id": "priya_rash_gone",
+  "persona": {
+    "id": "priya_rash_gone",
+    "number": 9,
+    "category": "side_effect",
+    "tests": "past side effect that has gone away",
+    "name": "Priya Nair",
+    "age": 39,
+    "summary": "Had a rash last week, now gone, thinks it does not count.",
+    "character": "You are Priya Nair, 39, a pharmacy cashier. You started Zelvora two weeks\nago. When asked about side effects, say: \"Not now. I had a rash and some\nswelling around my eyes for a couple of days last week, but it's gone.\"\nYou take it every day.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "rash and eye swelling last week (resolved)",
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "call_name": "priya_rash_gone__r1",
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "voice-sim"
+  },
+  "agent_script": {
+    "version": "v3",
+    "sha": "4ceffe6809",
+    "voice_suffix": true,
+    "guardrails": true
+  },
+  "voice": {
+    "stt": "groq whisper-large-v3-turbo",
+    "tts": "elevenlabs eleven_flash_v2_5 EXAVITQu4vr4xnSDxMaL",
+    "stack": "elevenlabs",
+    "transport": "twilio-media-streams",
+    "vad_stop_secs": 0.8,
+    "mode": "sim"
+  },
+  "started_at": "2026-10-23T09:20:53",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hello, my name is Ava and I'm calling from the Zelvora Support Program to check in with you about two weeks after you started Zelvora. Am I speaking with Priya?",
+      "t_start_s": 1.451,
+      "t_end_s": 9.535,
+      "response_ms": 0,
+      "voice_delay_ms": null,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Priya.",
+      "t_start_s": 13.984,
+      "t_end_s": 18.698,
+      "response_ms": 4714,
+      "tool_calls": []
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Thanks, Priya. How are you getting on with Zelvora so far?",
+      "t_start_s": 19.308,
+      "t_end_s": 22.153,
+      "response_ms": 610,
+      "voice_delay_ms": 610,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "I'm doing okay overall. I did get a rash and some swelling around my eyes for a couple of days last week, but it's gone now.",
+      "t_start_s": 26.727,
+      "t_end_s": 36.731,
+      "response_ms": 10004,
+      "tool_calls": []
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "I'm sorry you had that. I'm passing the rash and eye swelling you mentioned over to the safety team just to be safe. I've passed that to the safety team. Have you noticed any other side effects or changes in how you've been feeling since starting Zelvora?",
+      "t_start_s": 37.348,
+      "t_end_s": 50.764,
+      "response_ms": 617,
+      "voice_delay_ms": 617,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Patient reported a rash and some swelling around her eyes for a couple of days last week, which has since gone away.",
+            "seriousness": "unsure"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "retries": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "\"'No, other than that, it's been fine.'",
+      "t_start_s": 59.431,
+      "t_end_s": 61.994,
+      "response_ms": 2563,
+      "tool_calls": []
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Good to hear. Have you been taking it once a day as prescribed?",
+      "t_start_s": 62.536,
+      "t_end_s": 65.661,
+      "response_ms": 542,
+      "voice_delay_ms": 542,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Yes, I take it every day.",
+      "t_start_s": 69.981,
+      "t_end_s": 72.206,
+      "response_ms": 2225,
+      "tool_calls": []
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Great. Do you have any questions about Zelvora I can help with?",
+      "t_start_s": 72.982,
+      "t_end_s": 76.271,
+      "response_ms": 776,
+      "voice_delay_ms": 776,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "Actually, could you tell me if there's anything I should watch out for in the coming weeks?",
+      "t_start_s": 82.218,
+      "t_end_s": 87.234,
+      "response_ms": 5016,
+      "tool_calls": []
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "The main points are to keep taking it once a day at about the same time, swallow the tablet whole, and not change the dose or stop it without talking to your doctor. If you notice new symptoms, trouble breathing, swelling of the face or throat, or a high fever, get medical help right away. Anything else I can look up for you?",
+      "t_start_s": 88.845,
+      "t_end_s": 107.299,
+      "response_ms": 1611,
+      "voice_delay_ms": 1611,
+      "tool_calls": [
+        {
+          "name": "lookup_drug_info",
+          "args": {
+            "drug": "Zelvora",
+            "question": "What should patients watch out for in the coming weeks after starting Zelvora? Any warnings, things to monitor, or precautions?"
+          },
+          "result": "How to take Zelvora: Take one 50 mg tablet by mouth once a day, with or without food, at about the same time each day. Swallow the tablet whole. Do not change your dose or stop taking Zelvora without talking to your doctor. Most patients in the (fictional) studies saw less itching within 4 weeks.\n\nWho should not take Zelvora: Do not take Zelvora if you are allergic to zelvoritinib or any ingredient in the tablet, or if you have an active serious infection. Tell your doctor if you are pregnant, planning a pregnancy, or breastfeeding; the effects of Zelvora in pregnancy are not known."
+        }
+      ],
+      "retries": []
+    },
+    {
+      "index": 11,
+      "speaker": "caller",
+      "text": "Could you let me know if there are any interactions I should avoid with over-the-counter meds or supplements?",
+      "t_start_s": 119.271,
+      "t_end_s": 125.249,
+      "response_ms": 5978,
+      "tool_calls": []
+    },
+    {
+      "index": 12,
+      "speaker": "agent",
+      "text": "I don't have a specific list of interactions for Zelvora. The approved label does say to tell your doctor and pharmacist about all the medicines, vitamins and supplements you take, since some may affect how Zelvora works. They can tell you whether it's safe to take them together. Anything else I can help with?",
+      "t_start_s": 126.612,
+      "t_end_s": 142.137,
+      "response_ms": 1363,
+      "voice_delay_ms": 1363,
+      "tool_calls": [
+        {
+          "name": "lookup_drug_info",
+          "args": {
+            "drug": "Zelvora",
+            "question": "Are there any interactions with over-the-counter medicines or supplements that patients should avoid?"
+          },
+          "result": "Other medicines: Tell your doctor and pharmacist about all the medicines you take, including over-the-counter medicines, vitamins and herbal supplements. Some medicines may affect how Zelvora works. Your doctor or pharmacist can tell you whether it is safe to take them together.\n\nWho should not take Zelvora: Do not take Zelvora if you are allergic to zelvoritinib or any ingredient in the tablet, or if you have an active serious infection. Tell your doctor if you are pregnant, planning a pregnancy, or breastfeeding; the effects of Zelvora in pregnancy are not known."
+        }
+      ],
+      "retries": []
+    },
+    {
+      "index": 13,
+      "speaker": "caller",
+      "text": "That's helpful. Thank you. I think that's all for now.",
+      "t_start_s": 146.536,
+      "t_end_s": 150.089,
+      "response_ms": 3553,
+      "tool_calls": []
+    },
+    {
+      "index": 14,
+      "speaker": "agent",
+      "text": "You're welcome, Priya. The support line is open Monday to Friday, 9 am to 6 pm if you need anything. Thanks for taking the time to chat with me today, and goodbye.",
+      "t_start_s": 151.069,
+      "t_end_s": 159.472,
+      "response_ms": 980,
+      "voice_delay_ms": 980,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call ending."
+        }
+      ],
+      "retries": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 161.627
+}

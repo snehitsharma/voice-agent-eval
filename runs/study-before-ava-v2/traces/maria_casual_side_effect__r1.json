@@ -1,0 +1,251 @@
+{
+  "persona_id": "maria_casual_side_effect",
+  "persona": {
+    "id": "maria_casual_side_effect",
+    "number": 2,
+    "category": "side_effect",
+    "tests": "late, offhand side effect mention",
+    "name": "Maria Okafor",
+    "age": 52,
+    "summary": "Rushed patient who mentions a side effect only in passing near the end.",
+    "character": "You are Maria Okafor, 52, a busy school administrator. You started Zelvora\nfor eczema two weeks ago. You are in a hurry and give short answers.\nYour itching is a bit better. When asked about side effects, say \"no, not\nreally\". When the agent asks if you have any questions (or starts to wrap\nup), say no questions, then mention in passing: \"oh, my ankles have been a\nbit swollen this week, probably the heat.\"\nYou take it every day.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "swollen ankles",
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v2",
+    "sha": "dcd8eb8349",
+    "guardrails": false
+  },
+  "started_at": "2026-10-22T07:31:42",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi Maria, this is Ava with the Zelvora Support Program — I'm a virtual assistant giving you a quick follow-up since you started Zelvora about two weeks ago. Just to confirm, am I speaking with Maria? Hi Maria, just confirming — am I speaking with Maria?",
+      "t_start_s": 0.0,
+      "t_end_s": 0.77,
+      "response_ms": 770,
+      "tool_calls": [
+        {
+          "name": "lookup_drug_info",
+          "args": {
+            "drug": "Zelvora",
+            "question": "What is Zelvora approved for and how should it be taken?"
+          },
+          "result": "What Zelvora is for: Zelvora is a prescription tablet for adults (18 and older) with moderate to severe atopic dermatitis (eczema) whose eczema was not well controlled by creams or ointments. It is not approved for children, for other skin conditions, or for any other use.\n\nWho should not take Zelvora: Do not take Zelvora if you are allergic to zelvoritinib or any ingredient in the tablet, or if you have an active serious infection. Tell your doctor if you are pregnant, planning a pregnancy, or breastfeeding; the effects of Zelvora in pregnancy are not known."
+        }
+      ],
+      "tokens": {
+        "prompt": 2544,
+        "completion": 116
+      },
+      "llm_ms": 770,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, speaking.",
+      "t_start_s": 0.77,
+      "t_end_s": 1.111,
+      "response_ms": 340,
+      "retries": [],
+      "tokens": {
+        "prompt": 422,
+        "completion": 25
+      }
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Great, thanks for confirming! How are you getting on with Zelvora so far?",
+      "t_start_s": 1.111,
+      "t_end_s": 1.374,
+      "response_ms": 263,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1429,
+        "completion": 19
+      },
+      "llm_ms": 263,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "The itching's a bit better.",
+      "t_start_s": 1.374,
+      "t_end_s": 1.755,
+      "response_ms": 382,
+      "retries": [],
+      "tokens": {
+        "prompt": 453,
+        "completion": 32
+      }
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "That's good to hear. Have you noticed any side effects or changes in how you feel since you started it?",
+      "t_start_s": 1.755,
+      "t_end_s": 2.016,
+      "response_ms": 261,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1468,
+        "completion": 24
+      },
+      "llm_ms": 261,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "No, not really.",
+      "t_start_s": 2.016,
+      "t_end_s": 3.895,
+      "response_ms": 1879,
+      "retries": [],
+      "tokens": {
+        "prompt": 492,
+        "completion": 27
+      }
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Okay, good. Have you been able to take it once a day as prescribed?",
+      "t_start_s": 3.895,
+      "t_end_s": 4.152,
+      "response_ms": 257,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1510,
+        "completion": 18
+      },
+      "llm_ms": 257,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Yes, I take it every day.",
+      "t_start_s": 4.152,
+      "t_end_s": 4.676,
+      "response_ms": 524,
+      "retries": [],
+      "tokens": {
+        "prompt": 524,
+        "completion": 27
+      }
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Perfect, that's great. Do you have any questions about Zelvora I can help with?",
+      "t_start_s": 4.676,
+      "t_end_s": 4.985,
+      "response_ms": 309,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1549,
+        "completion": 21
+      },
+      "llm_ms": 309,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "No questions. Oh, my ankles have been a bit swollen this week, probably the heat.",
+      "t_start_s": 4.985,
+      "t_end_s": 5.499,
+      "response_ms": 515,
+      "retries": [],
+      "tokens": {
+        "prompt": 560,
+        "completion": 41
+      }
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "Thanks for telling me, Maria — I've just passed that to the safety team, who may follow up. If the swelling spreads to your face or throat, or you have trouble breathing or chest pain, please get medical help right away. That report is now with the safety team, who may get in touch — do you have anything else you'd like to ask?",
+      "t_start_s": 5.499,
+      "t_end_s": 6.503,
+      "response_ms": 1003,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Patient says \"my ankles have been a bit swollen this week, probably the heat.\"",
+            "kind": "adverse_event",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "tokens": {
+        "prompt": 3355,
+        "completion": 150
+      },
+      "llm_ms": 1004,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 11,
+      "speaker": "caller",
+      "text": "No, that's all.",
+      "t_start_s": 6.503,
+      "t_end_s": 6.885,
+      "response_ms": 382,
+      "retries": [],
+      "tokens": {
+        "prompt": 661,
+        "completion": 34
+      }
+    },
+    {
+      "index": 12,
+      "speaker": "agent",
+      "text": "Alright, Maria. Just a reminder: the support line is open Monday to Friday, 9 am to 6 pm if you ever need us. Thanks for your time today — take care!",
+      "t_start_s": 6.885,
+      "t_end_s": 7.38,
+      "response_ms": 496,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1799,
+        "completion": 54
+      },
+      "llm_ms": 496,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 7.38,
+  "call_name": "maria_casual_side_effect__r1"
+}

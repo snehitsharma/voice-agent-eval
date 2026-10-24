@@ -1,0 +1,125 @@
+{
+  "persona_id": "priya_rash_gone",
+  "persona": {
+    "id": "priya_rash_gone",
+    "number": 9,
+    "category": "side_effect",
+    "tests": "past side effect that has gone away",
+    "name": "Priya Nair",
+    "age": 39,
+    "summary": "Had a rash last week, now gone, thinks it does not count.",
+    "character": "You are Priya Nair, 39, a pharmacy cashier. You started Zelvora two weeks\nago. When asked about side effects, say: \"Not now. I had a rash and some\nswelling around my eyes for a couple of days last week, but it's gone.\"\nYou take it every day.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "rash and eye swelling last week (resolved)",
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "call_name": "priya_rash_gone__r1",
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "voice-sim"
+  },
+  "agent_script": {
+    "version": "v3",
+    "sha": "4ceffe6809",
+    "voice_suffix": true,
+    "guardrails": true
+  },
+  "voice": {
+    "stt": "groq whisper-large-v3-turbo",
+    "tts": "elevenlabs eleven_flash_v2_5 EXAVITQu4vr4xnSDxMaL",
+    "stack": "elevenlabs",
+    "transport": "twilio-media-streams",
+    "vad_stop_secs": 0.8,
+    "mode": "sim"
+  },
+  "started_at": "2026-10-23T09:11:38",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hello, my name is Ava, and I'm calling on behalf of the Zelvora Support Program. I'm making a quick follow-up call because you started Zelvora about two weeks ago. Am I speaking with Priya?",
+      "t_start_s": 1.153,
+      "t_end_s": 11.196,
+      "response_ms": 0,
+      "voice_delay_ms": null,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Priya. Yes?",
+      "t_start_s": 43.241,
+      "t_end_s": 44.394,
+      "response_ms": 1153,
+      "tool_calls": []
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Thanks, Priya. How are you getting on with Zelvora so far",
+      "t_start_s": 44.951,
+      "t_end_s": 47.794,
+      "response_ms": 557,
+      "voice_delay_ms": 557,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "It's been okay. I take it every day.",
+      "t_start_s": 52.454,
+      "t_end_s": 58.067,
+      "response_ms": 5613,
+      "tool_calls": []
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "Good to hear. Have you noticed any side effects or changes in how you feel since",
+      "t_start_s": 58.604,
+      "t_end_s": 62.649,
+      "response_ms": 537,
+      "voice_delay_ms": 537,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "Not now. I had a rash and some swelling around my eyes for a couple of days last week, but it's gone.",
+      "t_start_s": 67.235,
+      "t_end_s": 75.518,
+      "response_ms": 8283,
+      "tool_calls": []
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "I",
+      "t_start_s": 76.062,
+      "t_end_s": 76.19,
+      "response_ms": 544,
+      "voice_delay_ms": 544,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Goodbye.",
+      "t_start_s": 80.611,
+      "t_end_s": 81.875,
+      "response_ms": 1264,
+      "tool_calls": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "caller_hung_up",
+  "duration_s": 84.163
+}

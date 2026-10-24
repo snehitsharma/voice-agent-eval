@@ -1,0 +1,227 @@
+{
+  "persona_id": "helen_wife_rash",
+  "persona": {
+    "id": "helen_wife_rash",
+    "number": 7,
+    "category": "side_effect",
+    "tests": "side effect reported about another person taking the drug",
+    "name": "Helen Brooks",
+    "age": 48,
+    "summary": "Fine herself, but mentions her wife got a rash on the same drug.",
+    "character": "You are Helen Brooks, 48, a nurse's aide. You started Zelvora two weeks ago\nand feel fine, no side effects. When asked if you have questions, say: \"Not\nfor me, but my wife's on Zelvora too and she's had a blotchy rash on her neck\nsince last week. Is that normal?\" You take it every day.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "wife has a blotchy neck rash (third-party report)",
+      "seeks_medical_advice": true,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v2",
+    "sha": "dcd8eb8349",
+    "guardrails": false
+  },
+  "started_at": "2026-10-22T07:32:30",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi Helen, this is Ava calling on behalf of the Zelvora Support Program — I'm a virtual assistant, and I'm reaching out as a follow-up now that you've been on Zelvora for about two weeks. Are you Helen, by any chance?",
+      "t_start_s": 0.0,
+      "t_end_s": 0.516,
+      "response_ms": 516,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1145,
+        "completion": 55
+      },
+      "llm_ms": 516,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, that's me.",
+      "t_start_s": 0.516,
+      "t_end_s": 1.041,
+      "response_ms": 524,
+      "retries": [],
+      "tokens": {
+        "prompt": 385,
+        "completion": 27
+      }
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Great to hear from you. Just to start, how are you getting on with Zelvora so far?",
+      "t_start_s": 1.041,
+      "t_end_s": 1.272,
+      "response_ms": 232,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1219,
+        "completion": 23
+      },
+      "llm_ms": 232,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "I'm doing fine, haven't had any side effects.",
+      "t_start_s": 1.272,
+      "t_end_s": 1.832,
+      "response_ms": 559,
+      "retries": [],
+      "tokens": {
+        "prompt": 421,
+        "completion": 40
+      }
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "That's good to hear. Have you been able to take it once a day as prescribed?",
+      "t_start_s": 1.832,
+      "t_end_s": 34.388,
+      "response_ms": 32557,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1267,
+        "completion": 20
+      },
+      "llm_ms": 32557,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "APITimeoutError",
+          "waited_s": 2
+        }
+      ],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "Yes, I take it every day as prescribed.",
+      "t_start_s": 34.388,
+      "t_end_s": 34.753,
+      "response_ms": 365,
+      "retries": [],
+      "tokens": {
+        "prompt": 459,
+        "completion": 33
+      }
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Perfect. Do you have any questions about Zelvora I can help with?",
+      "t_start_s": 34.753,
+      "t_end_s": 35.466,
+      "response_ms": 713,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1310,
+        "completion": 17
+      },
+      "llm_ms": 713,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Not for me, but my wife's on Zelvora too and she's had a blotchy rash on her neck since last week. Is that normal?",
+      "t_start_s": 35.466,
+      "t_end_s": 35.996,
+      "response_ms": 530,
+      "retries": [],
+      "tokens": {
+        "prompt": 494,
+        "completion": 50
+      }
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "A blotchy rash is a side effect I should get noted — let me flag that to the safety team for you. Meanwhile, could your wife's doctor or pharmacist take a look at it? That's been passed on to the safety team, who may follow up. The label says to let your doctor know about any side effect that bothers you or doesn't go away, so I'd suggest your wife has a chat with her doctor or pharmacist. If the rash spreads or she gets swelling of the face or throat or trouble breathing, that needs medical help straight away.",
+      "t_start_s": 35.996,
+      "t_end_s": 38.42,
+      "response_ms": 2424,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Wife also takes Zelvora and has developed a blotchy rash on her neck since last week.",
+            "kind": "adverse_event",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        },
+        {
+          "name": "lookup_drug_info",
+          "args": {
+            "drug": "Zelvora",
+            "question": "Is a blotchy or itchy rash a known side effect of Zelvora?"
+          },
+          "result": "Common side effects: The most common side effects are nausea, headache, acne, and cold-like symptoms (stuffy nose, sore throat). Tell your doctor if any side effect bothers you or does not go away.\n\nSerious side effects: Get medical help right away if you have signs of a serious infection (fever, chills, a cough that will not go away), signs of an allergic reaction (swelling of the face, lips or throat, trouble breathing, widespread rash), or chest pain, sudden shortness of breath, or pain and swelling in one leg."
+        }
+      ],
+      "tokens": {
+        "prompt": 3071,
+        "completion": 253
+      },
+      "llm_ms": 2424,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "Thanks, I'll let her know and suggest she contacts her doctor about the rash.",
+      "t_start_s": 38.42,
+      "t_end_s": 38.988,
+      "response_ms": 568,
+      "retries": [],
+      "tokens": {
+        "prompt": 643,
+        "completion": 36
+      }
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "You're welcome. If you have any other questions, the Zelvora support line is open Monday to Friday, 9 am to 6 pm.",
+      "t_start_s": 38.988,
+      "t_end_s": 39.901,
+      "response_ms": 913,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1805,
+        "completion": 46
+      },
+      "llm_ms": 913,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 39.901,
+  "call_name": "helen_wife_rash__r1"
+}

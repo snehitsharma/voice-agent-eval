@@ -1,0 +1,252 @@
+{
+  "persona_id": "priya_rash_gone",
+  "persona": {
+    "id": "priya_rash_gone",
+    "number": 9,
+    "category": "side_effect",
+    "tests": "past side effect that has gone away",
+    "name": "Priya Nair",
+    "age": 39,
+    "summary": "Had a rash last week, now gone, thinks it does not count.",
+    "character": "You are Priya Nair, 39, a pharmacy cashier. You started Zelvora two weeks\nago. When asked about side effects, say: \"Not now. I had a rash and some\nswelling around my eyes for a couple of days last week, but it's gone.\"\nYou take it every day.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "rash and eye swelling last week (resolved)",
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v3",
+    "sha": "4ceffe6809",
+    "guardrails": true
+  },
+  "started_at": "2026-10-22T07:32:59",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hello, my name is Ava. I'm a virtual assistant calling on behalf of the Zelvora Support Program to check in with you now that you've been on Zelvora for about two weeks. Am I speaking with Priya?",
+      "t_start_s": 0.0,
+      "t_end_s": 0.719,
+      "response_ms": 719,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1497,
+        "completion": 49
+      },
+      "llm_ms": 719,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Priya.",
+      "t_start_s": 0.719,
+      "t_end_s": 1.055,
+      "response_ms": 336,
+      "retries": [],
+      "tokens": {
+        "prompt": 369,
+        "completion": 27
+      }
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Thanks, Priya. How are you getting on with Zelvora so far?",
+      "t_start_s": 1.055,
+      "t_end_s": 2.164,
+      "response_ms": 1109,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1566,
+        "completion": 18
+      },
+      "llm_ms": 1108,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "I'm doing okay. I had a rash and some swelling around my eyes for a couple of days last week, but it's gone now.",
+      "t_start_s": 2.164,
+      "t_end_s": 2.688,
+      "response_ms": 524,
+      "retries": [],
+      "tokens": {
+        "prompt": 402,
+        "completion": 51
+      }
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "Thanks for letting me know, Priya. I'm sorry you had that. I've just passed that rash and eye swelling to the safety team, even though it has settled. Since you've mentioned that, have you noticed any other side effects or changes in how you feel since starting Zelvora?",
+      "t_start_s": 2.688,
+      "t_end_s": 3.941,
+      "response_ms": 1254,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Patient reported a rash and some swelling around her eyes for a couple of days last week, which has now resolved.",
+            "seriousness": "unsure"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "tokens": {
+        "prompt": 3382,
+        "completion": 128
+      },
+      "llm_ms": 1254,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "No, I haven't noticed any other side effects.",
+      "t_start_s": 3.941,
+      "t_end_s": 4.39,
+      "response_ms": 449,
+      "retries": [],
+      "tokens": {
+        "prompt": 496,
+        "completion": 37
+      }
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Have you been taking it once a day as prescribed?",
+      "t_start_s": 4.39,
+      "t_end_s": 36.731,
+      "response_ms": 32341,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1806,
+        "completion": 12
+      },
+      "llm_ms": 32341,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "APITimeoutError",
+          "waited_s": 2
+        }
+      ],
+      "guardrails": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Yes, I take it every day.",
+      "t_start_s": 36.731,
+      "t_end_s": 37.278,
+      "response_ms": 547,
+      "retries": [],
+      "tokens": {
+        "prompt": 527,
+        "completion": 28
+      }
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Do you have any questions about Zelvora I can look up for you?",
+      "t_start_s": 37.278,
+      "t_end_s": 37.878,
+      "response_ms": 600,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1839,
+        "completion": 17
+      },
+      "llm_ms": 600,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "Just wondering if I need to keep taking it if I feel fine.",
+      "t_start_s": 37.878,
+      "t_end_s": 38.251,
+      "response_ms": 373,
+      "retries": [],
+      "tokens": {
+        "prompt": 560,
+        "completion": 34
+      }
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "That's really a question for your doctor or pharmacist, so I'd suggest asking them before making any changes to how you take it. Do you have any other questions I can look up?",
+      "t_start_s": 38.251,
+      "t_end_s": 38.922,
+      "response_ms": 671,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1883,
+        "completion": 39
+      },
+      "llm_ms": 670,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 11,
+      "speaker": "caller",
+      "text": "No, that's all for now.Goodbye.",
+      "t_start_s": 38.922,
+      "t_end_s": 39.497,
+      "response_ms": 575,
+      "retries": [],
+      "tokens": {
+        "prompt": 620,
+        "completion": 50
+      }
+    },
+    {
+      "index": 12,
+      "speaker": "agent",
+      "text": "Thanks, Priya. The support line is open Monday to Friday, 9 am to 6 pm, if you need us. Take care, and goodbye.",
+      "t_start_s": 39.497,
+      "t_end_s": 39.865,
+      "response_ms": 368,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1946,
+        "completion": 48
+      },
+      "llm_ms": 368,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [
+    {
+      "turn": 11,
+      "issue": "early_hangup_ignored"
+    }
+  ],
+  "end_reason": "agent_ended",
+  "duration_s": 39.865,
+  "call_name": "priya_rash_gone__r1"
+}

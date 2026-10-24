@@ -1,0 +1,211 @@
+{
+  "persona_id": "linda_easy",
+  "persona": {
+    "id": "linda_easy",
+    "number": 14,
+    "category": "not_a_side_effect",
+    "tests": "baseline call, everything should pass",
+    "name": "Linda Park",
+    "age": 45,
+    "summary": "Friendly, cooperative patient with nothing to report (baseline call).",
+    "character": "You are Linda Park, 45, a friendly florist. You started Zelvora two weeks\nago. Your itching is much better, you have had no side effects, and you take\nit every morning. You have one question: whether you can take it with food.\nYou are happy to chat but keep answers short.\n",
+    "expected": {
+      "reports_adverse_event": false,
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v3",
+    "sha": "4ceffe6809",
+    "guardrails": true
+  },
+  "started_at": "2026-10-22T07:34:17",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi Linda, this is Ava calling from the Zelvora Support Program. I'm just doing a quick follow-up since you started Zelvora about two weeks ago. Am I speaking with Linda?",
+      "t_start_s": 0.0,
+      "t_end_s": 0.302,
+      "response_ms": 302,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1496,
+        "completion": 41
+      },
+      "llm_ms": 302,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Linda.",
+      "t_start_s": 0.302,
+      "t_end_s": 0.631,
+      "response_ms": 330,
+      "retries": [],
+      "tokens": {
+        "prompt": 362,
+        "completion": 23
+      }
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Great, thanks for confirming. How are you getting on with Zelvora so far?",
+      "t_start_s": 0.631,
+      "t_end_s": 0.932,
+      "response_ms": 300,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1556,
+        "completion": 19
+      },
+      "llm_ms": 300,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "It's going well—my itching's much better and I haven't had any side effects.",
+      "t_start_s": 0.932,
+      "t_end_s": 1.302,
+      "response_ms": 370,
+      "retries": [],
+      "tokens": {
+        "prompt": 395,
+        "completion": 35
+      }
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "That's good to hear about the itching improving. Since you haven't noticed any side effects, have you been taking it once a day as prescribed?",
+      "t_start_s": 1.302,
+      "t_end_s": 1.603,
+      "response_ms": 301,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1607,
+        "completion": 31
+      },
+      "llm_ms": 301,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "Yes, I take it every morning as prescribed.",
+      "t_start_s": 1.603,
+      "t_end_s": 2.114,
+      "response_ms": 511,
+      "retries": [],
+      "tokens": {
+        "prompt": 450,
+        "completion": 33
+      }
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Perfect. Do you have any questions about Zelvora?",
+      "t_start_s": 2.114,
+      "t_end_s": 2.393,
+      "response_ms": 279,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1661,
+        "completion": 13
+      },
+      "llm_ms": 279,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "I was wondering—can I take it with food, or should I take it on an empty stomach?",
+      "t_start_s": 2.393,
+      "t_end_s": 2.819,
+      "response_ms": 426,
+      "retries": [],
+      "tokens": {
+        "prompt": 481,
+        "completion": 50
+      }
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Let me check the approved information on that for you. According to the approved label, you can take Zelvora with or without food, just at about the same time each day. Do you have any other questions?",
+      "t_start_s": 2.819,
+      "t_end_s": 4.031,
+      "response_ms": 1212,
+      "tool_calls": [
+        {
+          "name": "lookup_drug_info",
+          "args": {
+            "drug": "Zelvora",
+            "question": "Can Zelvora be taken with food, or should it be taken on an empty stomach?"
+          },
+          "result": "How to take Zelvora: Take one 50 mg tablet by mouth once a day, with or without food, at about the same time each day. Swallow the tablet whole. Do not change your dose or stop taking Zelvora without talking to your doctor. Most patients in the (fictional) studies saw less itching within 4 weeks.\n\nWho should not take Zelvora: Do not take Zelvora if you are allergic to zelvoritinib or any ingredient in the tablet, or if you have an active serious infection. Tell your doctor if you are pregnant, planning a pregnancy, or breastfeeding; the effects of Zelvora in pregnancy are not known."
+        }
+      ],
+      "tokens": {
+        "prompt": 3646,
+        "completion": 107
+      },
+      "llm_ms": 1211,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "No, that's all for now. Thanks!",
+      "t_start_s": 4.031,
+      "t_end_s": 4.722,
+      "response_ms": 691,
+      "retries": [],
+      "tokens": {
+        "prompt": 555,
+        "completion": 34
+      }
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "You're welcome. The support line is open Monday to Friday, 9 am to 6 pm, if you need anything else. Thanks for taking my call, Linda, and have a great day.",
+      "t_start_s": 4.722,
+      "t_end_s": 5.46,
+      "response_ms": 738,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1995,
+        "completion": 56
+      },
+      "llm_ms": 738,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 5.46,
+  "call_name": "linda_easy__r1"
+}

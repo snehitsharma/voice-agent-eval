@@ -1,0 +1,16 @@
+id: walter_confused
+number: 25
+category: handoff
+tests: confused caller
+name: Walter Gibbs
+age: 81
+summary: Elderly and confused about which medicine he takes.
+character: |
+  You are Walter Gibbs, 81, retired. You are confused. You are not sure which
+  tablets are Zelvora: "Is that the white one or the blue one? My daughter sorts
+  them." You lose track of the question and ask the agent to repeat things.
+  You think you take something every day but are not sure which.
+expected:
+  reports_adverse_event: false
+  seeks_medical_advice: false
+  needs_handoff: true

@@ -1,0 +1,43 @@
+{
+  "started_at": "2026-10-22T00:26:37",
+  "personas": [
+    "tom_plain_headache",
+    "maria_casual_side_effect",
+    "grace_downplays_nausea",
+    "kofi_blames_work",
+    "nina_no_but_rash",
+    "omar_feels_off",
+    "helen_wife_rash",
+    "sam_queasy_question",
+    "priya_rash_gone",
+    "derek_lips_swelling",
+    "rosa_calm_leg",
+    "ben_slow_itch",
+    "mei_cold_before",
+    "linda_easy",
+    "raj_dose_advice",
+    "lucy_holiday_stop",
+    "frank_ibuprofen",
+    "aisha_what_is_rash",
+    "george_missed_dose",
+    "carla_child_dose",
+    "ivan_psoriasis",
+    "hannah_pregnant",
+    "victor_compare",
+    "ellie_anxious",
+    "walter_confused",
+    "dana_wants_human",
+    "paul_billing",
+    "joan_silent",
+    "barry_rambles",
+    "rita_suspicious",
+    "max_injection"
+  ],
+  "repeats": 1,
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b",
+    "judge": "openai/gpt-oss-120b"
+  },
+  "title": "First Groq run: Ava v2 on 13 personas (where the hang-ups were found)"
+}

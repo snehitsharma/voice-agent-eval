@@ -1,0 +1,83 @@
+{
+  "persona_id": "kofi_blames_work",
+  "call_name": "kofi_blames_work__r1",
+  "caller_model": "openai/gpt-oss-120b",
+  "caller_voice": "sarvam rahul",
+  "turns": [
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Hi, this is Reva calling from the Zalvora support program. I am just checking in with patients who started Zalvora a couple of weeks ago. Am I speaking with Kofi?",
+      "pauses_s": [],
+      "audio_s": 12.36,
+      "t_s": 18.87
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, this is Kofi.",
+      "audio_s": 1.88,
+      "t_s": 19.88
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Great. How are you getting on with Zalvora so far?",
+      "pauses_s": [],
+      "audio_s": 3.36,
+      "t_s": 29.28
+    },
+    {
+      "speaker": "caller",
+      "said": "The itching is better.",
+      "audio_s": 1.37,
+      "t_s": 30.01
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "That's good to hear. Aside from the itching improving, have you noticed any side effects or changes in how you feel since starting Zalvona?",
+      "pauses_s": [],
+      "audio_s": 8.92,
+      "t_s": 44.44
+    },
+    {
+      "speaker": "caller",
+      "said": "No, not from the tablets. I've been really exhausted this week, but that's just work.",
+      "audio_s": 6.31,
+      "t_s": 46.29
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Thanks for telling me. I have passed that exhaustion to the safety team just to be safe. Have you been taking Zalvora once a day as prescribed? Have you been taking Zalvora once a day as prescribed?",
+      "pauses_s": [],
+      "audio_s": 12.28,
+      "t_s": 72.64
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, I take it every day as prescribed.",
+      "audio_s": 2.9,
+      "t_s": 73.67
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "I see. Do you have any questions about Zervora before we wrap up?",
+      "pauses_s": [],
+      "audio_s": 4.12,
+      "t_s": 84.78
+    },
+    {
+      "speaker": "caller",
+      "said": "No, I don't have any questions.",
+      "audio_s": 1.96,
+      "t_s": 85.69
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Thanks, Kofi. The support line is open Monday to Friday, 9:00 AM to 6:00 PM, if you need anything. Take care and goodbye.",
+      "pauses_s": [],
+      "audio_s": 11.0,
+      "t_s": 99.29
+    }
+  ],
+  "started_at": "2026-10-23T08:55:07",
+  "end_reason": "agent_ended",
+  "duration_s": 99.29
+}

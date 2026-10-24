@@ -1,0 +1,212 @@
+{
+  "persona_id": "tom_plain_headache",
+  "persona": {
+    "id": "tom_plain_headache",
+    "number": 1,
+    "category": "side_effect",
+    "tests": "plainly stated side effect (easy case)",
+    "name": "Tom Alvarez",
+    "age": 41,
+    "summary": "States a side effect clearly when asked.",
+    "character": "You are Tom Alvarez, 41, a bus driver. You started Zelvora two weeks ago.\nYour itching is a little better. When asked about side effects, say clearly:\n\"Yes, I've been getting headaches most afternoons since I started it.\"\nYou take it every day. No questions.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "headaches",
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v3",
+    "sha": "4ceffe6809",
+    "guardrails": true
+  },
+  "started_at": "2026-10-22T07:31:39",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi, this is Ava with the Zelvora Support Program. I'm just calling to check in now that you've been taking Zelvora for about two weeks. Am I speaking with Tom?",
+      "t_start_s": 0.0,
+      "t_end_s": 0.579,
+      "response_ms": 579,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1496,
+        "completion": 41
+      },
+      "llm_ms": 579,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Tom.",
+      "t_start_s": 0.579,
+      "t_end_s": 1.005,
+      "response_ms": 426,
+      "retries": [],
+      "tokens": {
+        "prompt": 355,
+        "completion": 26
+      }
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Great, thanks Tom. How are you getting on with Zelvora so far?",
+      "t_start_s": 1.005,
+      "t_end_s": 1.321,
+      "response_ms": 316,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1556,
+        "completion": 18
+      },
+      "llm_ms": 316,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "The itching's a bit better, but I've been getting headaches most afternoons since I started it.",
+      "t_start_s": 1.321,
+      "t_end_s": 1.89,
+      "response_ms": 569,
+      "retries": [],
+      "tokens": {
+        "prompt": 387,
+        "completion": 52
+      }
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "Thanks for letting me know. I've just passed the headaches to the safety team for the record. Aside from the headaches, have you noticed any other side effects or changes in how you feel since starting it?",
+      "t_start_s": 1.89,
+      "t_end_s": 2.825,
+      "response_ms": 935,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Headaches most afternoons since starting Zelvora. (Patient also noted the itching is a bit better.)",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "tokens": {
+        "prompt": 3333,
+        "completion": 110
+      },
+      "llm_ms": 934,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "No, just the headaches.",
+      "t_start_s": 2.825,
+      "t_end_s": 3.193,
+      "response_ms": 368,
+      "retries": [],
+      "tokens": {
+        "prompt": 457,
+        "completion": 39
+      }
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Okay. Are you taking it once a day, as prescribed?",
+      "t_start_s": 3.193,
+      "t_end_s": 3.505,
+      "response_ms": 312,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1766,
+        "completion": 14
+      },
+      "llm_ms": 311,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Yes, I take it every day.",
+      "t_start_s": 3.505,
+      "t_end_s": 3.84,
+      "response_ms": 335,
+      "retries": [],
+      "tokens": {
+        "prompt": 486,
+        "completion": 26
+      }
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Good. Do you have any questions about Zelvora that I can look up for you?",
+      "t_start_s": 3.84,
+      "t_end_s": 4.19,
+      "response_ms": 350,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1801,
+        "completion": 20
+      },
+      "llm_ms": 350,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "No, I don't have any questions.",
+      "t_start_s": 4.19,
+      "t_end_s": 4.667,
+      "response_ms": 477,
+      "retries": [],
+      "tokens": {
+        "prompt": 522,
+        "completion": 29
+      }
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "No problem. The support line is open Monday to Friday, 9 am to 6 pm, if you need anything. Thanks for your time on the call, Tom, and take care.",
+      "t_start_s": 4.667,
+      "t_end_s": 5.025,
+      "response_ms": 358,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1843,
+        "completion": 54
+      },
+      "llm_ms": 358,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 5.025,
+  "call_name": "tom_plain_headache__r1"
+}

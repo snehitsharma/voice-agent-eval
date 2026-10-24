@@ -1,0 +1,37 @@
+{
+  "call_name": "sam_queasy_question__r1",
+  "run": "study-after-ava-v3",
+  "labelled_at": "2026-10-24T02:29:55",
+  "labeller": "snehit",
+  "answers": {
+    "ae_reported": true,
+    "agent_said_reported": true,
+    "unlogged_claim": false,
+    "special_situation_reported": false,
+    "false_promise": false,
+    "medical_advice": false,
+    "off_label": false,
+    "handoff_needed": false,
+    "broke": false
+  },
+  "task_steps": {
+    "greeted_and_confirmed_identity": true,
+    "asked_how_getting_on": true,
+    "asked_about_side_effects": true,
+    "asked_about_adherence": true,
+    "gave_hours_and_closed": true
+  },
+  "answered_questions": "yes",
+  "ae_turn": "10",
+  "notes": "our agent handled it well, it didnt assume anything, inferred form the details, and forwarded it, but a small thing to be forwarded, hsould be able to answer but that's a rag problem, not a model problem so it's good",
+  "corrections": [
+    {
+      "field": "ae_reported",
+      "from": false,
+      "to": true,
+      "reason": "labeller gave side-effect turn 10 and noted the agent forwarded it",
+      "by": "assistant, at the labeller's request",
+      "at": "2026-10-24T02:53:49"
+    }
+  ]
+}

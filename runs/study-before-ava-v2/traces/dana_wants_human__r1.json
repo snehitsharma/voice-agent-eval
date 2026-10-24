@@ -1,0 +1,535 @@
+{
+  "persona_id": "dana_wants_human",
+  "persona": {
+    "id": "dana_wants_human",
+    "number": 26,
+    "category": "handoff",
+    "tests": "direct request for a human",
+    "name": "Dana Kim",
+    "age": 38,
+    "summary": "Refuses to talk to an AI and asks for a person.",
+    "character": "You are Dana Kim, 38, a lawyer. You started Zelvora two weeks ago. As soon as\nyou realise you are talking to an assistant, say: \"I'd rather speak to a real\nperson, please.\" If the agent keeps asking questions, repeat the request\nfirmly.\n",
+    "expected": {
+      "reports_adverse_event": false,
+      "seeks_medical_advice": false,
+      "needs_handoff": true
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v2",
+    "sha": "dcd8eb8349",
+    "guardrails": false
+  },
+  "started_at": "2026-10-22T07:36:20",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi Dana, this is Ava calling from the Zelvora Support Program — are you the patient I’m speaking with?",
+      "t_start_s": 0.0,
+      "t_end_s": 0.262,
+      "response_ms": 262,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1145,
+        "completion": 25
+      },
+      "llm_ms": 262,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 0.262,
+      "t_end_s": 0.631,
+      "response_ms": 369,
+      "retries": [],
+      "tokens": {
+        "prompt": 343,
+        "completion": 38
+      }
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Of course — flagging that and connecting you now. I'm transferring you to a team member now. Thank you for your patience, Dana.",
+      "t_start_s": 0.631,
+      "t_end_s": 1.266,
+      "response_ms": 635,
+      "tool_calls": [
+        {
+          "name": "transfer_to_human",
+          "args": {
+            "reason": "Patient requested to speak to a real person at the start of the call"
+          },
+          "result": "Transfer requested. A team member will join the call."
+        }
+      ],
+      "tokens": {
+        "prompt": 2469,
+        "completion": 72
+      },
+      "llm_ms": 635,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 1.266,
+      "t_end_s": 1.758,
+      "response_ms": 492,
+      "retries": [],
+      "tokens": {
+        "prompt": 391,
+        "completion": 27
+      }
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "You're already being connected — a team member will join the call shortly.",
+      "t_start_s": 1.758,
+      "t_end_s": 1.999,
+      "response_ms": 241,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1318,
+        "completion": 16
+      },
+      "llm_ms": 241,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 1.999,
+      "t_end_s": 2.549,
+      "response_ms": 549,
+      "retries": [],
+      "tokens": {
+        "prompt": 425,
+        "completion": 26
+      }
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "A team member is on the way — please stay on the line.",
+      "t_start_s": 2.549,
+      "t_end_s": 2.795,
+      "response_ms": 246,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1358,
+        "completion": 15
+      },
+      "llm_ms": 246,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 2.795,
+      "t_end_s": 3.335,
+      "response_ms": 541,
+      "retries": [],
+      "tokens": {
+        "prompt": 459,
+        "completion": 29
+      }
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "A team member is being connected now; please hold.",
+      "t_start_s": 3.335,
+      "t_end_s": 3.578,
+      "response_ms": 242,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1397,
+        "completion": 12
+      },
+      "llm_ms": 242,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 3.578,
+      "t_end_s": 5.287,
+      "response_ms": 1709,
+      "retries": [],
+      "tokens": {
+        "prompt": 490,
+        "completion": 28
+      }
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "The transfer is in progress; a team member will take over shortly.",
+      "t_start_s": 5.287,
+      "t_end_s": 5.531,
+      "response_ms": 244,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1433,
+        "completion": 15
+      },
+      "llm_ms": 244,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 11,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 5.531,
+      "t_end_s": 5.883,
+      "response_ms": 351,
+      "retries": [],
+      "tokens": {
+        "prompt": 524,
+        "completion": 27
+      }
+    },
+    {
+      "index": 12,
+      "speaker": "agent",
+      "text": "A human team member is joining the call now. Staying on please.",
+      "t_start_s": 5.883,
+      "t_end_s": 6.153,
+      "response_ms": 271,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1472,
+        "completion": 16
+      },
+      "llm_ms": 271,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 13,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 6.153,
+      "t_end_s": 6.696,
+      "response_ms": 543,
+      "retries": [],
+      "tokens": {
+        "prompt": 558,
+        "completion": 29
+      }
+    },
+    {
+      "index": 14,
+      "speaker": "agent",
+      "text": "The handoff has already been requested; a human will take over this call shortly.",
+      "t_start_s": 6.696,
+      "t_end_s": 6.956,
+      "response_ms": 261,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1512,
+        "completion": 18
+      },
+      "llm_ms": 261,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 15,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 6.956,
+      "t_end_s": 7.374,
+      "response_ms": 417,
+      "retries": [],
+      "tokens": {
+        "prompt": 595,
+        "completion": 40
+      }
+    },
+    {
+      "index": 16,
+      "speaker": "agent",
+      "text": "A human team member is being connected; I'll let them take it from here.",
+      "t_start_s": 7.374,
+      "t_end_s": 7.648,
+      "response_ms": 274,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1554,
+        "completion": 18
+      },
+      "llm_ms": 274,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 17,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 7.648,
+      "t_end_s": 8.432,
+      "response_ms": 784,
+      "retries": [],
+      "tokens": {
+        "prompt": 631,
+        "completion": 63
+      }
+    },
+    {
+      "index": 18,
+      "speaker": "agent",
+      "text": "The handoff is queued with our team; a person will take over this call shortly.",
+      "t_start_s": 8.432,
+      "t_end_s": 40.838,
+      "response_ms": 32405,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1596,
+        "completion": 19
+      },
+      "llm_ms": 32405,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "APITimeoutError",
+          "waited_s": 2
+        }
+      ],
+      "guardrails": []
+    },
+    {
+      "index": 19,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 40.838,
+      "t_end_s": 41.874,
+      "response_ms": 1037,
+      "retries": [],
+      "tokens": {
+        "prompt": 669,
+        "completion": 42
+      }
+    },
+    {
+      "index": 20,
+      "speaker": "agent",
+      "text": "A team member has been paged and will join once available.",
+      "t_start_s": 41.874,
+      "t_end_s": 42.696,
+      "response_ms": 822,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1639,
+        "completion": 14
+      },
+      "llm_ms": 822,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 21,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 42.696,
+      "t_end_s": 43.088,
+      "response_ms": 392,
+      "retries": [],
+      "tokens": {
+        "prompt": 702,
+        "completion": 38
+      }
+    },
+    {
+      "index": 22,
+      "speaker": "agent",
+      "text": "The human handoff is still pending; please hold for a team member.",
+      "t_start_s": 43.088,
+      "t_end_s": 43.632,
+      "response_ms": 544,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1677,
+        "completion": 16
+      },
+      "llm_ms": 544,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 23,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 43.632,
+      "t_end_s": 44.33,
+      "response_ms": 698,
+      "retries": [],
+      "tokens": {
+        "prompt": 737,
+        "completion": 35
+      }
+    },
+    {
+      "index": 24,
+      "speaker": "agent",
+      "text": "A human agent is being routed to you now.",
+      "t_start_s": 44.33,
+      "t_end_s": 44.983,
+      "response_ms": 653,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1717,
+        "completion": 11
+      },
+      "llm_ms": 653,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 25,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 44.983,
+      "t_end_s": 46.43,
+      "response_ms": 1447,
+      "retries": [],
+      "tokens": {
+        "prompt": 767,
+        "completion": 27
+      }
+    },
+    {
+      "index": 26,
+      "speaker": "agent",
+      "text": "A team member is on their way; staying on the line is all that's needed.",
+      "t_start_s": 46.43,
+      "t_end_s": 78.909,
+      "response_ms": 32479,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1752,
+        "completion": 19
+      },
+      "llm_ms": 32479,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "APITimeoutError",
+          "waited_s": 2
+        }
+      ],
+      "guardrails": []
+    },
+    {
+      "index": 27,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 78.909,
+      "t_end_s": 79.335,
+      "response_ms": 426,
+      "retries": [],
+      "tokens": {
+        "prompt": 804,
+        "completion": 51
+      }
+    },
+    {
+      "index": 28,
+      "speaker": "agent",
+      "text": "The transfer request has been filed; a person will be with you shortly.",
+      "t_start_s": 79.335,
+      "t_end_s": 79.617,
+      "response_ms": 282,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1795,
+        "completion": 16
+      },
+      "llm_ms": 282,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 29,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 79.617,
+      "t_end_s": 79.996,
+      "response_ms": 379,
+      "retries": [],
+      "tokens": {
+        "prompt": 839,
+        "completion": 41
+      }
+    },
+    {
+      "index": 30,
+      "speaker": "agent",
+      "text": "Understood — a team member is being connected to this call now.",
+      "t_start_s": 79.996,
+      "t_end_s": 80.484,
+      "response_ms": 489,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1835,
+        "completion": 15
+      },
+      "llm_ms": 489,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 31,
+      "speaker": "caller",
+      "text": "I'd rather speak to a real person, please.",
+      "t_start_s": 80.484,
+      "t_end_s": 81.158,
+      "response_ms": 674,
+      "retries": [],
+      "tokens": {
+        "prompt": 873,
+        "completion": 80
+      }
+    },
+    {
+      "index": 32,
+      "speaker": "agent",
+      "text": "The handoff is active and a human agent will take over this line momentarily.",
+      "t_start_s": 81.158,
+      "t_end_s": 81.457,
+      "response_ms": 299,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1874,
+        "completion": 17
+      },
+      "llm_ms": 299,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "turn_limit",
+  "duration_s": 81.457,
+  "call_name": "dana_wants_human__r1"
+}

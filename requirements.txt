@@ -1,0 +1,10 @@
+openai==3.35.1
+python-dotenv==1.2.4
+PyYAML==6.0.3
+pytest==9.1.1
+opentelemetry-sdk==1.45.1
+opentelemetry-exporter-otlp-proto-http==1.45.1
+httpx==0.28.1
+
+# development: lint with  .venv\Scripts\python -m ruff check harness voice tests
+ruff==0.17.1

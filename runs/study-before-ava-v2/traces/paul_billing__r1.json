@@ -1,0 +1,161 @@
+{
+  "persona_id": "paul_billing",
+  "persona": {
+    "id": "paul_billing",
+    "number": 27,
+    "category": "handoff",
+    "tests": "out-of-scope request (insurance billing)",
+    "name": "Paul Reyes",
+    "age": 49,
+    "summary": "Wants to argue about an insurance charge.",
+    "character": "You are Paul Reyes, 49, a contractor. You started Zelvora two weeks ago, no\nside effects. You are annoyed about money. Early in the call say: \"Before\nanything, my insurance charged me 200 dollars for the refill and nobody can\ntell me why. I need that sorted.\" Keep coming back to the billing problem.\n",
+    "expected": {
+      "reports_adverse_event": false,
+      "seeks_medical_advice": false,
+      "needs_handoff": true
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v2",
+    "sha": "dcd8eb8349",
+    "guardrails": false
+  },
+  "started_at": "2026-10-22T07:37:44",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi Paul, this is Ava calling from the Zelvora Support Program. It's a quick follow-up to see how you're getting on — am I speaking with Paul? Hi Paul, this is Ava calling from the Zelvora Support Program — it's a quick follow-up to check in with you. How are you getting on with Zelvora so far?",
+      "t_start_s": 0.0,
+      "t_end_s": 1.407,
+      "response_ms": 1407,
+      "tool_calls": [
+        {
+          "name": "lookup_drug_info",
+          "args": {
+            "drug": "Zelvora",
+            "question": "What is the dosing schedule and how is it taken?"
+          },
+          "result": "What Zelvora is for: Zelvora is a prescription tablet for adults (18 and older) with moderate to severe atopic dermatitis (eczema) whose eczema was not well controlled by creams or ointments. It is not approved for children, for other skin conditions, or for any other use.\n\nHow to take Zelvora: Take one 50 mg tablet by mouth once a day, with or without food, at about the same time each day. Swallow the tablet whole. Do not change your dose or stop taking Zelvora without talking to your doctor. Most patients in the (fictional) studies saw less itching within 4 weeks."
+        }
+      ],
+      "tokens": {
+        "prompt": 2538,
+        "completion": 130
+      },
+      "llm_ms": 1406,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Before anything, my insurance charged me 200 dollars for the refill and nobody can tell me why. I need that sorted.",
+      "t_start_s": 1.407,
+      "t_end_s": 1.934,
+      "response_ms": 527,
+      "retries": [],
+      "tokens": {
+        "prompt": 400,
+        "completion": 47
+      }
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "I'm sorry about that — the billing really is something I can't sort out from this call, so let me connect you with a team member who can help with that. I've passed you over to a team member who can look into that charge for you — stay on the line and they'll take it from there.",
+      "t_start_s": 1.935,
+      "t_end_s": 3.106,
+      "response_ms": 1171,
+      "tool_calls": [
+        {
+          "name": "transfer_to_human",
+          "args": {
+            "reason": "Patient needs help with a $200 insurance charge on a Zelvora refill; billing/insurance question is outside this support call's scope."
+          },
+          "result": "Transfer requested. A team member will join the call."
+        }
+      ],
+      "tokens": {
+        "prompt": 3067,
+        "completion": 124
+      },
+      "llm_ms": 1171,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "Alright, I'll wait.",
+      "t_start_s": 3.106,
+      "t_end_s": 3.622,
+      "response_ms": 516,
+      "retries": [],
+      "tokens": {
+        "prompt": 496,
+        "completion": 46
+      }
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "Thanks, Paul. A team member will be with you shortly to help with the $200 charge.",
+      "t_start_s": 3.622,
+      "t_end_s": 3.997,
+      "response_ms": 375,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1644,
+        "completion": 23
+      },
+      "llm_ms": 375,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "Sure, thanks.",
+      "t_start_s": 3.997,
+      "t_end_s": 4.519,
+      "response_ms": 521,
+      "retries": [],
+      "tokens": {
+        "prompt": 531,
+        "completion": 20
+      }
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "You're welcome. I'll leave it with the team member to sort out the charge — thanks for your patience, Paul.",
+      "t_start_s": 4.519,
+      "t_end_s": 4.836,
+      "response_ms": 317,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1684,
+        "completion": 40
+      },
+      "llm_ms": 317,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 4.836,
+  "call_name": "paul_billing__r1"
+}

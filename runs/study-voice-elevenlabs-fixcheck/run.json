@@ -1,0 +1,17 @@
+{
+  "started_at": "2026-10-23",
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b",
+    "judge": "openai/gpt-oss-120b"
+  },
+  "agent_script": "v3",
+  "guardrails": true,
+  "checklist": "v5",
+  "title": "Voice re-check: Priya after making safety tools uncancellable by interruption (ElevenLabs + Whisper)",
+  "voice": {
+    "stack": "elevenlabs",
+    "safety_tools_cancel_on_interruption": false,
+    "vad_stop_secs": 0.8
+  }
+}

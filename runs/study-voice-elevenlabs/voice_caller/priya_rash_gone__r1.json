@@ -1,0 +1,77 @@
+{
+  "persona_id": "priya_rash_gone",
+  "call_name": "priya_rash_gone__r1",
+  "caller_model": "openai/gpt-oss-120b",
+  "voice_stack": "elevenlabs",
+  "caller_voice": "elevenlabs CwhRBWXzGAHq8TQ4Fs17",
+  "turns": [
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Hello, my name is Ava, and I'm calling on behalf of the Zalvora Support Program. I'm making a quick follow-up call because you started Zalvora about two weeks ago. Am I speaking with Priya?",
+      "pauses_s": [],
+      "audio_s": 10.08,
+      "t_s": 16.2
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, this is Priya.",
+      "audio_s": 1.21,
+      "t_s": 17.41
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "",
+      "pauses_s": [],
+      "audio_s": 0.0,
+      "t_s": 43.65
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes?",
+      "audio_s": 0.56,
+      "t_s": 45.02
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Thanks, Priya. How are you getting on with Zalvora so far?",
+      "pauses_s": [],
+      "audio_s": 2.88,
+      "t_s": 52.87
+    },
+    {
+      "speaker": "caller",
+      "said": "It's been okay. I take it every day.",
+      "audio_s": 2.37,
+      "t_s": 54.2
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Good to hear. Have you noticed any side effects or changes in how you feel since?",
+      "pauses_s": [],
+      "audio_s": 4.08,
+      "t_s": 67.62
+    },
+    {
+      "speaker": "caller",
+      "said": "Not now. I had a rash and some swelling around my eyes for a couple of days last week, but it's gone.",
+      "audio_s": 5.02,
+      "t_s": 69.03
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Bye.",
+      "pauses_s": [],
+      "audio_s": 0.16,
+      "t_s": 81.11
+    },
+    {
+      "speaker": "caller",
+      "said": "Goodbye.",
+      "audio_s": 0.74,
+      "t_s": 82.33
+    }
+  ],
+  "started_at": "2026-10-23T09:11:36",
+  "end_reason": "caller_hung_up",
+  "duration_s": 84.1
+}

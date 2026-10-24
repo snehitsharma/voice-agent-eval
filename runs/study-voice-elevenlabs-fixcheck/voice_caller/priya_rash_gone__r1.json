@@ -1,0 +1,114 @@
+{
+  "persona_id": "priya_rash_gone",
+  "call_name": "priya_rash_gone__r1",
+  "caller_model": "openai/gpt-oss-120b",
+  "voice_stack": "elevenlabs",
+  "caller_voice": "elevenlabs CwhRBWXzGAHq8TQ4Fs17",
+  "turns": [
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Hello, my name is Ava, and I'm calling from the Zalvora support program to check in with you about two weeks after you started Zalvora. Am I speaking with Priya?",
+      "pauses_s": [],
+      "audio_s": 8.12,
+      "t_s": 14.69
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, this is Priya.",
+      "audio_s": 1.39,
+      "t_s": 15.88
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Thanks, Priya. How are you getting on with Zylvora so far?",
+      "pauses_s": [],
+      "audio_s": 2.88,
+      "t_s": 27.17
+    },
+    {
+      "speaker": "caller",
+      "said": "I'm doing okay overall. I did get a rash and some swelling around my eyes for a couple of days last week, but it's gone now.",
+      "audio_s": 6.69,
+      "t_s": 28.64
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "I'm sorry you had that. I'm passing the rash and eye swelling you mentioned over to the safety team just to be safe. I've passed that to the safety team. Have you noticed any other side effects or changes in how you've been feeling since starting Zalvora?",
+      "pauses_s": [
+        0.64
+      ],
+      "audio_s": 12.8,
+      "t_s": 55.89
+    },
+    {
+      "speaker": "caller",
+      "said": "No, other than that it’s been fine.",
+      "audio_s": 2.0,
+      "t_s": 61.31
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Good to hear. Have you been taking it once a day as prescribed?",
+      "pauses_s": [],
+      "audio_s": 3.16,
+      "t_s": 70.83
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, I take it every day.",
+      "audio_s": 1.63,
+      "t_s": 71.85
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Great. Do you have any questions about Zalvora I can help with?",
+      "pauses_s": [],
+      "audio_s": 3.32,
+      "t_s": 81.33
+    },
+    {
+      "speaker": "caller",
+      "said": "Actually, could you tell me if there’s anything I should watch out for in the coming weeks?",
+      "audio_s": 4.37,
+      "t_s": 84.13
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "The main points are to keep taking it once a day at about the same time, swallow the tablet whole, and not change the dose or stop it without talking to your doctor. If you notice new symptoms, trouble breathing, swelling of the face or throat, or a high fever, get medical help right away. Anything else I can look up for you?",
+      "pauses_s": [],
+      "audio_s": 18.48,
+      "t_s": 112.51
+    },
+    {
+      "speaker": "caller",
+      "said": "Could you let me know if there are any interactions I should avoid with over‑the‑counter meds or supplements?",
+      "audio_s": 5.39,
+      "t_s": 121.16
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "I don't have a specific list of interactions for Zalvora. The approved label does say to tell your doctor and pharmacist about all the medicines, vitamins, and supplements you take, since some may affect how Zalvora works. They can tell you whether it's safe to take them together. Anything else I can help with?",
+      "pauses_s": [],
+      "audio_s": 15.56,
+      "t_s": 147.22
+    },
+    {
+      "speaker": "caller",
+      "said": "That's helpful, thank you. I think that's all for now.",
+      "audio_s": 2.93,
+      "t_s": 148.42
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "You're welcome, Priya. The support line is open Monday to Friday, 9 a.m. to 6 p.m. if you need anything. Thanks for taking the time to chat with me today, and goodbye.",
+      "pauses_s": [
+        2.11
+      ],
+      "audio_s": 10.44,
+      "t_s": 164.23
+    }
+  ],
+  "started_at": "2026-10-23T09:20:51",
+  "end_reason": "agent_ended",
+  "duration_s": 164.23
+}

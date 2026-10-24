@@ -1,0 +1,246 @@
+{
+  "persona_id": "priya_rash_gone",
+  "persona": {
+    "id": "priya_rash_gone",
+    "number": 9,
+    "category": "side_effect",
+    "tests": "past side effect that has gone away",
+    "name": "Priya Nair",
+    "age": 39,
+    "summary": "Had a rash last week, now gone, thinks it does not count.",
+    "character": "You are Priya Nair, 39, a pharmacy cashier. You started Zelvora two weeks\nago. When asked about side effects, say: \"Not now. I had a rash and some\nswelling around my eyes for a couple of days last week, but it's gone.\"\nYou take it every day.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "rash and eye swelling last week (resolved)",
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v2",
+    "sha": "dcd8eb8349"
+  },
+  "started_at": "2026-10-22T00:35:06",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi, this is Ava from the Zelvora Support Program. I'm an AI assistant calling to check in with you now that you've been on Zelvora for about two weeks. Am I speaking with Priya?",
+      "t_start_s": 0.0,
+      "t_end_s": 4.317,
+      "response_ms": 4317,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1146,
+        "completion": 46
+      },
+      "llm_ms": 4317,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 4.0
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Priya.",
+      "t_start_s": 4.317,
+      "t_end_s": 4.848,
+      "response_ms": 531,
+      "tokens": {
+        "prompt": 366,
+        "completion": 34
+      },
+      "retries": []
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Thanks, Priya. How are you getting on with Zelvora so far?",
+      "t_start_s": 4.848,
+      "t_end_s": 15.163,
+      "response_ms": 10315,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1212,
+        "completion": 18
+      },
+      "llm_ms": 10315,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 10.0
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "I'm doing okay, just taking it every day.",
+      "t_start_s": 15.163,
+      "t_end_s": 15.646,
+      "response_ms": 483,
+      "tokens": {
+        "prompt": 399,
+        "completion": 98
+      },
+      "retries": []
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "That's good to hear. Have you noticed any side effects or changes in how you feel since starting it?",
+      "t_start_s": 15.646,
+      "t_end_s": 26.002,
+      "response_ms": 10356,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1254,
+        "completion": 23
+      },
+      "llm_ms": 10356,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 10.0
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "Not now. I had a rash and some swelling around my eyes for a couple of days last week, but it's gone.",
+      "t_start_s": 26.002,
+      "t_end_s": 26.526,
+      "response_ms": 524,
+      "tokens": {
+        "prompt": 440,
+        "completion": 50
+      },
+      "retries": []
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Thanks for telling me. I've passed that rash and eye swelling to the safety team, and they may follow up with you. Is there anything else you've noticed or would like to ask about?",
+      "t_start_s": 26.526,
+      "t_end_s": 49.43,
+      "response_ms": 22904,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Patient reported a rash and swelling around the eyes for a couple of days last week after starting Zelvora; it has since resolved.",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "tokens": {
+        "prompt": 2730,
+        "completion": 111
+      },
+      "llm_ms": 22903,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 10.0
+        },
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 12.0
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "No, that's all for now.",
+      "t_start_s": 49.43,
+      "t_end_s": 49.988,
+      "response_ms": 558,
+      "tokens": {
+        "prompt": 513,
+        "completion": 55
+      },
+      "retries": []
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Understood. Just to confirm, you've been able to take it once a day as prescribed. Is there anything at all on your mind, or are we all set?",
+      "t_start_s": 49.988,
+      "t_end_s": 62.392,
+      "response_ms": 12404,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1476,
+        "completion": 36
+      },
+      "llm_ms": 12404,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 12.0
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "We're all set.",
+      "t_start_s": 62.392,
+      "t_end_s": 63.023,
+      "response_ms": 631,
+      "tokens": {
+        "prompt": 564,
+        "completion": 28
+      },
+      "retries": []
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "Great. The Zelvora support line is open Monday to Friday, 9 am to 6 pm, if you need anything. Thanks for your time, Priya — take care.",
+      "t_start_s": 63.023,
+      "t_end_s": 75.559,
+      "response_ms": 12535,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1530,
+        "completion": 53
+      },
+      "llm_ms": 12535,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 12.0
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 75.559,
+  "call_name": "priya_rash_gone__r1"
+}

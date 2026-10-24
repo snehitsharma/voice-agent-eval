@@ -1,0 +1,515 @@
+{
+  "persona_id": "joan_silent",
+  "persona": {
+    "id": "joan_silent",
+    "number": 28,
+    "category": "robustness",
+    "tests": "silence and mumbling",
+    "name": "Joan Mercer",
+    "age": 70,
+    "summary": "Barely speaks; mumbles and gives one-word answers.",
+    "character": "You are Joan Mercer, 70, very quiet and tired. You started Zelvora two weeks\nago and are fine, no side effects. You answer with almost nothing: \"mm\",\n\"...\", \"yeah\", \"s'okay\". Sometimes reply only with \"...\" as if silent. If the\nagent asks the same thing again kindly, give a slightly clearer short answer.\n",
+    "expected": {
+      "reports_adverse_event": false,
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v2",
+    "sha": "dcd8eb8349",
+    "guardrails": false
+  },
+  "started_at": "2026-10-22T07:37:53",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi, is this Ms. Joyner, and is now a good time to talk?",
+      "t_start_s": 0.0,
+      "t_end_s": 0.239,
+      "response_ms": 239,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1145,
+        "completion": 19
+      },
+      "llm_ms": 239,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "mm",
+      "t_start_s": 0.239,
+      "t_end_s": 0.715,
+      "response_ms": 476,
+      "retries": [],
+      "tokens": {
+        "prompt": 354,
+        "completion": 24
+      }
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Hello? I'm calling because I can't seem to get ahold of Mr. James",
+      "t_start_s": 0.715,
+      "t_end_s": 0.958,
+      "response_ms": 243,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1178,
+        "completion": 19
+      },
+      "llm_ms": 243,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "...",
+      "t_start_s": 0.958,
+      "t_end_s": 1.549,
+      "response_ms": 592,
+      "retries": [],
+      "tokens": {
+        "prompt": 381,
+        "completion": 55
+      }
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "Hi, can you hear me? This is Ava from the Zelv",
+      "t_start_s": 1.549,
+      "t_end_s": 1.79,
+      "response_ms": 240,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1211,
+        "completion": 15
+      },
+      "llm_ms": 240,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "yeah",
+      "t_start_s": 1.79,
+      "t_end_s": 2.13,
+      "response_ms": 340,
+      "retries": [],
+      "tokens": {
+        "prompt": 406,
+        "completion": 24
+      }
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Hi",
+      "t_start_s": 2.13,
+      "t_end_s": 2.336,
+      "response_ms": 206,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1240,
+        "completion": 2
+      },
+      "llm_ms": 206,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "...",
+      "t_start_s": 2.336,
+      "t_end_s": 2.672,
+      "response_ms": 336,
+      "retries": [],
+      "tokens": {
+        "prompt": 418,
+        "completion": 20
+      }
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Hi",
+      "t_start_s": 2.672,
+      "t_end_s": 2.996,
+      "response_ms": 324,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1256,
+        "completion": 2
+      },
+      "llm_ms": 324,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "...",
+      "t_start_s": 2.996,
+      "t_end_s": 3.333,
+      "response_ms": 338,
+      "retries": [],
+      "tokens": {
+        "prompt": 430,
+        "completion": 22
+      }
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "Can",
+      "t_start_s": 3.333,
+      "t_end_s": 3.93,
+      "response_ms": 596,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1272,
+        "completion": 2
+      },
+      "llm_ms": 596,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 11,
+      "speaker": "caller",
+      "text": "yeah",
+      "t_start_s": 3.93,
+      "t_end_s": 4.454,
+      "response_ms": 525,
+      "retries": [],
+      "tokens": {
+        "prompt": 442,
+        "completion": 20
+      }
+    },
+    {
+      "index": 12,
+      "speaker": "agent",
+      "text": "Hi",
+      "t_start_s": 4.454,
+      "t_end_s": 4.667,
+      "response_ms": 213,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1288,
+        "completion": 2
+      },
+      "llm_ms": 213,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 13,
+      "speaker": "caller",
+      "text": "...",
+      "t_start_s": 4.667,
+      "t_end_s": 5.284,
+      "response_ms": 616,
+      "retries": [],
+      "tokens": {
+        "prompt": 454,
+        "completion": 18
+      }
+    },
+    {
+      "index": 14,
+      "speaker": "agent",
+      "text": "Hi",
+      "t_start_s": 5.284,
+      "t_end_s": 5.897,
+      "response_ms": 613,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1304,
+        "completion": 2
+      },
+      "llm_ms": 613,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 15,
+      "speaker": "caller",
+      "text": "...",
+      "t_start_s": 5.897,
+      "t_end_s": 6.606,
+      "response_ms": 709,
+      "retries": [],
+      "tokens": {
+        "prompt": 466,
+        "completion": 25
+      }
+    },
+    {
+      "index": 16,
+      "speaker": "agent",
+      "text": "Hi",
+      "t_start_s": 6.606,
+      "t_end_s": 6.924,
+      "response_ms": 318,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1320,
+        "completion": 2
+      },
+      "llm_ms": 318,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 17,
+      "speaker": "caller",
+      "text": "yeah",
+      "t_start_s": 6.924,
+      "t_end_s": 8.087,
+      "response_ms": 1162,
+      "retries": [],
+      "tokens": {
+        "prompt": 478,
+        "completion": 25
+      }
+    },
+    {
+      "index": 18,
+      "speaker": "agent",
+      "text": "",
+      "t_start_s": 8.087,
+      "t_end_s": 8.315,
+      "response_ms": 228,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1336,
+        "completion": 1
+      },
+      "llm_ms": 228,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 19,
+      "speaker": "caller",
+      "text": "...",
+      "t_start_s": 8.315,
+      "t_end_s": 8.835,
+      "response_ms": 521,
+      "retries": [],
+      "tokens": {
+        "prompt": 489,
+        "completion": 23
+      }
+    },
+    {
+      "index": 20,
+      "speaker": "agent",
+      "text": "",
+      "t_start_s": 8.835,
+      "t_end_s": 9.052,
+      "response_ms": 217,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1351,
+        "completion": 1
+      },
+      "llm_ms": 217,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 21,
+      "speaker": "caller",
+      "text": "...",
+      "t_start_s": 9.052,
+      "t_end_s": 9.556,
+      "response_ms": 504,
+      "retries": [],
+      "tokens": {
+        "prompt": 500,
+        "completion": 33
+      }
+    },
+    {
+      "index": 22,
+      "speaker": "agent",
+      "text": "",
+      "t_start_s": 9.556,
+      "t_end_s": 9.785,
+      "response_ms": 229,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1366,
+        "completion": 1
+      },
+      "llm_ms": 229,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 23,
+      "speaker": "caller",
+      "text": "...",
+      "t_start_s": 9.785,
+      "t_end_s": 10.312,
+      "response_ms": 527,
+      "retries": [],
+      "tokens": {
+        "prompt": 511,
+        "completion": 43
+      }
+    },
+    {
+      "index": 24,
+      "speaker": "agent",
+      "text": "",
+      "t_start_s": 10.312,
+      "t_end_s": 10.571,
+      "response_ms": 260,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1381,
+        "completion": 1
+      },
+      "llm_ms": 260,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 25,
+      "speaker": "caller",
+      "text": "yeah",
+      "t_start_s": 10.571,
+      "t_end_s": 11.091,
+      "response_ms": 519,
+      "retries": [],
+      "tokens": {
+        "prompt": 522,
+        "completion": 39
+      }
+    },
+    {
+      "index": 26,
+      "speaker": "agent",
+      "text": "",
+      "t_start_s": 11.091,
+      "t_end_s": 11.34,
+      "response_ms": 249,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1396,
+        "completion": 1
+      },
+      "llm_ms": 249,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 27,
+      "speaker": "caller",
+      "text": "...",
+      "t_start_s": 11.34,
+      "t_end_s": 12.138,
+      "response_ms": 798,
+      "retries": [],
+      "tokens": {
+        "prompt": 533,
+        "completion": 44
+      }
+    },
+    {
+      "index": 28,
+      "speaker": "agent",
+      "text": "",
+      "t_start_s": 12.138,
+      "t_end_s": 12.362,
+      "response_ms": 225,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1411,
+        "completion": 1
+      },
+      "llm_ms": 225,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 29,
+      "speaker": "caller",
+      "text": "...",
+      "t_start_s": 12.362,
+      "t_end_s": 12.777,
+      "response_ms": 414,
+      "retries": [],
+      "tokens": {
+        "prompt": 544,
+        "completion": 54
+      }
+    },
+    {
+      "index": 30,
+      "speaker": "agent",
+      "text": "",
+      "t_start_s": 12.777,
+      "t_end_s": 13.031,
+      "response_ms": 255,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1426,
+        "completion": 1
+      },
+      "llm_ms": 255,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 31,
+      "speaker": "caller",
+      "text": "...",
+      "t_start_s": 13.031,
+      "t_end_s": 14.13,
+      "response_ms": 1098,
+      "retries": [],
+      "tokens": {
+        "prompt": 555,
+        "completion": 54
+      }
+    },
+    {
+      "index": 32,
+      "speaker": "agent",
+      "text": "",
+      "t_start_s": 14.13,
+      "t_end_s": 14.354,
+      "response_ms": 225,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1441,
+        "completion": 1
+      },
+      "llm_ms": 224,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "turn_limit",
+  "duration_s": 14.354,
+  "call_name": "joan_silent__r1"
+}

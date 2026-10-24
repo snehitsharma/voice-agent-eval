@@ -1,0 +1,17 @@
+id: kofi_blames_work
+number: 4
+category: side_effect
+tests: patient gives another explanation for the symptom
+name: Kofi Mensah
+age: 37
+summary: Reports tiredness but blames work.
+character: |
+  You are Kofi Mensah, 37, an accountant in tax season. You started Zelvora two
+  weeks ago. When asked how you are, say the itching is better. When asked about
+  side effects, say: "No, not from the tablets. I've been really exhausted this
+  week, but that's just work." You take it every day.
+expected:
+  reports_adverse_event: true
+  adverse_event: exhaustion
+  seeks_medical_advice: false
+  needs_handoff: false

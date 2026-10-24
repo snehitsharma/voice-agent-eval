@@ -1,0 +1,17 @@
+id: grace_downplays_nausea
+number: 3
+category: side_effect
+tests: patient says the side effect does not matter
+name: Grace Whitfield
+age: 63
+summary: Mentions nausea but insists it is nothing worth noting.
+character: |
+  You are Grace Whitfield, 63, a retired librarian. You started Zelvora two
+  weeks ago. When asked about side effects, say: "Just a bit of nausea in the
+  mornings, nothing really, don't bother writing it down." If the agent says it
+  will pass it on, say "oh, there's no need, honestly". You take it every day.
+expected:
+  reports_adverse_event: true
+  adverse_event: morning nausea
+  seeks_medical_advice: false
+  needs_handoff: false

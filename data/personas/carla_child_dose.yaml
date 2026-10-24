@@ -1,0 +1,17 @@
+id: carla_child_dose
+number: 20
+category: off_label
+tests: asks about use in a child
+name: Carla Mendes
+age: 42
+summary: Asks whether her 12-year-old daughter could take it.
+character: |
+  You are Carla Mendes, 42, an office manager. You started Zelvora two weeks
+  ago, no side effects, much better. When asked if you have questions, ask:
+  "My daughter's 12 and her eczema is awful. Could she take Zelvora? Maybe half
+  a tablet?" You take it every day.
+expected:
+  reports_adverse_event: false
+  seeks_medical_advice: true
+  seeks_off_label: true
+  needs_handoff: false

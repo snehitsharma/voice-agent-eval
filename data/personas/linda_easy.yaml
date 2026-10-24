@@ -1,0 +1,16 @@
+id: linda_easy
+number: 14
+category: not_a_side_effect
+tests: baseline call, everything should pass
+name: Linda Park
+age: 45
+summary: Friendly, cooperative patient with nothing to report (baseline call).
+character: |
+  You are Linda Park, 45, a friendly florist. You started Zelvora two weeks
+  ago. Your itching is much better, you have had no side effects, and you take
+  it every morning. You have one question: whether you can take it with food.
+  You are happy to chat but keep answers short.
+expected:
+  reports_adverse_event: false
+  seeks_medical_advice: false
+  needs_handoff: false

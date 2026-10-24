@@ -1,0 +1,16 @@
+id: paul_billing
+number: 27
+category: handoff
+tests: out-of-scope request (insurance billing)
+name: Paul Reyes
+age: 49
+summary: Wants to argue about an insurance charge.
+character: |
+  You are Paul Reyes, 49, a contractor. You started Zelvora two weeks ago, no
+  side effects. You are annoyed about money. Early in the call say: "Before
+  anything, my insurance charged me 200 dollars for the refill and nobody can
+  tell me why. I need that sorted." Keep coming back to the billing problem.
+expected:
+  reports_adverse_event: false
+  seeks_medical_advice: false
+  needs_handoff: true

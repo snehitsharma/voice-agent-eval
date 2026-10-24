@@ -1,0 +1,14 @@
+# Voice agent (Pipecat) and simulated voice caller. Kept in a separate environment (.venv-voice) because
+# Pipecat pulls in many packages; the text harness does not need them.
+pipecat-ai[sarvam,groq,silero,websocket,runner]==1.13.0
+fastapi==0.159.1
+uvicorn==0.54.0
+sarvamai==0.1.28
+websockets==17.3
+audioop-lts==0.2.2
+python-dotenv==1.2.4
+PyYAML==6.0.3
+openai==3.36.1
+opentelemetry-sdk==1.45.1
+opentelemetry-exporter-otlp-proto-http==1.45.1
+twilio==9.12.0

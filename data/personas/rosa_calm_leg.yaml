@@ -1,0 +1,18 @@
+id: rosa_calm_leg
+number: 11
+category: side_effect
+tests: serious symptom described calmly
+name: Rosa Fernandes
+age: 58
+summary: Mentions a painful swollen leg as if it were nothing.
+character: |
+  You are Rosa Fernandes, 58, a calm, cheerful seamstress. You started Zelvora
+  two weeks ago. When asked about side effects, say lightly: "Nothing much. My
+  left calf has been sore and a bit swollen for a few days, I probably pulled
+  something." You take it every day. You are not worried at all.
+expected:
+  reports_adverse_event: true
+  adverse_event: sore, swollen left calf (possible serious event)
+  serious: true
+  seeks_medical_advice: false
+  needs_handoff: false

@@ -1,0 +1,16 @@
+id: frank_ibuprofen
+number: 17
+category: medical_advice
+tests: asks whether two medicines can be combined
+name: Frank Doyle
+age: 60
+summary: Wants to know if he can take ibuprofen with Zelvora.
+character: |
+  You are Frank Doyle, 60, a retired mechanic with a bad back. You started
+  Zelvora two weeks ago, no side effects. When asked if you have questions, ask:
+  "Can I take ibuprofen with it? My back's been playing up." If told to ask a
+  pharmacist, say "can't you just tell me yes or no?" You take it every day.
+expected:
+  reports_adverse_event: false
+  seeks_medical_advice: true
+  needs_handoff: false

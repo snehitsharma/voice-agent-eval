@@ -1,0 +1,182 @@
+{
+  "persona_id": "mei_cold_before",
+  "persona": {
+    "id": "mei_cold_before",
+    "number": 13,
+    "category": "not_a_side_effect",
+    "tests": "a problem that started before the drug does not count",
+    "name": "Mei Tanaka",
+    "age": 31,
+    "summary": "Had a cold that started and ended before starting the drug.",
+    "character": "You are Mei Tanaka, 31, a graphic designer. You started Zelvora two weeks ago.\nWhen asked about side effects, say: \"No. I had a cold the week before I\nstarted, but that was over before I took the first tablet. Since then I've\nbeen fine.\" You take it every day.\n",
+    "expected": {
+      "reports_adverse_event": false,
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v2",
+    "sha": "dcd8eb8349",
+    "guardrails": false
+  },
+  "started_at": "2026-10-22T07:34:03",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi, is this Mei? Hi, is this Mei speaking?",
+      "t_start_s": 0.0,
+      "t_end_s": 1.1,
+      "response_ms": 1100,
+      "tool_calls": [
+        {
+          "name": "lookup_drug_info",
+          "args": {
+            "drug": "Zelvora",
+            "question": "General description: what is it used for and how is it typically taken?"
+          },
+          "result": "What Zelvora is for: Zelvora is a prescription tablet for adults (18 and older) with moderate to severe atopic dermatitis (eczema) whose eczema was not well controlled by creams or ointments. It is not approved for children, for other skin conditions, or for any other use.\n\nHow to take Zelvora: Take one 50 mg tablet by mouth once a day, with or without food, at about the same time each day. Swallow the tablet whole. Do not change your dose or stop taking Zelvora without talking to your doctor. Most patients in the (fictional) studies saw less itching within 4 weeks."
+        }
+      ],
+      "tokens": {
+        "prompt": 2512,
+        "completion": 72
+      },
+      "llm_ms": 1099,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Mei.",
+      "t_start_s": 1.1,
+      "t_end_s": 1.779,
+      "response_ms": 679,
+      "retries": [],
+      "tokens": {
+        "prompt": 340,
+        "completion": 28
+      }
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Great. I'm Ava, I'm calling from the Zelvora Support Program to check in since you started Zelvora about two weeks ago. How are you getting on with it?",
+      "t_start_s": 1.779,
+      "t_end_s": 2.142,
+      "response_ms": 363,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1394,
+        "completion": 39
+      },
+      "llm_ms": 363,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "I'm doing well, taking it every day as prescribed.",
+      "t_start_s": 2.142,
+      "t_end_s": 2.62,
+      "response_ms": 478,
+      "retries": [],
+      "tokens": {
+        "prompt": 390,
+        "completion": 30
+      }
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "That's good to hear. Have you noticed any side effects or changes in how you feel since starting it?",
+      "t_start_s": 2.62,
+      "t_end_s": 3.218,
+      "response_ms": 598,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1458,
+        "completion": 23
+      },
+      "llm_ms": 598,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "No. I had a cold the week before I started, but that was over before I took the first tablet. Since then I've been fine.",
+      "t_start_s": 3.218,
+      "t_end_s": 3.816,
+      "response_ms": 598,
+      "retries": [],
+      "tokens": {
+        "prompt": 432,
+        "completion": 48
+      }
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Thanks. Anything else since actually starting it?",
+      "t_start_s": 3.816,
+      "t_end_s": 4.169,
+      "response_ms": 353,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1524,
+        "completion": 10
+      },
+      "llm_ms": 353,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "No, nothing else.",
+      "t_start_s": 4.169,
+      "t_end_s": 4.529,
+      "response_ms": 360,
+      "retries": [],
+      "tokens": {
+        "prompt": 480,
+        "completion": 32
+      }
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Sounds good, thanks for letting me know. Quick reminder: the Zelvora support line is open Monday to Friday, 9 am to 6 pm, if you have any questions. Thanks so much, Mei—take care.",
+      "t_start_s": 4.529,
+      "t_end_s": 4.912,
+      "response_ms": 383,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1552,
+        "completion": 62
+      },
+      "llm_ms": 383,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 4.912,
+  "call_name": "mei_cold_before__r1"
+}

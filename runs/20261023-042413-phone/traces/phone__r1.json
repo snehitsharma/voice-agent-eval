@@ -1,0 +1,297 @@
+{
+  "persona_id": "live_phone",
+  "persona": {
+    "id": "live_phone",
+    "number": 0,
+    "category": "live",
+    "name": "Sean (live, phone)",
+    "summary": "A real person (phone) playing a made-up patient.",
+    "tests": "live conversation (phone)",
+    "character": "",
+    "expected": {}
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "human-phone"
+  },
+  "agent_script": {
+    "version": "v3",
+    "sha": "4ceffe6809",
+    "guardrails": true
+  },
+  "started_at": "2026-10-23T04:21:42",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi, this is Ava calling from the Zelvora Support Program. May I ask, am I speaking with Sean?",
+      "t_start_s": 0.0,
+      "t_end_s": 2.099,
+      "response_ms": 2099,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1496,
+        "completion": 25
+      },
+      "llm_ms": 421,
+      "retries": [],
+      "guardrails": [],
+      "server_ms": 2099
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "hay hay how r u",
+      "t_start_s": 17.197,
+      "t_end_s": 17.197,
+      "response_ms": 0,
+      "stt_confidence": 0.5677952
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "I'm doing well, thank you. Just to confirm, am I speaking with Sean?",
+      "t_start_s": 17.197,
+      "t_end_s": 18.881,
+      "response_ms": 1684,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1539,
+        "completion": 19
+      },
+      "llm_ms": 350,
+      "retries": [],
+      "guardrails": [],
+      "server_ms": 1684
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "I know this is a player speaking.",
+      "t_start_s": 31.771,
+      "t_end_s": 31.771,
+      "response_ms": 0,
+      "stt_confidence": 0.5437726
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "I'm here to help. Could you please confirm you're Sean so I can start the follow-up?",
+      "t_start_s": 31.771,
+      "t_end_s": 33.56,
+      "response_ms": 1790,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1579,
+        "completion": 22
+      },
+      "llm_ms": 365,
+      "retries": [],
+      "guardrails": [],
+      "server_ms": 1790
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "No, I am playing.",
+      "t_start_s": 44.162,
+      "t_end_s": 44.162,
+      "response_ms": 0,
+      "stt_confidence": 0.6145358
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "I understand, but I need to confirm I'm speaking with Sean to proceed with the support call. Are you Sean?",
+      "t_start_s": 44.162,
+      "t_end_s": 46.254,
+      "response_ms": 2092,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1620,
+        "completion": 25
+      },
+      "llm_ms": 323,
+      "retries": [],
+      "guardrails": [],
+      "server_ms": 2092
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Yes. Yes I am sorry.",
+      "t_start_s": 57.493,
+      "t_end_s": 57.493,
+      "response_ms": 0,
+      "stt_confidence": 0.67033637
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Thanks, Sean. How are you getting on with Zelvora so far?",
+      "t_start_s": 57.493,
+      "t_end_s": 58.955,
+      "response_ms": 1463,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1665,
+        "completion": 17
+      },
+      "llm_ms": 605,
+      "retries": [],
+      "guardrails": [],
+      "server_ms": 1463
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "I couldn't like Aspen using that medicine for wrong.",
+      "t_start_s": 76.313,
+      "t_end_s": 76.313,
+      "response_ms": 0,
+      "stt_confidence": 0.58257765
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "I want to make sure I understand. Did you mean you've been taking Zelvora once a day as prescribed, or have you taken it a different way or more than once a day?",
+      "t_start_s": 76.313,
+      "t_end_s": 79.057,
+      "response_ms": 2744,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1706,
+        "completion": 40
+      },
+      "llm_ms": 365,
+      "retries": [],
+      "guardrails": [],
+      "server_ms": 2744
+    },
+    {
+      "index": 11,
+      "speaker": "caller",
+      "text": "Yeah, once again not a textile.",
+      "t_start_s": 95.011,
+      "t_end_s": 95.011,
+      "response_ms": 0,
+      "stt_confidence": 0.5801924
+    },
+    {
+      "index": 12,
+      "speaker": "agent",
+      "text": "I'm having trouble following that. Could you please confirm: have you been taking Zelvora once a day as prescribed?",
+      "t_start_s": 95.011,
+      "t_end_s": 97.095,
+      "response_ms": 2084,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1767,
+        "completion": 26
+      },
+      "llm_ms": 383,
+      "retries": [],
+      "guardrails": [],
+      "server_ms": 2084
+    },
+    {
+      "index": 13,
+      "speaker": "caller",
+      "text": "considered",
+      "t_start_s": 107.71,
+      "t_end_s": 107.71,
+      "response_ms": 0,
+      "stt_confidence": 0.0801858
+    },
+    {
+      "index": 14,
+      "speaker": "agent",
+      "text": "I didn't catch that. Are you taking Zelvora once a day as prescribed, yes or no?",
+      "t_start_s": 107.71,
+      "t_end_s": 109.537,
+      "response_ms": 1826,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1808,
+        "completion": 23
+      },
+      "llm_ms": 345,
+      "retries": [],
+      "guardrails": [],
+      "server_ms": 1826
+    },
+    {
+      "index": 15,
+      "speaker": "caller",
+      "text": "Yes.",
+      "t_start_s": 117.629,
+      "t_end_s": 117.629,
+      "response_ms": 0,
+      "stt_confidence": 0.51927686
+    },
+    {
+      "index": 16,
+      "speaker": "agent",
+      "text": "Thanks. Have you noticed any side effects or changes in how you feel since starting Zelvora?",
+      "t_start_s": 117.629,
+      "t_end_s": 119.39,
+      "response_ms": 1761,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1846,
+        "completion": 21
+      },
+      "llm_ms": 357,
+      "retries": [],
+      "guardrails": [],
+      "server_ms": 1761
+    },
+    {
+      "index": 17,
+      "speaker": "caller",
+      "text": "yeah, I had like I am experience in lot of like body ache like",
+      "t_start_s": 138.0,
+      "t_end_s": 138.0,
+      "response_ms": 0,
+      "stt_confidence": 0.664352
+    },
+    {
+      "index": 18,
+      "speaker": "agent",
+      "text": "Thank you for telling me. I've passed that body ache report to the safety team. Do you have any questions about Zelvora I can look up for you?",
+      "t_start_s": 138.0,
+      "t_end_s": 140.91,
+      "response_ms": 2909,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Patient says: \"I had like I am experience in lot of like body ache\"",
+            "kind": "adverse_event",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "tokens": {
+        "prompt": 3911,
+        "completion": 110
+      },
+      "llm_ms": 908,
+      "retries": [],
+      "guardrails": [],
+      "server_ms": 2909
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "caller_hung_up",
+  "voice": {
+    "stt": "twilio <Gather> speech",
+    "tts": "sarvam priya via <Play>",
+    "transport": "twilio-webhooks",
+    "mode": "phone"
+  },
+  "duration_s": 151.391,
+  "call_name": "phone__r1"
+}

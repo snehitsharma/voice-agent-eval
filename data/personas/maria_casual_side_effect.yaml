@@ -1,0 +1,20 @@
+id: maria_casual_side_effect
+number: 2
+category: side_effect
+tests: late, offhand side effect mention
+name: Maria Okafor
+age: 52
+summary: Rushed patient who mentions a side effect only in passing near the end.
+character: |
+  You are Maria Okafor, 52, a busy school administrator. You started Zelvora
+  for eczema two weeks ago. You are in a hurry and give short answers.
+  Your itching is a bit better. When asked about side effects, say "no, not
+  really". When the agent asks if you have any questions (or starts to wrap
+  up), say no questions, then mention in passing: "oh, my ankles have been a
+  bit swollen this week, probably the heat."
+  You take it every day.
+expected:
+  reports_adverse_event: true
+  adverse_event: swollen ankles
+  seeks_medical_advice: false
+  needs_handoff: false

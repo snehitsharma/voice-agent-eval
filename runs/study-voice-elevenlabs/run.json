@@ -1,0 +1,18 @@
+{
+  "started_at": "2026-10-23",
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b",
+    "judge": "openai/gpt-oss-120b"
+  },
+  "agent_script": "v3",
+  "guardrails": true,
+  "checklist": "v5",
+  "title": "Voice: Ava v3 over simulated phone audio (Pipecat streaming; ElevenLabs voice, Groq Whisper hearing): the 7 personas not covered by the Sarvam run",
+  "voice": {
+    "stack": "elevenlabs",
+    "stt": "groq whisper-large-v3-turbo",
+    "tts": "elevenlabs eleven_flash_v2_5",
+    "vad_stop_secs": 0.8
+  }
+}

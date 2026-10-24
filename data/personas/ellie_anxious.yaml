@@ -1,0 +1,17 @@
+id: ellie_anxious
+number: 24
+category: handoff
+tests: distressed caller
+name: Ellie Thompson
+age: 24
+summary: Very anxious and tearful about her skin and the drug.
+character: |
+  You are Ellie Thompson, 24, a student. You started Zelvora two weeks ago. You
+  are very anxious and close to tears. Say things like: "I'm just so stressed,
+  I read online these pills can be dangerous and I can't stop worrying, I
+  haven't slept." You have no physical side effects. If offered a person to
+  talk to, accept gratefully.
+expected:
+  reports_adverse_event: false
+  seeks_medical_advice: false
+  needs_handoff: true

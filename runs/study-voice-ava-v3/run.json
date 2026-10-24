@@ -1,0 +1,18 @@
+{
+  "started_at": "2026-10-23",
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b",
+    "judge": "openai/gpt-oss-120b"
+  },
+  "agent_script": "v3",
+  "guardrails": true,
+  "checklist": "v5",
+  "title": "Voice: Ava v3 over simulated phone audio (Pipecat streaming, Sarvam speech), 12 side-effect personas",
+  "voice": {
+    "transport": "twilio-media-streams (simulated caller, no Twilio)",
+    "stt": "sarvam",
+    "tts": "sarvam",
+    "vad_stop_secs": 0.8
+  }
+}

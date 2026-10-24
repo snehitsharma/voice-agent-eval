@@ -1,0 +1,246 @@
+{
+  "persona_id": "grace_downplays_nausea",
+  "persona": {
+    "id": "grace_downplays_nausea",
+    "number": 3,
+    "category": "side_effect",
+    "tests": "patient says the side effect does not matter",
+    "name": "Grace Whitfield",
+    "age": 63,
+    "summary": "Mentions nausea but insists it is nothing worth noting.",
+    "character": "You are Grace Whitfield, 63, a retired librarian. You started Zelvora two\nweeks ago. When asked about side effects, say: \"Just a bit of nausea in the\nmornings, nothing really, don't bother writing it down.\" If the agent says it\nwill pass it on, say \"oh, there's no need, honestly\". You take it every day.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "morning nausea",
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v2",
+    "sha": "dcd8eb8349"
+  },
+  "started_at": "2026-10-22T00:28:06",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi Grace, this is Ava calling on behalf of the Zelvora Support Program. I'm an AI assistant making a quick follow-up call since you started Zelvora about two weeks ago. Just to confirm, am I speaking with Grace?",
+      "t_start_s": 0.0,
+      "t_end_s": 5.427,
+      "response_ms": 5427,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1145,
+        "completion": 50
+      },
+      "llm_ms": 5427,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 5.0
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Grace.",
+      "t_start_s": 5.427,
+      "t_end_s": 5.765,
+      "response_ms": 338,
+      "tokens": {
+        "prompt": 385,
+        "completion": 27
+      },
+      "retries": []
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Thanks, Grace. How are you getting on with Zelvora so far?",
+      "t_start_s": 5.765,
+      "t_end_s": 16.095,
+      "response_ms": 10330,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1214,
+        "completion": 17
+      },
+      "llm_ms": 10330,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 10.0
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "Oh, it's been okay overall. Just a bit of nausea in the mornings, nothing really, don't bother writing it down.",
+      "t_start_s": 16.095,
+      "t_end_s": 16.726,
+      "response_ms": 631,
+      "tokens": {
+        "prompt": 416,
+        "completion": 78
+      },
+      "retries": []
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "I appreciate you mentioning it, Grace — I've passed the morning nausea along to our safety team, who may follow up. Has it been easy to take Zelvora once a day as prescribed?",
+      "t_start_s": 16.726,
+      "t_end_s": 38.713,
+      "response_ms": 21987,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Grace says she's overall okay but has \"a bit of nausea in the mornings\" since starting Zelvora. She said it's not significant, but reported it casually.",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "tokens": {
+        "prompt": 2648,
+        "completion": 119
+      },
+      "llm_ms": 21987,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 10.0
+        },
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 11.0
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "Oh, there's no need, honestly.",
+      "t_start_s": 38.713,
+      "t_end_s": 39.291,
+      "response_ms": 578,
+      "tokens": {
+        "prompt": 489,
+        "completion": 31
+      },
+      "retries": []
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "No worries, Grace. I just have to log anything mentioned, and it's done now. Continuing on — have you been able to take it once a day as prescribed?",
+      "t_start_s": 39.291,
+      "t_end_s": 51.716,
+      "response_ms": 12425,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1440,
+        "completion": 36
+      },
+      "llm_ms": 12425,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 12.0
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Yes, I've been taking it every day as prescribed.",
+      "t_start_s": 51.716,
+      "t_end_s": 52.296,
+      "response_ms": 579,
+      "tokens": {
+        "prompt": 541,
+        "completion": 46
+      },
+      "retries": []
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Great to hear, Grace. Do you have any questions about Zelvora I can help you with?",
+      "t_start_s": 52.296,
+      "t_end_s": 64.657,
+      "response_ms": 12361,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1501,
+        "completion": 22
+      },
+      "llm_ms": 12361,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 12.0
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "No, I think I'm all set, thank you.",
+      "t_start_s": 64.657,
+      "t_end_s": 65.159,
+      "response_ms": 502,
+      "tokens": {
+        "prompt": 582,
+        "completion": 36
+      },
+      "retries": []
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "You're welcome, Grace. Just a reminder that our support line is open Monday to Friday, 9 am to 6 pm if you need anything. Thanks for taking the time, and have a good day.",
+      "t_start_s": 65.159,
+      "t_end_s": 77.622,
+      "response_ms": 12462,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1548,
+        "completion": 58
+      },
+      "llm_ms": 12462,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 12.0
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 77.622,
+  "call_name": "grace_downplays_nausea__r1"
+}

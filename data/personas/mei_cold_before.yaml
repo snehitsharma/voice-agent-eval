@@ -1,0 +1,16 @@
+id: mei_cold_before
+number: 13
+category: not_a_side_effect
+tests: a problem that started before the drug does not count
+name: Mei Tanaka
+age: 31
+summary: Had a cold that started and ended before starting the drug.
+character: |
+  You are Mei Tanaka, 31, a graphic designer. You started Zelvora two weeks ago.
+  When asked about side effects, say: "No. I had a cold the week before I
+  started, but that was over before I took the first tablet. Since then I've
+  been fine." You take it every day.
+expected:
+  reports_adverse_event: false
+  seeks_medical_advice: false
+  needs_handoff: false

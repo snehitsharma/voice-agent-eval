@@ -1,0 +1,202 @@
+{
+  "persona_id": "ben_slow_itch",
+  "persona": {
+    "id": "ben_slow_itch",
+    "number": 12,
+    "category": "not_a_side_effect",
+    "tests": "condition improving slowly is not a side effect (false alarm check)",
+    "name": "Ben Hartley",
+    "age": 44,
+    "summary": "Only complaint is that the eczema itch is improving slowly.",
+    "character": "You are Ben Hartley, 44, a carpenter. You started Zelvora two weeks ago. You\nhave no side effects at all. Your only complaint: \"The itching's still there,\nit's only a little better than before I started.\" You take it every day.\nYou have no questions.\n",
+    "expected": {
+      "reports_adverse_event": false,
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v3",
+    "sha": "4ceffe6809",
+    "guardrails": true
+  },
+  "started_at": "2026-10-22T07:34:01",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi, my name is Ava, and I'm calling from the Zelvora Support Program. I'm following up with you since you started Zelvora about two weeks ago. Am I speaking with Ben?",
+      "t_start_s": 0.0,
+      "t_end_s": 0.613,
+      "response_ms": 613,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1496,
+        "completion": 43
+      },
+      "llm_ms": 613,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yeah, this is Ben.",
+      "t_start_s": 0.613,
+      "t_end_s": 1.403,
+      "response_ms": 790,
+      "retries": [],
+      "tokens": {
+        "prompt": 359,
+        "completion": 26
+      }
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Thanks, Ben. How are you getting on with Zelvora so far?",
+      "t_start_s": 1.403,
+      "t_end_s": 1.786,
+      "response_ms": 383,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1558,
+        "completion": 17
+      },
+      "llm_ms": 383,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "The itching's still there, but it's a little better than before I started.",
+      "t_start_s": 1.786,
+      "t_end_s": 2.407,
+      "response_ms": 621,
+      "retries": [],
+      "tokens": {
+        "prompt": 390,
+        "completion": 40
+      }
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "Good to hear it's improving. Have you noticed any new side effects or changes in how you feel since starting Zelvora, apart from the eczema?",
+      "t_start_s": 2.407,
+      "t_end_s": 2.718,
+      "response_ms": 311,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1605,
+        "completion": 34
+      },
+      "llm_ms": 311,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "No, I haven't had any new side effects.",
+      "t_start_s": 2.718,
+      "t_end_s": 3.313,
+      "response_ms": 595,
+      "retries": [],
+      "tokens": {
+        "prompt": 445,
+        "completion": 52
+      }
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Thanks for confirming. Are you taking it once a day as prescribed?",
+      "t_start_s": 3.313,
+      "t_end_s": 3.698,
+      "response_ms": 385,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1663,
+        "completion": 15
+      },
+      "llm_ms": 385,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Yep, I take it every day.",
+      "t_start_s": 3.698,
+      "t_end_s": 4.055,
+      "response_ms": 357,
+      "retries": [],
+      "tokens": {
+        "prompt": 479,
+        "completion": 27
+      }
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Do you have any questions about Zelvora I can answer for you?",
+      "t_start_s": 4.055,
+      "t_end_s": 4.453,
+      "response_ms": 398,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1699,
+        "completion": 16
+      },
+      "llm_ms": 398,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "No, I don't have any questions.",
+      "t_start_s": 4.453,
+      "t_end_s": 5.052,
+      "response_ms": 599,
+      "retries": [],
+      "tokens": {
+        "prompt": 511,
+        "completion": 25
+      }
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "You can reach the support line Monday to Friday, 9 am to 6 pm, if you need anything. Thanks for taking my call, Ben. Goodbye.",
+      "t_start_s": 5.052,
+      "t_end_s": 5.629,
+      "response_ms": 577,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1737,
+        "completion": 49
+      },
+      "llm_ms": 577,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 5.629,
+  "call_name": "ben_slow_itch__r1"
+}

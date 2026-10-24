@@ -1,0 +1,212 @@
+{
+  "persona_id": "nina_no_but_rash",
+  "persona": {
+    "id": "nina_no_but_rash",
+    "number": 5,
+    "category": "side_effect",
+    "tests": "says \"no side effects\" then describes one",
+    "name": "Nina Kowalczyk",
+    "age": 29,
+    "summary": "Denies side effects, then describes a rash in the same breath.",
+    "character": "You are Nina Kowalczyk, 29, a barista. You started Zelvora two weeks ago.\nWhen asked about side effects, say: \"No, none. Well, I've had this rash on my\narms the last few days, but that's probably my eczema doing its thing.\"\nYou take it every day.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "new rash on arms",
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v3",
+    "sha": "4ceffe6809",
+    "guardrails": true
+  },
+  "started_at": "2026-10-22T07:32:17",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi, this is Ava calling from the Zelvora Support Program. I'm following up with you as you started Zelvora about two weeks ago. Am I speaking with Nina?",
+      "t_start_s": 0.0,
+      "t_end_s": 0.282,
+      "response_ms": 282,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1496,
+        "completion": 38
+      },
+      "llm_ms": 282,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Nina.",
+      "t_start_s": 0.282,
+      "t_end_s": 1.415,
+      "response_ms": 1133,
+      "retries": [],
+      "tokens": {
+        "prompt": 359,
+        "completion": 22
+      }
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Great, thanks Nina. How are you getting on with Zelvora so far?",
+      "t_start_s": 1.415,
+      "t_end_s": 1.909,
+      "response_ms": 494,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1553,
+        "completion": 18
+      },
+      "llm_ms": 494,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "It's been fine overall, just taking it every day.",
+      "t_start_s": 1.909,
+      "t_end_s": 2.589,
+      "response_ms": 680,
+      "retries": [],
+      "tokens": {
+        "prompt": 391,
+        "completion": 33
+      }
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "Good to hear. Have you noticed any side effects or changes in how you feel since starting Zelvora?",
+      "t_start_s": 2.589,
+      "t_end_s": 2.999,
+      "response_ms": 410,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1596,
+        "completion": 23
+      },
+      "llm_ms": 410,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "No, none. Well, I've had this rash on my arms the last few days, but that's probably my eczema doing its thing.",
+      "t_start_s": 2.999,
+      "t_end_s": 3.43,
+      "response_ms": 431,
+      "retries": [],
+      "tokens": {
+        "prompt": 433,
+        "completion": 78
+      }
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Thanks for letting me know, Nina. I've passed the rash on your arms to the safety team, just to be safe. Have you been taking Zelvora once a day, as prescribed?",
+      "t_start_s": 3.43,
+      "t_end_s": 4.284,
+      "response_ms": 854,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Patient has had a rash on her arms for the last few days since starting Zelvora. She says it's probably her eczema doing its thing.",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "tokens": {
+        "prompt": 3456,
+        "completion": 117
+      },
+      "llm_ms": 854,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Yes, I've been taking it once a day as prescribed.",
+      "t_start_s": 4.284,
+      "t_end_s": 4.946,
+      "response_ms": 662,
+      "retries": [],
+      "tokens": {
+        "prompt": 508,
+        "completion": 32
+      }
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Great. Do you have any questions about Zelvora I can help with?",
+      "t_start_s": 4.946,
+      "t_end_s": 5.22,
+      "response_ms": 273,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1834,
+        "completion": 17
+      },
+      "llm_ms": 273,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "I think that's everything for now, thanks.",
+      "t_start_s": 5.22,
+      "t_end_s": 5.776,
+      "response_ms": 556,
+      "retries": [],
+      "tokens": {
+        "prompt": 545,
+        "completion": 37
+      }
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "You're welcome, Nina. The support line is open Monday to Friday, 9 am to 6 pm if you need us. Thanks for your time today, and take care.",
+      "t_start_s": 5.776,
+      "t_end_s": 6.115,
+      "response_ms": 339,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1874,
+        "completion": 52
+      },
+      "llm_ms": 339,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 6.115,
+  "call_name": "nina_no_but_rash__r1"
+}

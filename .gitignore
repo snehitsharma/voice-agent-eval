@@ -1,0 +1,17 @@
+# secrets (also matches infra/langfuse/.env)
+.env
+
+# environments and caches
+.venv/
+.venv-voice/
+__pycache__/
+.pytest_cache/
+
+# logs and scratch output
+logs/
+*.log
+runs/archive/
+
+# local working notes, not part of the project
+CLAUDE.md
+synthio-jd.md

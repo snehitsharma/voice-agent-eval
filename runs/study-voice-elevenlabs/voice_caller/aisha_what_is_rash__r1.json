@@ -1,0 +1,99 @@
+{
+  "persona_id": "aisha_what_is_rash",
+  "call_name": "aisha_what_is_rash__r1",
+  "caller_model": "openai/gpt-oss-120b",
+  "voice_stack": "elevenlabs",
+  "caller_voice": "elevenlabs CwhRBWXzGAHq8TQ4Fs17",
+  "turns": [
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Hi Aisha, this is Ava calling on behalf of the Zalvora Support Program. I'm just checking in on you about two weeks after you started your new medication. Am I speaking with Aisha?",
+      "pauses_s": [],
+      "audio_s": 9.32,
+      "t_s": 15.4
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, this is Aisha.",
+      "audio_s": 1.35,
+      "t_s": 16.21
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Great, thanks for confirming. How are you getting on with Zalvora so far?",
+      "pauses_s": [],
+      "audio_s": 3.64,
+      "t_s": 25.5
+    },
+    {
+      "speaker": "caller",
+      "said": "I'm taking it every day, but I've got these small red bumps on my chin since last week. What is that? Is it acne or is it serious?",
+      "audio_s": 7.2,
+      "t_s": 27.06
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "I've passed that to the safety team. Acne is a known common side effect of Zylvora, so it's most likely that, but I'd suggest mentioning it to your doctor if it doesn't go away. Besides the bumps on your chin, have you noticed any other side effects or changes in how you feel since starting it?",
+      "pauses_s": [],
+      "audio_s": 15.04,
+      "t_s": 60.06
+    },
+    {
+      "speaker": "caller",
+      "said": "No, that's the only thing I've noticed.",
+      "audio_s": 2.04,
+      "t_s": 61.09
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Good to hear. Just to confirm, you've been taking it once a day as prescribed, right?",
+      "pauses_s": [],
+      "audio_s": 4.36,
+      "t_s": 72.22
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, I take it once a day as prescribed.",
+      "audio_s": 2.41,
+      "t_s": 73.13
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "That sounds right. Do you have any other questions about Zellvora I can help with?",
+      "pauses_s": [],
+      "audio_s": 4.08,
+      "t_s": 86.77
+    },
+    {
+      "speaker": "caller",
+      "said": "Could you tell me how long it usually takes for those skin issues to improve?",
+      "audio_s": 3.9,
+      "t_s": 88.17
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "I don't have that information, so your doctor or pharmacist would be best placed to tell you when you might expect improvement. Do you have any other questions about Zalvora?",
+      "pauses_s": [],
+      "audio_s": 8.28,
+      "t_s": 105.38
+    },
+    {
+      "speaker": "caller",
+      "said": "No, that's all for now, thank you.",
+      "audio_s": 1.72,
+      "t_s": 108.51
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "You're welcome. The support line is open Monday to Friday, 9 a.m. to 6 p.m. if you need us again. Thanks for your time today and take care.",
+      "pauses_s": [
+        2.12
+      ],
+      "audio_s": 9.24,
+      "t_s": 121.61
+    }
+  ],
+  "started_at": "2026-10-23T09:16:04",
+  "end_reason": "agent_ended",
+  "duration_s": 121.61
+}

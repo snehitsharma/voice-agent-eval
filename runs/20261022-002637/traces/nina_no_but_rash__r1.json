@@ -1,0 +1,259 @@
+{
+  "persona_id": "nina_no_but_rash",
+  "persona": {
+    "id": "nina_no_but_rash",
+    "number": 5,
+    "category": "side_effect",
+    "tests": "says \"no side effects\" then describes one",
+    "name": "Nina Kowalczyk",
+    "age": 29,
+    "summary": "Denies side effects, then describes a rash in the same breath.",
+    "character": "You are Nina Kowalczyk, 29, a barista. You started Zelvora two weeks ago.\nWhen asked about side effects, say: \"No, none. Well, I've had this rash on my\narms the last few days, but that's probably my eczema doing its thing.\"\nYou take it every day.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "new rash on arms",
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v2",
+    "sha": "dcd8eb8349"
+  },
+  "started_at": "2026-10-22T00:30:36",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi Nina, this is Ava with the Zelvora Support Program. I'm calling to check in on how you're doing about two weeks after starting Zelvora. Just to confirm — am I speaking with Nina?",
+      "t_start_s": 0.0,
+      "t_end_s": 5.432,
+      "response_ms": 5432,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1145,
+        "completion": 45
+      },
+      "llm_ms": 5432,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 5.0
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Nina.",
+      "t_start_s": 5.432,
+      "t_end_s": 5.9,
+      "response_ms": 468,
+      "tokens": {
+        "prompt": 365,
+        "completion": 25
+      },
+      "retries": []
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Great, thanks Nina. How are you getting on with Zelvora so far?",
+      "t_start_s": 5.9,
+      "t_end_s": 15.237,
+      "response_ms": 9337,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1209,
+        "completion": 18
+      },
+      "llm_ms": 9337,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 9.0
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "I'm doing okay, taking it every day as prescribed.",
+      "t_start_s": 15.237,
+      "t_end_s": 15.787,
+      "response_ms": 550,
+      "tokens": {
+        "prompt": 397,
+        "completion": 41
+      },
+      "retries": []
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "That's good to hear. Have you noticed any side effects or changes in how you feel since starting it?",
+      "t_start_s": 15.787,
+      "t_end_s": 26.133,
+      "response_ms": 10346,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1252,
+        "completion": 23
+      },
+      "llm_ms": 10346,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 10.0
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "No, none. Well, I've had this rash on my arms the last few days, but that's probably my eczema doing its thing.",
+      "t_start_s": 26.133,
+      "t_end_s": 26.655,
+      "response_ms": 522,
+      "tokens": {
+        "prompt": 439,
+        "completion": 52
+      },
+      "retries": []
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Thanks for letting me know — I've passed that to our safety team, who may follow up. Have you been able to take it once a day as prescribed?",
+      "t_start_s": 26.655,
+      "t_end_s": 49.78,
+      "response_ms": 23124,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Patient reports a rash on her arms over the last few days since starting Zelvora, though she attributes it to her eczema.",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "tokens": {
+        "prompt": 2737,
+        "completion": 105
+      },
+      "llm_ms": 23124,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 11.0
+        },
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 11.0
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Yes, I've been taking it once a day like the instructions say.",
+      "t_start_s": 49.78,
+      "t_end_s": 50.139,
+      "response_ms": 359,
+      "tokens": {
+        "prompt": 508,
+        "completion": 33
+      },
+      "retries": []
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Good. Is there anything you'd like to ask about Zelvora while I have you?",
+      "t_start_s": 50.139,
+      "t_end_s": 62.494,
+      "response_ms": 12355,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1480,
+        "completion": 20
+      },
+      "llm_ms": 12355,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 12.0
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "Just wondering—how long until I might start feeling the full benefits?",
+      "t_start_s": 62.494,
+      "t_end_s": 63.061,
+      "response_ms": 568,
+      "tokens": {
+        "prompt": 549,
+        "completion": 45
+      },
+      "retries": []
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "According to the studies, most patients saw less itching within about 4 weeks. For specifics on your timeline, your doctor is the best person to ask. The support line is open Monday to Friday, 9 am to 6 pm — thanks for your time today, Nina!",
+      "t_start_s": 63.062,
+      "t_end_s": 91.054,
+      "response_ms": 27993,
+      "tool_calls": [
+        {
+          "name": "lookup_drug_info",
+          "args": {
+            "drug": "Zelvora",
+            "question": "How long does it take to feel the full benefits of Zelvora?"
+          },
+          "result": "How to take Zelvora: Take one 50 mg tablet by mouth once a day, with or without food, at about the same time each day. Swallow the tablet whole. Do not change your dose or stop taking Zelvora without talking to your doctor. Most patients in the (fictional) studies saw less itching within 4 weeks.\n\nWho should not take Zelvora: Do not take Zelvora if you are allergic to zelvoritinib or any ingredient in the tablet, or if you have an active serious infection. Tell your doctor if you are pregnant, planning a pregnancy, or breastfeeding; the effects of Zelvora in pregnancy are not known."
+        },
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 3268,
+        "completion": 128
+      },
+      "llm_ms": 27992,
+      "retries": [
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 12.0
+        },
+        {
+          "attempt": 1,
+          "error": "RateLimitError",
+          "waited_s": 15.0
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 91.054,
+  "call_name": "nina_no_but_rash__r1"
+}

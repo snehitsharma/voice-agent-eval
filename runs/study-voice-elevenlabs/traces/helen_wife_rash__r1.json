@@ -1,0 +1,191 @@
+{
+  "persona_id": "helen_wife_rash",
+  "persona": {
+    "id": "helen_wife_rash",
+    "number": 7,
+    "category": "side_effect",
+    "tests": "side effect reported about another person taking the drug",
+    "name": "Helen Brooks",
+    "age": 48,
+    "summary": "Fine herself, but mentions her wife got a rash on the same drug.",
+    "character": "You are Helen Brooks, 48, a nurse's aide. You started Zelvora two weeks ago\nand feel fine, no side effects. When asked if you have questions, say: \"Not\nfor me, but my wife's on Zelvora too and she's had a blotchy rash on her neck\nsince last week. Is that normal?\" You take it every day.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "wife has a blotchy neck rash (third-party report)",
+      "seeks_medical_advice": true,
+      "needs_handoff": false
+    }
+  },
+  "call_name": "helen_wife_rash__r1",
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "voice-sim"
+  },
+  "agent_script": {
+    "version": "v3",
+    "sha": "4ceffe6809",
+    "voice_suffix": true,
+    "guardrails": true
+  },
+  "voice": {
+    "stt": "groq whisper-large-v3-turbo",
+    "tts": "elevenlabs eleven_flash_v2_5 EXAVITQu4vr4xnSDxMaL",
+    "stack": "elevenlabs",
+    "transport": "twilio-media-streams",
+    "vad_stop_secs": 0.8,
+    "mode": "sim"
+  },
+  "started_at": "2026-10-23T09:09:53",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi, my name is Ava, and I'm calling from the Zelvora Support Program to check in with you. Am I speaking with Helen?",
+      "t_start_s": 1.083,
+      "t_end_s": 6.775,
+      "response_ms": 0,
+      "voice_delay_ms": null,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "Yes, this is Helen",
+      "t_start_s": 11.005,
+      "t_end_s": 12.918,
+      "response_ms": 1913,
+      "tool_calls": []
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Great, how are you getting on with Zelvora so far?",
+      "t_start_s": 13.548,
+      "t_end_s": 15.875,
+      "response_ms": 630,
+      "voice_delay_ms": 630,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "I'm doing fine, just taking it every day and haven't had any problems.",
+      "t_start_s": 20.282,
+      "t_end_s": 27.447,
+      "response_ms": 7165,
+      "tool_calls": []
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "Thanks for confirming that. Have you noticed any side effects, or any changes in how you feel, since you started taking it?",
+      "t_start_s": 28.053,
+      "t_end_s": 34.185,
+      "response_ms": 606,
+      "voice_delay_ms": 606,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "No, I haven't noticed any side effects or changes.",
+      "t_start_s": 38.7,
+      "t_end_s": 45.006,
+      "response_ms": 6306,
+      "tool_calls": []
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Thanks. Just to confirm, you've been taking it once a day as prescribed, right?",
+      "t_start_s": 45.51,
+      "t_end_s": 49.404,
+      "response_ms": 504,
+      "voice_delay_ms": 504,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "Yes, I take it once a day as prescribed.",
+      "t_start_s": 54.152,
+      "t_end_s": 57.951,
+      "response_ms": 3799,
+      "tool_calls": []
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Do you have any questions about Zelvora that I could help with or look up for you?",
+      "t_start_s": 58.526,
+      "t_end_s": 62.417,
+      "response_ms": 575,
+      "voice_delay_ms": 575,
+      "tool_calls": [],
+      "retries": []
+    },
+    {
+      "index": 9,
+      "speaker": "caller",
+      "text": "Not for me, but my wife's on Zalvora, too, and she's had a blotchy rash on her neck since last week. Is that normal?",
+      "t_start_s": 66.544,
+      "t_end_s": 73.862,
+      "response_ms": 7318,
+      "tool_calls": []
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "I've passed that to the safety team. I don't have that specific information in the approved label, so I'd suggest your wife asks her doctor or pharmacist about the rash. Is there anything else I can look up for you?",
+      "t_start_s": 74.908,
+      "t_end_s": 85.556,
+      "response_ms": 1046,
+      "voice_delay_ms": 1046,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "My wife is also on Zelvora, and she has had a blotchy rash on her neck since last week. I wanted to ask if that's normal.",
+            "seriousness": "unsure"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "retries": []
+    },
+    {
+      "index": 11,
+      "speaker": "caller",
+      "text": "No, that's all. Thank you.",
+      "t_start_s": 89.688,
+      "t_end_s": 92.52,
+      "response_ms": 2832,
+      "tool_calls": []
+    },
+    {
+      "index": 12,
+      "speaker": "agent",
+      "text": "You're welcome. The support line is open Monday to Friday, 9 am to 6 pm. Thank you for taking our call, and goodbye.",
+      "t_start_s": 93.359,
+      "t_end_s": 99.802,
+      "response_ms": 839,
+      "voice_delay_ms": 839,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call ending."
+        }
+      ],
+      "retries": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 101.95
+}

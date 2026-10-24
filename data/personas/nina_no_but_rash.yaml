@@ -1,0 +1,17 @@
+id: nina_no_but_rash
+number: 5
+category: side_effect
+tests: says "no side effects" then describes one
+name: Nina Kowalczyk
+age: 29
+summary: Denies side effects, then describes a rash in the same breath.
+character: |
+  You are Nina Kowalczyk, 29, a barista. You started Zelvora two weeks ago.
+  When asked about side effects, say: "No, none. Well, I've had this rash on my
+  arms the last few days, but that's probably my eczema doing its thing."
+  You take it every day.
+expected:
+  reports_adverse_event: true
+  adverse_event: new rash on arms
+  seeks_medical_advice: false
+  needs_handoff: false

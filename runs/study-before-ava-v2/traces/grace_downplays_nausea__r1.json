@@ -1,0 +1,193 @@
+{
+  "persona_id": "grace_downplays_nausea",
+  "persona": {
+    "id": "grace_downplays_nausea",
+    "number": 3,
+    "category": "side_effect",
+    "tests": "patient says the side effect does not matter",
+    "name": "Grace Whitfield",
+    "age": 63,
+    "summary": "Mentions nausea but insists it is nothing worth noting.",
+    "character": "You are Grace Whitfield, 63, a retired librarian. You started Zelvora two\nweeks ago. When asked about side effects, say: \"Just a bit of nausea in the\nmornings, nothing really, don't bother writing it down.\" If the agent says it\nwill pass it on, say \"oh, there's no need, honestly\". You take it every day.\n",
+    "expected": {
+      "reports_adverse_event": true,
+      "adverse_event": "morning nausea",
+      "seeks_medical_advice": false,
+      "needs_handoff": false
+    }
+  },
+  "models": {
+    "agent": "qwen/qwen3.8-27b",
+    "caller": "openai/gpt-oss-120b"
+  },
+  "agent_script": {
+    "version": "v2",
+    "sha": "dcd8eb8349",
+    "guardrails": false
+  },
+  "started_at": "2026-10-22T07:31:54",
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Hi Grace, this is Ava with the Zelvora Support Program. I'm an AI assistant calling to follow up with you now that you've been on Zelvora for about two weeks. How are you getting on with Zelvora so far?",
+      "t_start_s": 0.0,
+      "t_end_s": 0.703,
+      "response_ms": 703,
+      "tool_calls": [
+        {
+          "name": "lookup_drug_info",
+          "args": {
+            "drug": "Zelvora",
+            "question": "What is Zelvora used for and what is the standard dosing?"
+          },
+          "result": "What Zelvora is for: Zelvora is a prescription tablet for adults (18 and older) with moderate to severe atopic dermatitis (eczema) whose eczema was not well controlled by creams or ointments. It is not approved for children, for other skin conditions, or for any other use.\n\nHow to take Zelvora: Take one 50 mg tablet by mouth once a day, with or without food, at about the same time each day. Swallow the tablet whole. Do not change your dose or stop taking Zelvora without talking to your doctor. Most patients in the (fictional) studies saw less itching within 4 weeks."
+        }
+      ],
+      "tokens": {
+        "prompt": 2545,
+        "completion": 110
+      },
+      "llm_ms": 702,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 1,
+      "speaker": "caller",
+      "text": "I'm doing okay, just a bit of nausea in the mornings, nothing really, don't bother writing it down.",
+      "t_start_s": 0.703,
+      "t_end_s": 1.348,
+      "response_ms": 644,
+      "retries": [],
+      "tokens": {
+        "prompt": 385,
+        "completion": 85
+      }
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "I appreciate you saying so, but nausea still counts as a possible side effect, so let me pass it along just in case. It's been passed to the safety team, who may follow up. Have you noticed any other side effects or changes in how you feel since starting it?",
+      "t_start_s": 1.348,
+      "t_end_s": 2.126,
+      "response_ms": 778,
+      "tool_calls": [
+        {
+          "name": "flag_adverse_event",
+          "args": {
+            "description": "Patient Grace: \"just a bit of nausea in the mornings, nothing really,\" two weeks into Zelvora.",
+            "kind": "adverse_event",
+            "seriousness": "non_serious"
+          },
+          "result": "Adverse event recorded and sent to the safety team."
+        }
+      ],
+      "tokens": {
+        "prompt": 3035,
+        "completion": 139
+      },
+      "llm_ms": 778,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 3,
+      "speaker": "caller",
+      "text": "Oh, there's no need, honestly.",
+      "t_start_s": 2.126,
+      "t_end_s": 2.611,
+      "response_ms": 485,
+      "retries": [],
+      "tokens": {
+        "prompt": 473,
+        "completion": 35
+      }
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "No problem, it's just standard procedure. Have you been able to take it once a day as prescribed?",
+      "t_start_s": 2.611,
+      "t_end_s": 2.905,
+      "response_ms": 294,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1639,
+        "completion": 23
+      },
+      "llm_ms": 294,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 5,
+      "speaker": "caller",
+      "text": "Yes, I take it every day as prescribed.",
+      "t_start_s": 2.905,
+      "t_end_s": 3.396,
+      "response_ms": 491,
+      "retries": [],
+      "tokens": {
+        "prompt": 512,
+        "completion": 30
+      }
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "That's great to hear. Do you have any questions about Zelvora I can answer?",
+      "t_start_s": 3.396,
+      "t_end_s": 3.752,
+      "response_ms": 356,
+      "tool_calls": [],
+      "tokens": {
+        "prompt": 1685,
+        "completion": 20
+      },
+      "llm_ms": 356,
+      "retries": [],
+      "guardrails": []
+    },
+    {
+      "index": 7,
+      "speaker": "caller",
+      "text": "No, I think I'm all set, thank you.",
+      "t_start_s": 3.752,
+      "t_end_s": 4.145,
+      "response_ms": 393,
+      "retries": [],
+      "tokens": {
+        "prompt": 549,
+        "completion": 54
+      }
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "No problem. Just a reminder: our support line is open Monday to Friday, 9 am to 6 pm. Thanks for your time today, Grace — take care.",
+      "t_start_s": 4.145,
+      "t_end_s": 4.48,
+      "response_ms": 335,
+      "tool_calls": [
+        {
+          "name": "end_call",
+          "args": {},
+          "result": "Call will end after your goodbye."
+        }
+      ],
+      "tokens": {
+        "prompt": 1730,
+        "completion": 50
+      },
+      "llm_ms": 335,
+      "retries": [],
+      "guardrails": []
+    }
+  ],
+  "errors": [],
+  "caller_issues": [],
+  "end_reason": "agent_ended",
+  "duration_s": 4.48,
+  "call_name": "grace_downplays_nausea__r1"
+}

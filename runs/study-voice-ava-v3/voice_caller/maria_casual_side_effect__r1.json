@@ -1,0 +1,65 @@
+{
+  "persona_id": "maria_casual_side_effect",
+  "call_name": "maria_casual_side_effect__r1",
+  "caller_model": "openai/gpt-oss-120b",
+  "caller_voice": "sarvam rahul",
+  "turns": [
+    {
+      "speaker": "agent",
+      "heard_by_caller": "Hi, this is Eva from the Zalvora support program. I am giving you a quick follow-up call to see how things are going since you started Zalvora about two weeks ago. Am I speaking with Maria?",
+      "pauses_s": [],
+      "audio_s": 12.52,
+      "t_s": 18.76
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, this is Maria.",
+      "audio_s": 1.11,
+      "t_s": 19.51
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "I am glad you are feeling okay, and I have passed that about the cold sleep and itching on to the safety team. How are you getting on with Zalvona overall?",
+      "pauses_s": [],
+      "audio_s": 13.36,
+      "t_s": 40.31
+    },
+    {
+      "speaker": "caller",
+      "said": "The itching's a bit better, overall okay.",
+      "audio_s": 2.47,
+      "t_s": 41.38
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "That's good to hear that the itching is feeling a bit better. Are you taking Zalvora once a day about the same time each day?",
+      "pauses_s": [],
+      "audio_s": 8.0,
+      "t_s": 56.38
+    },
+    {
+      "speaker": "caller",
+      "said": "Yes, I take it once a day, same time.No, not really.No questions. Oh, my ankles have been a bit swollen this week, probably the heat.Goodbye.Goodbye.",
+      "audio_s": 10.75,
+      "t_s": 59.69
+    },
+    {
+      "speaker": "agent",
+      "heard_by_caller": "I am sorry to hear about the swollen ankles. I have passed that to the safety team as well. The Zalvona support line is open Monday to Friday, 9:00 AM to 6:00 PM, if you need anything else. Thank you for your time, Maria. Take care.",
+      "pauses_s": [
+        0.87
+      ],
+      "audio_s": 17.96,
+      "t_s": 90.41
+    }
+  ],
+  "started_at": "2026-10-23T08:51:53",
+  "caller_issues": [
+    {
+      "turn": 5,
+      "issue": "early_hangup_ignored"
+    }
+  ],
+  "end_reason": "agent_ended",
+  "duration_s": 90.41
+}

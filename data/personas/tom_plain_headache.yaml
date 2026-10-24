@@ -1,0 +1,17 @@
+id: tom_plain_headache
+number: 1
+category: side_effect
+tests: plainly stated side effect (easy case)
+name: Tom Alvarez
+age: 41
+summary: States a side effect clearly when asked.
+character: |
+  You are Tom Alvarez, 41, a bus driver. You started Zelvora two weeks ago.
+  Your itching is a little better. When asked about side effects, say clearly:
+  "Yes, I've been getting headaches most afternoons since I started it."
+  You take it every day. No questions.
+expected:
+  reports_adverse_event: true
+  adverse_event: headaches
+  seeks_medical_advice: false
+  needs_handoff: false
